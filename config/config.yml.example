@@ -1,0 +1,21 @@
+defaults: &defaults
+  address:
+  port:
+  domain:
+  user_name:
+  password:
+  authentication: 'plain'
+  enable_starttls_auto: false
+  openssl_verify_mode: 'none'
+    
+development:
+  keyserver:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  keyserver:
+  <<: *defaults
+

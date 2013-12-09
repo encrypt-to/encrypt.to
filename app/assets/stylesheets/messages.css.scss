@@ -1,0 +1,61 @@
+// Place all the styles related to the Messages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+body {
+	font-family: 'Open Sans', sans-serif;
+}
+
+.marker {
+	background-color: #fff;
+	padding: 2px;
+	color: #999;
+}
+
+.marker_success {
+	background-color: yellow;
+	padding: 2px;
+}
+
+.fixed {
+  position:fixed;
+  z-index:100;	
+}
+
+.mask{
+  width:100%;
+  height:100%;
+  text-align: center;
+  color: #999;
+  background-color: #eee;
+  overflow:hidden;
+}
+
+.contener{
+  height:100%;
+  display:inline-table;
+}
+
+.contener .content{
+  vertical-align: middle;
+  display:table-cell;
+}
+
+#progress {
+  width: 200px;
+
+}
+
+.bar {
+    height: 18px;
+    background: #eee;
+}
+
+#upload{
+  display: block;
+  padding: 10px;
+  background-color: #aaa;
+  border: 1px dotted #eee;
+  
+  
+}

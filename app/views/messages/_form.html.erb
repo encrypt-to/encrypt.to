@@ -1,0 +1,41 @@
+<div class="mask fixed">  
+   <div class="contener">
+     <div class="content">
+     
+<legend>To: <%= @to %> <%= image_tag "lock.png", :width => 15 %></legend>
+
+
+<%= form_for @message, :html => { :class => "pure-form pure-form-stacked"  } do |f| %>
+  
+  <fieldset>
+
+  <%= f.text_area :body_input, :cols => 50, :rows => 10, :placeholder => "Message", :focus => true, "data-validation-length".to_sym => "min1" %>
+
+
+<br>
+  <%= f.text_field :from, :placeholder => "Your Email", :size => 50, :focus => false, "data-validation".to_sym => "email" %>
+
+    <%= f.hidden_field :to, :value => @to %>
+	<%= f.hidden_field :body %>
+
+    <br>
+    
+    
+    <button class="pure-button pure-button-primary">Send</button> <br><br>
+    
+</fieldset>
+
+
+<% end %>
+
+
+     </div>
+   </div>
+</div>
+
+
+<div id="pubkey" style="display:hidden;">
+<%= @pubkey %>
+</div>
+
+
