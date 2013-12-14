@@ -10,6 +10,7 @@ defaults: &defaults
     
 development:
   keyserver:
+  secret_token: 
   <<: *defaults
 
 test:
@@ -17,5 +18,6 @@ test:
 
 production:
   keyserver:
+  secret_token: 
   <<: *defaults
 
