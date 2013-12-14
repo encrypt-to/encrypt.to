@@ -1,11 +1,12 @@
 class MessagesController < ApplicationController
 
+  require 'open-uri'
+
   # GET /messages/new
   def new
     @message = Message.new
-    
     @to = params[:email]
-    IO.popen ("curl '#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@to}&options=mr'") { |f| @pubkey = f.read }
+    @pubkey = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@to}&options=mr").read
     
     respond_to do |format|
       if @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK") and (is_email?(@to) or @to.include?("0x"))
@@ -21,7 +22,7 @@ class MessagesController < ApplicationController
     @message = Message.new(params[:message])
 
     if !is_email?(@message.to)
-      IO.popen ("curl '#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{params[:message][:to]}&fingerprint=on&options=mr'") { |f| @result = f.read }
+      @result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{params[:message][:to]}&fingerprint=on&options=mr").read
       @message.to = get_email(@result)
       @message.save 
     end
