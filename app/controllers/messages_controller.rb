@@ -19,18 +19,21 @@ class MessagesController < ApplicationController
 
   # POST /messages
   def create
-    @message = Message.new(params[:message])
+    to = params[:message][:to]
+    from = params[:message][:from]
+    body = params[:message][:body]
 
-    if !is_email?(@message.to)
-      @result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{params[:message][:to]}&fingerprint=on&options=mr").read
-      @message.to = get_email(@result)
-      @message.save 
+    if !is_email?(to)
+      result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{params[:message][:to]}&fingerprint=on&options=mr").read
+      to = get_email(result)
     end
     
+    Message.create! # to, from and boy will not be saved, just for stats
+    
     respond_to do |format|
-      if @message.save
-        MessageMailer.send_message(@message).deliver
-        MessageMailer.thanks_message(@message).deliver
+      if is_email?(to) and is_email?(from)
+        MessageMailer.send_message(to, from, body).deliver
+        MessageMailer.thanks_message(to, from).deliver
         format.html { redirect_to "/", notice: 'Encrypted message sent! Thanks.' }
       else
         format.html { redirect_to "/", notice: 'Sorry something went wrong. Try again!' }

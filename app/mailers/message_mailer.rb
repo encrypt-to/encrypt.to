@@ -3,26 +3,15 @@ class MessageMailer < ActionMailer::Base
   
   default from: APP_CONFIG['sender']
   
-  after_filter :delete_body
-  
-  def send_message(message)
-    @message = message
-    subject = message.from + " has sent you an encrypted mail"
-    mail(to: message.to, reply_to: message.from, subject: subject, :body => message.body)
+  def send_message(from, to, body)
+    subject = "#{from} has sent you an encrypted mail"
+    mail(to: to, reply_to: from, subject: subject, :body => body)
   end
   
-  def thanks_message(message)
+  def thanks_message(from, to)
     subject = "Thanks for using Encrypt.to"
-    @to = message.to
-    mail(to: message.from, subject: subject)
+    @to = to
+    mail(to: from, subject: subject)
   end
-  
-  private  
-  def delete_body
-    if @message
-      @message.body = Time.now.to_s
-      @message.save
-    end
-  end
-
+    
 end
