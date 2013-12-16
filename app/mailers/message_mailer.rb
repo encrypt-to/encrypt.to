@@ -1,7 +1,7 @@
 class MessageMailer < ActionMailer::Base
   include AbstractController::Callbacks
   
-  default from: "Encrypt.to <mail@encrypt.to>"
+  default from: APP_CONFIG['sender']
   
   after_filter :delete_body
   
