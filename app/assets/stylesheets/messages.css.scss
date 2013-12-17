@@ -17,6 +17,12 @@ body {
 	padding: 2px;
 }
 
+.alert {
+	background-color: red;
+	color: #fff;
+	padding: 2px;
+}
+
 .fixed {
   position:fixed;
   z-index:100;	
@@ -55,7 +61,15 @@ body {
   display: block;
   padding: 10px;
   background-color: #aaa;
-  border: 1px dotted #eee;
-  
-  
+  border: 1px dotted #eee; 
+}
+
+#pubkey, #check-message, #check-pubkey {
+	display:none;
+	background-color: #fff;
+	color: #999;
+}
+
+#encrypt, .hidden {
+	display: none;
 }
