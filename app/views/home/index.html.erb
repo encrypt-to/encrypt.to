@@ -26,9 +26,9 @@ Please enable Javascript in your browser and then refresh this page!
 </div>
 
 <div>	
-    <div class="content">
+    <div class="content legal">
         <div class="l-box">
-            <h3>How does it work?</h3>
+            <h2>How does it work?</h2>
 			<p>When your public key is added to a public keyserver open the link: </p>
 
 			<p><span class="snippet">https://encrypt.to/{your-email}</span> or <span class="snippet">https://encrypt.to/{your-key-id}</span></p>
@@ -44,23 +44,39 @@ Please enable Javascript in your browser and then refresh this page!
     </div>	
 </div>
 
+<div class="pure-g-r marketing-ribbon">
+    <div class="pure-u-1-3">
+        <div class="l-box">
+            <h3>Open Source.</h3>
+            <p><%= image_tag "oss.png", :width => 150 %><br>Here is the <a href="https://github.com/encrypt-to/encrypt.to">source code</a>. We are using client side encryption and we can't decrypt your message.</p>
+
+        </div>
+    </div>
+
+    <div class="pure-u-1-3">
+        <div class="l-box">
+            <h3>OpenPGP.js</h3>
+            <p><%= image_tag "openpgpjs.png", :width => 128 %><br>Encrypt.to is based on <a href="http://openpgpjs.org/">OpenPGP.js</a> a JavaScript implementation of the <a href="http://tools.ietf.org/search/rfc4880">OpenPGP standard</a>.</p>
+            
+        </div>
+    </div>
+
+    <div class="pure-u-1-3">
+        <div class="l-box">
+            <h3>Privacy in mind.</h3>
+            <p><%= image_tag "diaspora.png", :width => 128 %><br>By the way, we are running <a href="https://diasp.eu">Diaspora</a> - a decentralized social networking platform built with your privacy in mind.</p>
+
+        </div>
+    </div>
+</div>
+
 <div>	
     <div class="content">
         <div class="l-box">
             <h3>How to generate a public key?</h3>
 			<p>There are many tools like <a href="https://gpgtools.org/">GPGTools</a> for Mac, <a href="https://projects.gnome.org/seahorse/index.html">Seahorse</a> for Linux or <a href="http://www.gpg4win.org/">Gpg4win</a> for Windows.</p>
 			
-        </div>
-    </div>	
-</div>
-
-<div>	
-    <div class="content">
-        <div class="l-box">
-            <h3>Can I trust you?</h3>
-			<p>Here is the <a href="https://github.com/encrypt-to/encrypt.to">source code</a>. We are using client side encryption and we can't decrypt your message.</p>
-
-			<p>Encrypt.to is based on <a href="http://openpgpjs.org/">OpenPGP.js</a> a JavaScript implementation of the <a href="http://tools.ietf.org/search/rfc4880">OpenPGP standard</a>.</p>
+			<p><%= image_tag "gpgtools.png", :height => 50 %><%= image_tag "seahorse.png", :height => 50 %><%= image_tag "gpg4win.png", :height => 50 %></p>
 			
         </div>
     </div>	
