@@ -45,6 +45,9 @@ body,
     font-family: "Open Sans", sans-serif;
 }
 
+.logo {
+	color: #1f8dd6;
+}
 
 /* Add transition to containers so they can push in and out */
 #layout,
@@ -76,12 +79,12 @@ h4 {
 }
 
 a {
-    color: #3b8bba; /* block-background-text-normal */
+    color: #1f8dd6; /* block-background-text-normal */
     text-decoration: none;
 }
 
 a:visited {
-    color: #265778; /* block-normal-text-normal */
+    color: #1f8dd6; /* block-normal-text-normal */
 }
 
 dt {
