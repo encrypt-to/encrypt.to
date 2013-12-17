@@ -50,7 +50,6 @@ body,
 }
 
 .marker_success {
-	display: none;
 	background-color: yellow;
 	padding: 2px;
 }
