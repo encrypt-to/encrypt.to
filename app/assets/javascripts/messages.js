@@ -29,22 +29,30 @@ $(function(){
 	// focus body on load
    $("#message_body").focus();
    
+	if (window.crypto.getRandomValues) {
+	    // ready
+		 } else {
+	    //alert("Error: Browser not supported\nReason: We need a cryptographically secure PRNG to be implemented (i.e. the window.crypto method)\nSolution: Use Chrome >= 11, Safari >= 3.1 or Firefox >= 21");   
+	  	$('.marker_browser').show();
+			$('#send').hide();
+		}
+
    // advanced mode
    $('#advanced').change(function(){
        if($(this).is(':checked')){
-           $('#pubkey').show();
-		   $('#check-pubkey').show();
-		   $('#check-message').show();
-		   $('.hidden').show();
-		   $('#send').hide();
-           $('#encrypt').show();		   
+       		$('#pubkey').show();
+		   		$('#check-pubkey').show();
+		   		$('#check-message').show();
+		   		$('.hidden').show();
+		   		$('#send').hide();
+          $('#encrypt').show();		   
        } else {
-           $('#pubkey').hide();
-		   $('#check-pubkey').hide();
-		   $('#check-message').hide();
-		   $('.hidden').hide();
-		   $('#send').show();
-           $('#encrypt').hide();
+          $('#pubkey').hide();
+		   		$('#check-pubkey').hide();
+		   		$('#check-message').hide();
+		   		$('.hidden').hide();
+		   		$('#send').show();
+          $('#encrypt').hide();
        }
    });
 

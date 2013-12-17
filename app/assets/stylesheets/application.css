@@ -49,6 +49,18 @@ body,
 	color: #1f8dd6;
 }
 
+.marker_success {
+	display: none;
+	background-color: yellow;
+	padding: 2px;
+}
+
+.marker_browser {
+	display: none;
+	background-color: yellow;
+	padding: 2px;
+}
+
 /* Add transition to containers so they can push in and out */
 #layout,
 #menu,
