@@ -34,3 +34,724 @@ body {
 a {
 	color: #333;	
 }
+
+body {
+    color: #777;
+}
+
+body,
+.pure-g [class *= "pure-u"],
+.pure-g-r [class *= "pure-u"] {
+    font-family: "Open Sans", sans-serif;
+}
+
+
+/* Add transition to containers so they can push in and out */
+#layout,
+#menu,
+.pure-menu-link {
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -ms-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+
+/* --------------------------
+ * Element Styles
+ * --------------------------
+*/
+
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+    color: rgb(75, 75, 75);
+}
+h3 {
+    font-size: 1.25em;
+}
+h4 {
+    font-size: 1.125em;
+}
+
+a {
+    color: #3b8bba; /* block-background-text-normal */
+    text-decoration: none;
+}
+
+a:visited {
+    color: #265778; /* block-normal-text-normal */
+}
+
+dt {
+    font-weight: bold;
+}
+dd {
+    margin: 0 0 10px 0;
+}
+
+/* --------------------------
+ * Layout Styles
+ * --------------------------
+*/
+
+#layout {
+    padding-left: 150px; /* left col width "#menu" */
+    left: 0;
+}
+
+
+/* Apply the .box class on the immediate parent of any grid element (pure-u-*) to apply some padding. */
+.l-box {
+    padding: 1.3em;
+}
+
+.l-vbox {
+    padding: 1.3em 0;
+}
+
+.l-hbox {
+    padding: 0 1.3em;
+}
+
+.l-centered {
+    text-align: center;
+}
+
+
+/* --------------------------
+ * Header Module Styles
+ * --------------------------
+*/
+.header {
+     min-height: 80px;
+     margin: 0;
+     color: #333;
+     padding: 1em 2em;
+     text-align: center;
+     border-bottom: 1px solid #eee;
+     background: #fff;
+ }
+    .header h1 {
+        font-family: "Open Sans", sans-serif;
+        margin: 0.2em 0;
+        font-size: 3em;
+        font-weight: 300;
+    }
+     .header h2 {
+        font-weight: 300;
+        margin: 0;
+        color: #ccc;
+    }
+
+aside {
+    background: #1f8dd6; /* same color as selected state on site menu */
+    padding: 0.3em 1em;
+    border-radius: 3px;
+    color: #fff;
+}
+    aside a, aside a:visited {
+        color: rgb(169, 226, 255);
+    }
+
+
+ /* --------------------------
+  * Content Module Styles
+  * --------------------------
+ */
+
+/* The content div is placed as a wrapper around all the docs */
+.content {
+    margin: 0 auto;
+    padding: 0 2em;
+    max-width: 800px;
+    margin-bottom: 50px;
+}
+    .content p {
+        line-height: 1.6em;
+        font-size: 1.125em;
+    }
+
+    .content .content-subhead {
+        margin: 50px 0 20px 0;
+        font-weight: 300;
+        color: #888;
+        position: relative;
+    }
+
+    .content .content-spaced {
+        line-height: 1.8em;
+    }
+
+    /* A code snippet that has been syntax highlighted */
+    .content .snippet {
+        margin: 1.3em 0 1em;
+        padding: 1.3em;
+    }
+
+    .content .content-quote {
+        font-family: "Open Sans", serif;
+        color: #666;
+        font-style: italic;
+        line-height: 1.8em;
+        border-left: 5px solid #ddd;
+        padding-left: 1.5em;
+    }
+
+    .content-link {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        height: 100%;
+        width: 20px;
+        background: transparent url('/img/link-icon.png') no-repeat center center;
+        background-size: 20px 20px;
+    }
+
+    @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+        .content-link {
+            background-image: url('/img/link-icon@2x.png');
+        }
+    }
+
+/* --------------------------
+ * Footer Module Styles
+ * --------------------------
+*/
+.legal {
+    font-size: 87.5%;
+    border-top: 1px solid #eee;
+    padding: 0.5em 1.1429em;
+    background: rgb(250, 250, 250);
+    line-height: 1.6em;
+}
+
+    .legal-license {
+        margin: 0;
+    }
+    .legal-copyright,
+    .legal-links {
+        text-align: right;
+        margin: 0;
+    }
+    .legal-links {
+        list-style: none;
+        padding: 0;
+    }
+    .legal-logo {
+        text-align: center;
+    }
+
+/* --------------------------
+ * Main Navigation Bar Styles
+ * --------------------------
+*/
+
+#menu {
+    margin-left: -150px; /* "#menu" width */
+    width: 150px;
+    position: fixed;
+    top: 0;
+    left: 150px;
+    bottom: 0;
+    z-index: 1000; /* so the menu or its navicon stays above all content */
+    background: #191818;
+    overflow-y: auto;
+    -webkit-overflow-scroll: touch;
+}
+    #menu a {
+        color: #999;
+        border: none;
+        white-space: normal;
+        padding: 0.6em 0 0.6em 0.6em;
+    }
+
+    #menu .pure-menu-open {
+        background: transparent;
+        border: 0;
+    }
+
+    #menu .pure-menu ul {
+        border: none;
+        background: transparent;
+    }
+
+    #menu .pure-menu ul,
+    #menu .pure-menu .menu-item-divided {
+        border-top: 1px solid #333;
+    }
+
+        #menu .pure-menu li a:hover,
+        #menu .pure-menu li a:focus {
+            background: #333;
+        }
+
+    .pure-menu-link {
+        display: none; /* show this only on small screens */
+        top: 0;
+        left: 150px; /* "#menu width" */
+        background: #000;
+        background: rgba(0,0,0,0.7);
+        font-size: 10px; /* change this value to increase/decrease button size */
+        z-index: 10;
+        width: 2em;
+        height: auto;
+        padding: 2.1em 1.6em;
+    }
+
+        .pure-menu-link:hover,
+        .pure-menu-link:focus {
+            background: #000;
+        }
+
+        .pure-menu-link span {
+            position: relative;
+            display: block;
+        }
+
+        .pure-menu-link span,
+        .pure-menu-link span:before,
+        .pure-menu-link span:after {
+            background-color: #fff;
+            width: 100%;
+            height: .2em;
+            -webkit-transition: all 0.4s;
+               -moz-transition: all 0.4s;
+                -ms-transition: all 0.4s;
+                 -o-transition: all 0.4s;
+                    transition: all 0.4s;
+        }
+
+            .pure-menu-link span:before,
+            .pure-menu-link span:after {
+                position: absolute;
+                margin-top: -.6em;
+                content: " ";
+            }
+
+            .pure-menu-link span:after {
+                margin-top: .6em;
+            }
+
+        .pure-menu-link.active span {
+            background: transparent;
+        }
+
+            .pure-menu-link.active span:before {
+                -webkit-transform: rotate(45deg) translate(.5em, .4em);
+                   -moz-transform: rotate(45deg) translate(.5em, .4em);
+                    -ms-transform: rotate(45deg) translate(.5em, .4em);
+                     -o-transform: rotate(45deg) translate(.5em, .4em);
+                        transform: rotate(45deg) translate(.5em, .4em);
+            }
+
+            .pure-menu-link.active span:after {
+                -webkit-transform: rotate(-45deg) translate(.45em, -.35em);
+                   -moz-transform: rotate(-45deg) translate(.45em, -.35em);
+                    -ms-transform: rotate(-45deg) translate(.45em, -.35em);
+                     -o-transform: rotate(-45deg) translate(.45em, -.35em);
+                        transform: rotate(-45deg) translate(.45em, -.35em);
+            }
+
+    #menu .pure-menu-heading {
+        font-size: 110%;
+        color: #fff;
+    }
+    #menu .pure-menu-heading:hover,
+    #menu .pure-menu-heading:focus {
+        color: #999;
+    }
+
+    #menu .pure-menu-selected {
+        background: #1f8dd6;
+    }
+
+        #menu .pure-menu-selected a {
+            color: #fff;
+        }
+
+        #menu li.pure-menu-selected a:hover,
+        #menu li.pure-menu-selected a:focus {
+            background: none;
+        }
+
+
+
+/* ---------------------
+ * Smaller Module Styles
+ * ---------------------
+*/
+
+/* example code blocks */
+.example-snippet {
+    margin: 2em 0;
+    font-size: 85%;
+}
+
+/* green call to action button class */
+.notice {
+    background-color: #61B842;
+    color: white;
+}
+
+.pure-button {
+    font-family: inherit;
+}
+a.pure-button-primary {
+    color: white;
+}
+
+.muted {
+    color: #ccc;
+}
+
+/* --------------------------
+ * Responsive Styles
+ * --------------------------
+*/
+
+@media (max-width: 870px) {
+
+    /* Navigation Push Styles */
+    #layout {
+        position: relative;
+        padding-left: 0;
+    }
+        #layout.active {
+            position: relative;
+            left: 150px;
+        }
+            #layout.active #menu {
+                left: 150px;
+                width: 150px;
+            }
+
+    #menu {
+        left: 0;
+    }
+
+    .pure-menu-link {
+        position: fixed;
+        left: 0;
+        display: block;
+    }
+
+    #layout.active .pure-menu-link {
+        left: 150px;
+    }
+}
+
+@media (max-width: 767px) {
+
+    .header,
+    .content {
+        font-size: 87.5%;
+    }
+
+    .header,
+    .content,
+    .legal {
+        padding-left: 1.1429em;
+        padding-right: 1.1429em;
+    }
+
+    .legal-license,
+    .legal-copyright,
+    .legal-links,
+    .legal-links li {
+        text-align: center;
+    }
+
+    /* normalize paddings on small screens*/
+    .l-hbox {
+        padding: 1.3em;
+    }
+}
+
+.hero {
+    text-align: center;
+    margin: 6em auto 3em;
+}
+    .hero-titles {
+        font-family: "Open Sans", sans-serif;
+        padding: 0 2em;
+    }
+    .hero h1 {
+        font-size: 500%;
+        margin: 0;
+        padding: 0;
+        color: #1f8dd6;
+        font-weight: 100;
+    }
+    .hero h2 {
+        font-weight: 100;
+        font-size: 160%;
+        margin: 0.02em 0 0.8em;
+        color: #666;
+    }
+
+.hero-cta pre {
+    padding: 1em;
+    font-size: 100%;
+    border-left: 0;
+    border-right: 0;
+}
+
+a.pure-button-cta,
+a.pure-button-secondary {
+    font-size: 120%;
+    font-weight: bold;
+    margin: 0.25em 0;
+}
+
+a.pure-button-cta {
+    background: #1f8dd6;
+    color: white;
+    border: 1px solid #1f8dd6;
+}
+
+a.pure-button-secondary {
+    background: #fff;
+    color: #666;
+    border: 1px solid #ddd;
+}
+
+.size-chart {
+    width: 100%;
+}
+
+    .size-chart-item {
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .size-chart-base {
+        background: #0e90d2;
+    }
+        .size-chart-base span {
+            color: rgb(103, 194, 240);
+        }
+
+    .size-chart-grids {
+        background: rgb(128, 88, 165);
+    }
+        .size-chart-grids span {
+            color: rgb(200, 131, 255);
+        }
+    .size-chart-forms {
+        background: #5eb95e;
+    }
+
+        .size-chart-forms span {
+            color: rgb(161, 240, 137);
+        }
+
+    .size-chart-buttons {
+        background: #dd514c;
+    }
+
+        .size-chart-buttons span {
+            color: rgb(236, 164, 154);
+        }
+
+    .size-chart-menus {
+        background: rgb(250, 210, 50);
+    }
+        .size-chart-menus span {
+            color: rgb(255, 240, 134);
+        }
+    .size-chart-tables {
+        background: rgb(243, 123, 29);
+    }
+        .size-chart-tables span {
+            color: rgb(255, 190, 129);
+        }
+
+    a.size-chart-label {
+        display: block;
+        color: #fff;
+        padding: 0.5em;
+        text-decoration: none;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+    }
+
+    .size-chart-size {
+        display: block;
+    }
+
+.marketing-ribbon {
+    border-bottom: 1px solid #eee;
+    padding: 1em 0;
+}
+
+    .marketing-ribbon .content {
+        margin-bottom: 0;
+    }
+    .marketing-ribbon h3 {
+        font-size: 1.47em;
+        font-weight: normal;
+    }
+    .marketing-ribbon p {
+        font-size: 1.125em;
+        line-height: 1.6em;
+    }
+
+.sample-buttons .pure-button {
+    width: 30%;
+    margin: 0.2em;
+}
+.sample-buttons p {
+    margin: 0.5em;
+}
+
+
+.pure-button-a {
+    background: #e1f2fa;
+    color: #5992aa;
+}
+
+.pure-button-b {
+    background: #fcebbd;
+    color: #af9540;
+}
+
+.pure-button-c,
+.pure-button-d,
+.pure-button-e {
+    border-radius: 8px;
+}
+
+.pure-button-f,
+.pure-button-g,
+.pure-button-h {
+    border-radius: 20px;
+}
+
+.pure-button-c {
+    background: #333;
+    color: #fff;
+}
+.pure-button-d {
+    background: #d3eda3;
+    color: #72962e;
+}
+
+.pure-button-e {
+    background: #f5ab9e;
+    color: #8c3a2b;
+}
+.pure-button-f {
+    background: #ddaeff;
+    color: #8156a7;
+}
+
+.pure-button-g {
+    background: #f57b00;
+    color: #ffca95;
+}
+
+.pure-button-h {
+    background: #008ed4;
+    color: #fff;
+}
+
+
+@media (max-width: 767px) {
+    .hero {
+        margin: 2em 0 auto;
+    }
+        .hero-titles {
+            padding: 0 1em;
+        }
+        .hero h1 {
+            font-size: 250%;
+            font-weight: 300; /* slightly thicker to compensate for font-size */
+        }
+        .hero h2 {
+            font-size: 165%;
+        }
+
+    /* by default l-hbox becomes padding: 1.3em; at <= 767px. However, this makes the heading
+    too far away from the content, so adding this in here. */
+    h3.l-hbox,
+    p.l-hbox {
+        padding: 0 1.3em;
+    }
+
+    a.size-chart-label {
+        font-size: 0.75em;
+        padding: 0.6667em;
+    }
+}
+
+/**
+ * Baby Blue theme for RainbowJS
+ *
+ * @author tilomitra
+ */
+
+pre {
+    word-wrap: break-word;
+    padding: 6px 10;
+    line-height: 1.3em;
+    margin-bottom: 20;
+    border: 1px solid #eee;
+}
+
+code {
+    border: none;
+    margin: 0 2px;
+    font-size: 0.8em;
+    padding: 0.4em 0.6em;
+    white-space: nowrap;
+}
+
+pre code {
+    padding: 0;
+    margin: 0;
+    font-size: 0.95em;
+    white-space: pre-wrap;
+}
+
+pre, code {
+    font-family: Consolas, 'Liberation Mono', Courier, monospace;
+    color: #333;
+    background: rgb(250, 250, 250);
+}
+
+
+pre .comment {
+    color: #999;
+}
+
+
+pre .tag, pre .tag-name, pre .support.tag-name {
+    color: rgb(85, 85, 85);
+}
+
+pre .keyword, pre .css-property, pre .vendor-prefix, pre .sass, pre .class, pre .id, pre .css-value, pre .entity.function, pre .storage.function {
+    font-weight: bold;
+}
+
+pre .css-property, pre .css-value, pre .vendor-prefix, pre .support.namespace {
+    color: #333;
+}
+
+pre .constant.numeric, pre .keyword.unit, pre .hex-color {
+    font-weight: normal;
+    color: #099;
+}
+
+pre .attribute, pre .variable, pre .support {
+    color:  #757575; /* skinbuilder block-page-text-normal with #1f8dd6 as primary */
+}
+
+pre .string, pre .support.value  {
+    font-weight: normal;
+    color: #3b8bba; /* skinbuilder block-mine-text-low with #1f8dd6 as primary */
+}

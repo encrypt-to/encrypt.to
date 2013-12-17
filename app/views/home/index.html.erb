@@ -4,54 +4,71 @@ Please enable Javascript in your browser and then refresh this page!
 </div>
 </noscript>
 
-<div class="mask">  
-<div class="contener">
-<div class="content">
-
-<p><%= image_tag "logo.png" %></p>
-
 <% if flash[:notice] %>
 <p><span class="marker_success"><%= flash[:notice] %></span></p>
 <% end %>
 
-<h1>Send Encrypted Messages</h1>    
+<div class="hero">
+    <div class="hero-titles">
+        <h1>Encrypt.to</h1>
+        <h2>Send Encrypted Messages to 3.5 million PGP users by one click.</h2>
+    </div>
 
-<h2>to 3.5 million PGP users by one click</h2>    
+    <div class="hero-cta">
+      <pre class="snippet" data-language="html"><code>&lt;a href=&quot;https://encrypt.to/{your-email}&quot;&gt;Contact Me&lt;/a&gt;</code></pre>
 
-<p><span class="marker_success"><a href="https://github.com/encrypt-to/encrypt.to">beta version</a></span></p>
-
-<br>
-
-<h3><span class="marker">How does it work?</span></h3>
-
-<p>When your public key is added to a public keyserver open the link: </p>
-
-<p><span class="marker">encrypt.to/{your-email}</span> or <span class="marker">encrypt.to/{your-key-id}</span></p>
-
-<p>For example: <a href="/0x5f43f53fb41d959a">encrypt.to/0x5f43f53fb41d959a</a> belongs to <a href="http://pgpkey.org/pks/lookup?op=vindex&search=0x5f43f53fb41d959a&fingerprint=on"> this email</a>.</p>
-
-<p>If not, upload your public key to a <a href="http://pgpkey.org/">public keyserver</a>.</p>
-
-<br>
-
-<h3><span class="marker">How to generate a public key?</span></h3>
-
-<p>There are many tools like <a href="https://gpgtools.org/">GPGTools</a> for Mac or <a href="http://www.gpg4win.org/">Gpg4win</a> for Windows.</p>
-
-<br>
-
-<h3><span class="marker">Can I trust you?</span></h3>
-
-<p>Here is the <a href="https://github.com/encrypt-to/encrypt.to">source code</a>. We are using client side encryption and we can't decrypt your message.</p>
-
-<p>Encrypt.to is based on <a href="http://openpgpjs.org/">OpenPGP.js</a> a JavaScript implementation of the <a href="http://tools.ietf.org/search/rfc4880">OpenPGP standard</a>.</p>
-
-<br>
-
-<p>© 2013 Encrypt.to | <a href="https://twitter.com/encrypt_to">status</a> | <a href="https://github.com/encrypt-to">source code</a></p>
-
-</div>
-</div>
+        <p>
+            <a class="pure-button pure-button-cta" href="/admin@pgpkey.org">Try now</a>
+            <a class="pure-button pure-button-secondary" href="https://github.com/encrypt-to/encrypt.to">View on GitHub</a>
+        </p>
+    </div>
 </div>
 
+<div>	
+    <div class="content">
+        <div class="l-box">
+            <h3>How does it work?</h3>
+			<p>When your public key is added to a public keyserver open the link: </p>
 
+			<p><span class="marker">encrypt.to/{your-email}</span> or <span class="marker">encrypt.to/{your-key-id}</span></p>
+
+			<p>For example: <a href="/0x5f43f53fb41d959a">encrypt.to/0x5f43f53fb41d959a</a> belongs to <a href="http://pgpkey.org/pks/lookup?op=vindex&search=0x5f43f53fb41d959a&fingerprint=on"> this email</a>.</p>
+
+			<p></p>
+
+            <p style="font-size:small;">
+                * If not, upload your public key to a <a href="http://pgpkey.org/">public keyserver</a>.
+            </p>
+        </div>
+    </div>	
+</div>
+
+<div>	
+    <div class="content">
+        <div class="l-box">
+            <h3>How to generate a public key?</h3>
+			<p>There are many tools like <a href="https://gpgtools.org/">GPGTools</a> for Mac or <a href="http://www.gpg4win.org/">Gpg4win</a> for Windows.</p>
+			
+        </div>
+    </div>	
+</div>
+
+<div>	
+    <div class="content">
+        <div class="l-box">
+            <h3>Can I trust you?</h3>
+			<p>Here is the <a href="https://github.com/encrypt-to/encrypt.to">source code</a>. We are using client side encryption and we can't decrypt your message.</p>
+
+			<p>Encrypt.to is based on <a href="http://openpgpjs.org/">OpenPGP.js</a> a JavaScript implementation of the <a href="http://tools.ietf.org/search/rfc4880">OpenPGP standard</a>.</p>
+			
+        </div>
+    </div>	
+</div>
+
+<div>	
+    <div class="content">
+        <div class="l-box">
+			<p>© 2013 Encrypt.to | <a href="https://twitter.com/encrypt_to">status</a> | <a href="https://github.com/encrypt-to">source code</a></p>
+        </div>
+    </div>	
+</div>
