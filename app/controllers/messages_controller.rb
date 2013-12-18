@@ -35,9 +35,9 @@ class MessagesController < ApplicationController
     spam = Message.find(:all, :conditions => ["created_at >= ? and tohash == ?", DateTime.now - 5.minutes, tohash])
     
     respond_to do |format|
-      if spam.size >= 2
+      if spam.size >= 5
         format.html { redirect_to "/", notice: 'Spam? Please wait 5 minutes!' }
-      elsif is_email?(to) and is_email?(from) and spam.size <= 2
+      elsif is_email?(to) and is_email?(from) and spam.size <= 5
         Message.create!(:tohash => tohash, :fromhash => fromhash) # ignore message body
         MessageMailer.send_message(to, from, body).deliver
         MessageMailer.thanks_message(to, from).deliver

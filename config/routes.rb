@@ -3,7 +3,7 @@ Encryptto::Application.routes.draw do
   resources :messages
   
   match ':email' => 'messages#new', via: :get, :constraints => { :email => /.+@.+\..*/ }
-  match ':email' => 'messages#new', via: :get
+  match ':email' => 'messages#new', via: :get, :constraints => { :email => /[0][x].*/ } 
   
   # The priority is based upon order of creation:
   # first created -> highest priority.
