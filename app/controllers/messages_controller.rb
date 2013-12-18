@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
 
   require 'open-uri'
+  require 'digest/md5'
 
   # GET /messages/new
   def new
@@ -27,11 +28,17 @@ class MessagesController < ApplicationController
       result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{params[:message][:to]}&fingerprint=on&options=mr").read
       to = get_email(result)
     end
-    
-    Message.create! # to, from and boy will not be saved, just for stats
+
+    # protect spam
+    tohash = Digest::MD5.hexdigest(to)
+    fromhash = Digest::MD5.hexdigest(from)
+    spam = Message.find(:all, :conditions => ["created_at >= ? and tohash == ?", DateTime.now - 5.minutes, tohash])
     
     respond_to do |format|
-      if is_email?(to) and is_email?(from)
+      if spam.size >= 2
+        format.html { redirect_to "/", notice: 'Spam? Please wait 5 minutes!' }
+      elsif is_email?(to) and is_email?(from) and spam.size <= 2
+        Message.create!(:tohash => tohash, :fromhash => fromhash) # ignore message body
         MessageMailer.send_message(to, from, body).deliver
         MessageMailer.thanks_message(to, from).deliver
         format.html { redirect_to "/", notice: 'Encrypted message sent! Thanks.' }
