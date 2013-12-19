@@ -34,7 +34,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if spam.size >= 5
         format.html { redirect_to "/", notice: 'Spam? Please wait 5 minutes!' }
-      elsif is_email?(to) and is_email?(from) and spam.size <= 5
+      elsif is_email?(to) and is_email?(from) and spam.size <= 5 and body.include?("BEGIN PGP MESSAGE") and body.include?("END PGP MESSAGE")
         Message.create!(:tohash => tohash, :fromhash => fromhash) # ignore message body
         MessageMailer.send_message(to, from, body).deliver
         MessageMailer.thanks_message(to, from).deliver
