@@ -10,10 +10,12 @@ class MessagesController < ApplicationController
     @pubkey = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@to}&options=mr").read
     
     respond_to do |format|
-      if @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK") and (is_email?(@to) or @to.include?("0x"))
+      if @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK") and is_email?(@to)
         format.html
+      elsif @to.include?("0x")
+        format.html { redirect_to "/", notice: "Sorry you can't use a key-id, instead use an email address. Try again!"  }
       else
-        format.html { redirect_to "/" }
+        format.html { redirect_to "/", notice: "Sorry we can't find the email on a public key server. Try again!"  }
       end  
     end
   end
@@ -23,11 +25,6 @@ class MessagesController < ApplicationController
     to = params[:message][:to]
     from = params[:message][:from]
     body = params[:message][:body]
-
-    if !is_email?(to)
-      result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{params[:message][:to]}&fingerprint=on&options=mr").read
-      to = get_email(result)
-    end
 
     # protect spam
     tohash = Digest::MD5.hexdigest(to)
