@@ -12,6 +12,8 @@ class MessagesController < ApplicationController
     if !is_email?(@to)
       result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@to}&fingerprint=on&options=mr").read
       @to = get_emails(result)
+    else
+      @to = @to.split
     end
     
     respond_to do |format|
