@@ -16,17 +16,22 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 <div class="pure-u-1 form-box">
     <div class="l-box">
 		
-		<%= form_for @message, :html => { :class => "pure-form pure-form-stacked"  } do |f| %>
+		<%= form_for @message, :html => { :class => "pure-form pure-form-aligned"  } do |f| %>
 
 		
-		<h2>To: <%= @to %> <%= image_tag "lock.png", :width => 15 %></h2>
+		<h2>To:&nbsp;<%= (@to.size > 1) ? (f.select :to, @to) : @to[0]  %></h2>
 
 
 		<fieldset>
-		<%= f.text_area :body_input, :cols => 100, :rows => 10, :placeholder => "Message", :focus => true, "data-validation-length".to_sym => "min1" %>
-		<br>
-		<%= f.text_field :from, :placeholder => "Your Email", :size => 100, :focus => false, "data-validation".to_sym => "email" %>
-		<%= f.hidden_field :to, :value => @to %>
+			<div class="pure-control-group">
+				<%= f.text_area :body_input, :cols => 100, :rows => 10, :placeholder => "Message", :focus => true, "data-validation-length".to_sym => "min1" %>
+			</div>
+			<br>
+			<div class="pure-control-group">
+				<%= f.text_field :from, :placeholder => "Your Email", :size => 50, :focus => false, "data-validation".to_sym => "email" %>
+		
+			</div>
+			<%= (f.hidden_field :to, :value => @to[0]) if @to.size == 1 %>
 		<%= f.hidden_field :body %>
 		<br>
 		<table>

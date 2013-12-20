@@ -9,11 +9,14 @@ class MessagesController < ApplicationController
     @to = params[:email]
     @pubkey = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@to}&options=mr").read
     
+    if !is_email?(@to)
+      result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@to}&fingerprint=on&options=mr").read
+      @to = get_emails(result)
+    end
+    
     respond_to do |format|
-      if @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK") and is_email?(@to)
+      if @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK")
         format.html
-      elsif @to.include?("0x")
-        format.html { redirect_to "/", notice: "Sorry you can't use a key-id, instead use an email address. Try again!"  }
       else
         format.html { redirect_to "/", notice: "Sorry we can't find the email on a public key server. Try again!"  }
       end  
