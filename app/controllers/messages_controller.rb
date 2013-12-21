@@ -7,18 +7,26 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     @uid = params[:email]
-    if is_email?(@uid)
-       # email       
-       result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&exact=on&options=mr").read
-       @keyid = get_keyid(result, @uid)
-       @to = @uid
+    # get local user  
+    user = User.find_by_email(@uid)    
+    if user
+      @pubkey = user.public_key
+      @to = @uid      
     else
-       # keyid
-       result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&fingerprint=on&options=mr").read
-       @to = get_emails(result)
-       @keyid = @uid
-    end    
-    @pubkey = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@keyid}&options=mr").read    
+      if is_email?(@uid)
+         # email       
+         result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&exact=on&options=mr").read
+         @keyid = get_keyid(result, @uid)
+         @to = @uid
+      else
+         # keyid
+         result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&fingerprint=on&options=mr").read
+         @to = get_emails(result)
+         @keyid = @uid
+      end    
+      @pubkey = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@keyid}&options=mr").read
+    end
+    # render
     respond_to do |format|
       if @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK")
         format.html
@@ -30,16 +38,15 @@ class MessagesController < ApplicationController
 
   # POST /messages
   def create
-     # get params
+    # get params
     to = params[:message][:to]
     from = params[:message][:from]
     body = params[:message][:body]
-
     # protect spam
     tohash = Digest::MD5.hexdigest(to)
     fromhash = Digest::MD5.hexdigest(from)
     spam = Message.find(:all, :conditions => ["created_at >= ? and tohash == ?", DateTime.now - 5.minutes, tohash])
-    
+    # render    
     respond_to do |format|
       if spam.size >= 5
         format.html { redirect_to "/", notice: 'Spam? Please wait 5 minutes!' }

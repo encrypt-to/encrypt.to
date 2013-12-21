@@ -1,5 +1,9 @@
 Encryptto::Application.routes.draw do
   
+  devise_for :users
+  
+  resources :users
+
   resources :messages
   
   match ':email' => 'messages#new', via: :get, :constraints => { :email => /.+@.+\..*/ }

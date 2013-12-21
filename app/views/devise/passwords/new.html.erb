@@ -1,0 +1,40 @@
+<div class="l-content">
+
+    <div class="information pure-g-r">
+        <div class="pure-u-1-2">
+            <div class="l-box">
+                <h3 class="information-head">Forgot your password?</h3>
+
+                <%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :post, :class => "pure-form pure-form-stacked" }) do |f| %>
+                  <%= devise_error_messages! %>
+
+                  <fieldset>
+
+                  <%= f.text_field :email, :autofocus => true, :placeholder => "Username" %>
+
+                  <br>
+
+                  <%= f.submit "Send me reset password instructions", :class=>"pure-button pure-button-primary" %>
+
+                  </fieldset>
+
+                <% end %>
+
+                <%#= render "users/shared/links" %>
+   
+            </div>
+        </div>
+
+        <div class="pure-u-1-2">
+            <div class="l-box">
+                <h3 class="information-head">No problem!</h3>
+                <p>
+                    Soon you will get an email how to reset your password.
+                </p>
+            </div>
+        </div>
+        
+    </div> <!-- end information -->
+</div> <!-- end l-content -->
+
+

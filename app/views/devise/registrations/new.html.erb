@@ -1,0 +1,56 @@
+<noscript>
+<style type="text/css">
+#send{display:none;}
+</style>
+<div class="marker_success">
+Please enable Javascript in your browser and then refresh this page!
+</div>
+</noscript>
+
+<div class="marker_browser">
+Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Firefox >= 21, Opera >= 15 or IE >= 11!
+</div>
+
+<div>
+
+<div class="pure-u-1 form-box">
+    <div class="l-box">
+
+			<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "pure-form pure-form-stacked"  }) do |f| %>
+  		<%= devise_error_messages! %>
+
+			<legend>Sign up</legend>
+
+			<fieldset>
+				
+				<%= f.label :email %>
+	  		<%= f.email_field :email, :autofocus => true %>
+			
+	  		<%= f.label :password %>
+	  		<%= f.password_field :password %>
+			
+				<%= f.label :password_confirmation %>
+	  		<%= f.password_field :password_confirmation %>
+			
+				<%= f.label :public_key %>
+	  		<%= f.text_area :public_key, :rows => 15, :cols => 75 %>
+			
+				<p class="alert" style="display:none;" id="invalid"></p>
+				<p class="notice" style="display:none;" id="valid"></p>
+			
+				<br />
+			
+				<%= f.submit "Sign up", :class => "pure-button pure-button-primary", :id => "submit", :disabled => "disabled" %>
+			
+			</fieldset>
+		
+			<% end %>
+
+			<%= render "devise/shared/links" %>
+
+    </div>
+</div>
+
+</div>
+
+<div id="keyvalid"></div>

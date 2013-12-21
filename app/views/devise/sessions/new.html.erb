@@ -1,0 +1,48 @@
+<noscript>
+<style type="text/css">
+#send{display:none;}
+</style>
+<div class="marker_success">
+Please enable Javascript in your browser and then refresh this page!
+</div>
+</noscript>
+
+<div class="marker_browser">
+Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Firefox >= 21, Opera >= 15 or IE >= 11!
+</div>
+
+<div>
+
+<div class="pure-u-1 form-box">
+    <div class="l-box">
+
+<%= form_for(resource, :as => resource_name, :url => session_path(resource_name), :html => { :class => "pure-form pure-form-stacked"  }) do |f| %>
+
+<legend>Sign in</legend>
+
+<fieldset>
+	
+	<%= f.label :email %>
+	<%= f.email_field :email, :autofocus => true %>
+
+	<%= f.label :password %>
+	<%= f.password_field :password %>
+
+  <% if devise_mapping.rememberable? -%>
+  <label for="option-one" class="pure-checkbox">
+  <%= f.check_box :remember_me %> Remember me
+  </label>
+  <% end -%>
+
+	<%= f.submit "Sign in", :class => "pure-button pure-button-primary" %>
+
+</fieldset>
+  
+<% end %>
+
+<%= render "devise/shared/links" %>
+
+    </div>
+</div>
+
+</div>

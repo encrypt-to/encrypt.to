@@ -1,0 +1,63 @@
+<div class="l-content">
+
+    <div class="information pure-g-r">
+        <div class="pure-u-1-2">
+            <div class="l-box">
+                <h3 class="information-head">Forgot your password?</h3>
+
+								<% if !current_user.public_key %>
+
+								<%= form_for(current_user) do |f| %>
+								  <% if current_user.errors.any? %>
+								    <div id="error_explanation">
+								      <h2><%= pluralize(current_user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+								      <ul>
+								      <% current_user.errors.full_messages.each do |msg| %>
+								        <li><%= msg %></li>
+								      <% end %>
+								      </ul>
+								    </div>
+								  <% end %>
+
+								  <div class="field">
+								    Please enter your public key:<br />
+								    <%= f.text_area :public_key %>
+								  </div>
+								  <div class="actions">
+								    <%= f.submit %>
+								  </div>
+								<% end %>
+
+								<% end %>
+
+
+								<br>
+								<br>
+								<%= link_to "Settings", "users/edit"  %>
+								<br><br>
+								<%= link_to "Change public key", "users/#{current_user.id}/edit"  %>
+								<br><br>
+								<%= link_to "Sign out", "/users/sign_out" %>
+
+								<%# end %>
+   
+            </div>
+        </div>
+
+        <div class="pure-u-1-2">
+            <div class="l-box">
+                <h3 class="information-head">No problem!</h3>
+                <p>
+                    Soon you will get an email how to reset your password.
+                </p>
+            </div>
+        </div>
+        
+    </div> <!-- end information -->
+</div> <!-- end l-content -->
+
+
+
+
+

@@ -11,7 +11,9 @@ defaults: &defaults
     
 development:
   keyserver:
-  secret_token: 
+  app_token:
+	devise_token:
+	host: 
   <<: *defaults
 
 test:
@@ -19,6 +21,8 @@ test:
 
 production:
   keyserver:
-  secret_token: 
+  app_token:
+	devise_token: 
+	host:
   <<: *defaults
 

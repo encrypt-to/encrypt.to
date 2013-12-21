@@ -32,7 +32,6 @@ $(function(){
 	if (window.crypto.getRandomValues) {
 	    // ready
 		 } else {
-	    //alert("Error: Browser not supported\nReason: We need a cryptographically secure PRNG to be implemented (i.e. the window.crypto method)\nSolution: Use Chrome >= 11, Safari >= 3.1 or Firefox >= 21");   
 	  	$('.marker_browser').show();
 			$('#send').hide();
 		}
@@ -65,9 +64,9 @@ $(function(){
 
    // validate form on submit
    $.validate({
-	   validateOnBlur : false, // disable validation when input looses focus
-	   errorMessagePosition : 'top', // Instead of 'element' which is default
-	   scrollToTopOnError : false, // Set this property to true if you have a long form
+	   validateOnBlur : false,
+	   errorMessagePosition : 'top',
+	   scrollToTopOnError : false,
 	   form : '#new_message',
     	onValidate : function() {       	
 			encrypt();

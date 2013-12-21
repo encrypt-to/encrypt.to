@@ -53,4 +53,7 @@ Encryptto::Application.configure do
     :enable_starttls_auto => APP_CONFIG['enable_starttls_auto'],
     :openssl_verify_mode  => APP_CONFIG['openssl_verify_mode']
     }
+    
+   # Host should be set to the actual host of your application
+   config.action_mailer.default_url_options = {:host => APP_CONFIG['host']}
 end
