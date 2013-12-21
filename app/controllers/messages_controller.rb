@@ -6,27 +6,31 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
-    @to = params[:email]
-    @pubkey = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@to}&options=mr").read
-    
-    if !is_email?(@to)
-      result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@to}&fingerprint=on&options=mr").read
-      @to = get_emails(result)
+    @uid = params[:email]
+    if is_email?(@uid)
+       # email       
+       result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&exact=on&options=mr").read
+       @keyid = get_keyid(result, @uid)
+       @to = @uid
     else
-      @to = @to.split
-    end
-    
+       # keyid
+       result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&fingerprint=on&options=mr").read
+       @to = get_emails(result)
+       @keyid = @uid
+    end    
+    @pubkey = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@keyid}&options=mr").read    
     respond_to do |format|
       if @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK")
         format.html
       else
-        format.html { redirect_to "/", notice: "Sorry we can't find the email on a public key server. Try again!"  }
+        format.html { redirect_to "/", notice: "Sorry we can't find the email on a public key server. Try again!" }
       end  
     end
   end
 
   # POST /messages
   def create
+     # get params
     to = params[:message][:to]
     from = params[:message][:from]
     body = params[:message][:body]

@@ -19,7 +19,7 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 		<%= form_for @message, :html => { :class => "pure-form pure-form-aligned"  } do |f| %>
 
 		
-		<h2>To:&nbsp;<%= (@to.size > 1) ? (f.select :to, @to) : @to[0]  %></h2>
+		<h2>To:&nbsp;<%= @to.is_a?(Array) ? (f.select :to, @to) : @to  %></h2>
 
 
 		<fieldset>
