@@ -10,7 +10,6 @@ class UsersController < ApplicationController
   # PUT /users/1
   def update
     @user = User.find(params[:id])
-
     respond_to do |format|
       if current_user != @user
         redirect_to "/"

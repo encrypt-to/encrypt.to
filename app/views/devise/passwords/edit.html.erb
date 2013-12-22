@@ -1,16 +1,40 @@
+<noscript>
+<style type="text/css">
+#send{display:none;}
+</style>
+<div class="marker_success">
+Please enable Javascript in your browser and then refresh this page!
+</div>
+</noscript>
+
+<div class="marker_browser">
+Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Firefox >= 21, Opera >= 15 or IE >= 11!
+</div>
+
+<div>
+
+<div class="pure-u-1 form-box">
+    <div class="l-box">
+
 <h2>Change your password</h2>
 
-<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :method => :put, :class => "pure-form pure-form-stacked" }) do |f| %>
   <%= devise_error_messages! %>
   <%= f.hidden_field :reset_password_token %>
 
-  <div><%= f.label :password, "New password" %><br />
-  <%= f.password_field :password, :autofocus => true %></div>
+  <%= f.label :password, "New password" %>
+  <%= f.password_field :password, :autofocus => true %>
 
-  <div><%= f.label :password_confirmation, "Confirm new password" %><br />
-  <%= f.password_field :password_confirmation %></div>
-
-  <div><%= f.submit "Change my password" %></div>
+  <%= f.label :password_confirmation, "Confirm new password" %>
+  <%= f.password_field :password_confirmation %>
+	
+	<br />
+  
+	<%= f.submit "Change my password", :class=>"pure-button pure-button-primary" %>
 <% end %>
 
 <%= render "devise/shared/links" %>
+
+
+    </div>
+</div>
