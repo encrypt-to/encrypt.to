@@ -1,4 +1,7 @@
 Encryptto::Application.routes.draw do
+  
+  match 'terms' => 'home#terms', via: :get
+  match 'privacy' => 'home#privacy', via: :get
       
   devise_for :users
   
