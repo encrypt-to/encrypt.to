@@ -7,9 +7,9 @@ Send encrypted PGP messages via https://encrypt.to/
 
 When your public key is added to a public keyserver open the link: `https://encrypt.to/{your-email}` or `https://encrypt.to/{your-key-id}`.
 
-### Status
+### Updates
 
-[Twitter](https://twitter.com/encrypt_to "Status") to see the current status.
+Read [Diaspora](https://diasp.eu/u/info "Status") or [Twitter](https://twitter.com/encrypt_to "Status") for updates.
 
 ### Browser Compatibility
 
@@ -22,7 +22,14 @@ The secure contact form is available for [PHP](https://github.com/encrypt-to/sec
 
 ### Changelog
 
-v0.1 Release, Dec 09, 2013
+v0.2 Dec 23, 2013
+- Added non-public key server
+
+v0.1 Dec 09, 2013
+- Initial version
+- Send PGP messages to PGP users
+- Load keys from public sks key server
+
 
 ### MIT License
 
