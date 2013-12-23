@@ -8,7 +8,10 @@ defaults: &defaults
   enable_starttls_auto: false
   openssl_verify_mode: 'none'
   sender:
-    
+  service_name: 
+  owner: 
+  owner_keyid: 
+	    
 development:
   keyserver:
   app_token:
