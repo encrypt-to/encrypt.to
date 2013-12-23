@@ -54,7 +54,11 @@ $(function(){
           $('#encrypt').hide();
        }
    });
-
+	 
+   // receiver update
+   $('#message_receiver').on('change', function() {
+			$('#message_to').val(this.value);
+   });
 
    $('#encrypt').on("click",function(e){
 	   encrypt();
