@@ -1,14 +1,15 @@
 Encryptto::Application.routes.draw do
-  
+      
   devise_for :users
   
   resources :users
 
   resources :messages
   
-  match ':email' => 'messages#new', via: :get, :constraints => { :email => /.+@.+\..*/ }
-  match ':email' => 'messages#new', via: :get, :constraints => { :email => /[0][x].*/ } 
-  
+  match ':uid' => 'messages#new', via: :get, :constraints => { :uid => /.+@.+\..*/ }
+  match ':uid' => 'messages#new', via: :get, :constraints => { :uid => /[0][x].*/ } 
+  match ':uid' => 'messages#new', via: :get
+    
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

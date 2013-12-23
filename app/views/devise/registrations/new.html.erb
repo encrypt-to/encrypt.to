@@ -22,9 +22,12 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 			<legend>Sign up</legend>
 
 			<fieldset>
+
+        <%= f.label :username %>
+        <%= f.text_field :username, :autofocus => true %>
 				
 				<%= f.label :email %>
-	  		<%= f.email_field :email, :autofocus => true %>
+	  		<%= f.email_field :email %>
 			
 	  		<%= f.label :password %>
 	  		<%= f.password_field :password %>

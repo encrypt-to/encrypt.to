@@ -18,9 +18,7 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 		
 		<%= form_for @message, :html => { :class => "pure-form pure-form-aligned"  } do |f| %>
 
-		
-		<h2>To:&nbsp;<%= @to.is_a?(Array) ? (f.select :to, @to) : @to  %></h2>
-
+		<h2>To:&nbsp;<%= receiver(@to, f) %></h2>
 
 		<fieldset>
 			<div class="pure-control-group">

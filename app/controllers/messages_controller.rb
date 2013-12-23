@@ -6,32 +6,44 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
-    @uid = params[:email]
+    @uid = params[:uid]
     # get local user  
-    user = User.find_by_email(@uid)    
+    user = User.find_by_username(@uid)    
     if user
       @pubkey = user.public_key
       @to = @uid      
     else
       if is_email?(@uid)
-         # email       
-         result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&exact=on&options=mr").read
-         @keyid = get_keyid(result, @uid)
-         @to = @uid
-      else
+         # email
+         begin       
+           result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&exact=on&options=mr").read
+           @keyid = get_keyid(result, @uid)
+           @to = @uid
+         rescue
+           # key not found
+         end         
+      elsif @uid.include?("0x")
          # keyid
-         result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&fingerprint=on&options=mr").read
-         @to = get_emails(result)
-         @keyid = @uid
-      end    
-      @pubkey = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@keyid}&options=mr").read
+         begin
+           result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&fingerprint=on&options=mr").read
+           @to = get_emails(result)
+           @keyid = @uid
+         rescue
+           # key not found
+         end
+      end   
+      begin 
+        @pubkey = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@keyid}&options=mr").read if @keyid
+      rescue
+        # key not found
+      end
     end
     # render
     respond_to do |format|
-      if @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK")
+      if @pubkey && @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK")
         format.html
       else
-        format.html { redirect_to "/", notice: "Sorry we can't find the email on a public key server. Try again!" }
+        format.html { redirect_to "/", notice: "Sorry we can't find the user. Try again!" }
       end  
     end
   end
