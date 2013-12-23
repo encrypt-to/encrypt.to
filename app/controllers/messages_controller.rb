@@ -54,6 +54,9 @@ class MessagesController < ApplicationController
     to = params[:message][:to]
     from = params[:message][:from]
     body = params[:message][:body]
+    # local user
+    user = User.find_by_username(to)   
+    to = user.email if user
     # protect spam
     tohash = Digest::MD5.hexdigest(to)
     fromhash = Digest::MD5.hexdigest(from)
