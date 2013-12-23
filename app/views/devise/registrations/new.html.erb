@@ -45,14 +45,16 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 			
 				<p class="alert" style="display:none;" id="invalid"></p>
 				<p class="notice" style="display:none;" id="valid"></p>
-			
-				<br />
-			
-				<%= f.submit "Sign up", :class => "pure-button pure-button-primary", :id => "submit", :disabled => "disabled" %>
+
+				<p>By clicking on "Create an account" below, you are agreeing to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>.</p>
+				
+				<%= f.submit "Create an account", :class => "pure-button pure-button-primary", :id => "submit", :disabled => "disabled" %>
 			
 			</fieldset>
 		
 			<% end %>
+
+			<br />
 
 			<%= render "devise/shared/links" %>
 
