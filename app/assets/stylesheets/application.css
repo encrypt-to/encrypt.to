@@ -54,6 +54,10 @@ body,
 	padding: 2px;
 }
 
+.marker_email {
+	color: #000
+}
+
 .marker_browser {
 	display: none;
 	background-color: yellow;

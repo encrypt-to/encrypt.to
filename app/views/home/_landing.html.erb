@@ -9,16 +9,16 @@ Please enable Javascript in your browser and then refresh this page!
         <p><h1>Encrypt.to</h1><i>beta version</i></p>
 				
         <h2>Send Encrypted Messages to 3.5 million PGP users by one click.</h2>
-		<h3><span class="marker_success">Privacy is a human right.</span></h3>
-    </div>
+		</div>
 
     <div class="hero-cta">
       <pre class="snippet" data-language="html"><code>&lt;a href=&quot;https://encrypt.to/{your-email}&quot;&gt;Contact Me&lt;/a&gt;</code></pre>
-
-        <p>
-            <a class="pure-button pure-button-cta" href="/hello@encrypt.to">Try now</a>
-            <a class="pure-button pure-button-secondary" href="https://github.com/encrypt-to/encrypt.to">View on GitHub</a>
-        </p>
+				
+				<p>
+		    	<a class="pure-button pure-button-cta" href="/users/sign_up">Sign Up</a>
+					<a class="pure-button pure-button-secondary" href="/users/sign_in">Login</a>
+		    </p>
+				
     </div>
 </div>
 
@@ -27,38 +27,14 @@ Please enable Javascript in your browser and then refresh this page!
         <div class="l-box">
 					
 					
-            <h2>Is your public key stored on a public key server? Great!</h2>
-						
+            <h2><span class="marker_success">No signup needed</span> if your public key is stored on a public key server!</h2>						
 				
-			<p>Open the link: <span class="marker_success">https://encrypt.to/{your-email}</span> or <span>https://encrypt.to/{your-key-id}</span></p>
+			<p>Open the link: <span class="marker_email">https://encrypt.to/{your-email}</span> or <span class="marker_email">https://encrypt.to/{your-key-id}</span></p>
 
 			<p>For example: <a href="/hello@encrypt.to">encrypt.to/hello@encrypt.to</a> belongs to <a href="http://pgpkey.org/pks/lookup?op=get&fingerprint=on&search=0x0CAF1E5B11489A1F"> this public key</a>.</p>
-
-			<br />
 			
-			<h2>I don't like public key server.</h2>
-
-			<p>We provide a free <span class="marker_success">non-public</span> key server for your public key.</p>
-
-			<p>
-	    	<a class="pure-button pure-button-cta" href="/users/sign_up">Sign Up</a>
-				<a class="pure-button pure-button-secondary" href="/users/sign_in">Login</a>
-	    </p>
-
-			<br />
-
-			<h2>I don't have a public key.</h2>
-
-			<p>There are many tools like <a href="https://gpgtools.org/">GPGTools</a> for Mac, <a href="https://projects.gnome.org/seahorse/index.html">Seahorse</a> for Linux or <a href="http://www.gpg4win.org/">Gpg4win</a> for Windows.</p>
+			<p><i>* Sign up if your public key should be private!</i></p>
 			
-			<p><%= image_tag "gpgtools.png", :height => 50 %><%= image_tag "seahorse.png", :height => 50 %><%= image_tag "gpg4win.png", :height => 50 %></p>
-			
-            <p style="font-size:small;">
-                *I don't know what you talkin 'bout. <a href="http://gpg4win.de/doc/en/gpg4win-compendium_8.html">Read how PGP works.</a>
-            </p>
-
-
-						
         </div>
     </div>	
 </div>
@@ -94,7 +70,7 @@ Please enable Javascript in your browser and then refresh this page!
 <div>	
     <div class="content">
         <div class="l-box">
-            <h3>Browser Compatibility</h3>
+            <h2>Browser Compatibility</h2>
             <p>We need a cryptographically secure PRNG to be implemented (i.e. the window.crypto method) based on <a href="http://www.w3.org/TR/WebCryptoAPI/">Web Cryptography API</a> <i>(W3C Working Draft 25 June 2013)</i>.</p>
             <table class="pure-table pure-table-horizontal">
               <thead>
@@ -139,7 +115,25 @@ Please enable Javascript in your browser and then refresh this page!
 <div>	
     <div class="content">
         <div class="l-box">
-            <h3>Can I host this myself?</h3>
+
+<h2>I don't have a public key.</h2>
+
+<p>There are many tools like <a href="https://gpgtools.org/">GPGTools</a> for Mac, <a href="https://projects.gnome.org/seahorse/index.html">Seahorse</a> for Linux or <a href="http://www.gpg4win.org/">Gpg4win</a> for Windows.</p>
+
+<p><%= image_tag "gpgtools.png", :height => 50 %><%= image_tag "seahorse.png", :height => 50 %><%= image_tag "gpg4win.png", :height => 50 %></p>
+
+<p style="font-size:small;">
+ * I don't know what you talkin 'bout. <a href="http://gpg4win.de/doc/en/gpg4win-compendium_8.html">Read how PGP works.</a>
+</p>
+        </div>
+    </div>	
+</div>
+
+
+<div>	
+    <div class="content">
+        <div class="l-box">
+            <h2>Can I host this myself?</h2>
 			<p>Yes, you can. The software is available for <a href="https://github.com/encrypt-to/encrypt.to">Ruby</a>, <a href="https://github.com/encrypt-to/secure.contactform.php">PHP</a> and <a href="https://github.com/encrypt-to/secure.contactform.perl">Perl</a>.</p>			
         </div>
     </div>	
@@ -149,9 +143,13 @@ Please enable Javascript in your browser and then refresh this page!
     <div class="content">
         <div class="l-box">
 			<p><i>© 2013 Encrypt.to&nbsp;&nbsp;&nbsp;<a href="https://diasp.eu/u/info">Diaspora</a>&nbsp;&nbsp;&nbsp;<a href="https://twitter.com/encrypt_to">Twitter</a>&nbsp;&nbsp;&nbsp;<a href="https://github.com/encrypt-to">GitHub</a>&nbsp;&nbsp;&nbsp;<a href="/privacy">Privacy</a>&nbsp;&nbsp;&nbsp;<a href="/terms">Terms</a>&nbsp;&nbsp;&nbsp;<a href="/0x0CAF1E5B11489A1F">Contact</a></i></p>
+			<h5><span class="marker_success">Privacy is a human right.</span></h5>
+			
         </div>
     </div>	
 </div>
+
+
 
 
 

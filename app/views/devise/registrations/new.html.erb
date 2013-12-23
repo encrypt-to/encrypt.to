@@ -11,56 +11,87 @@ Please enable Javascript in your browser and then refresh this page!
 Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Firefox >= 21, Opera >= 15 or IE >= 11!
 </div>
 
-<div>
+<div class="l-content">
+    <div class="information pure-g-r">
+        <div class="pure-u-1-2">
+            <div class="l-box">  
 
-<div class="pure-u-1 form-box">
-    <div class="l-box">
+							<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "pure-form pure-form-stacked"  }) do |f| %>
+				  		<%= devise_error_messages! %>
 
-			<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "pure-form pure-form-stacked"  }) do |f| %>
-  		<%= devise_error_messages! %>
+							<legend>Sign up</legend>
 
-			<legend>Sign up</legend>
+							<fieldset>
 
-			<fieldset>
-
-        <%= f.label :username %>
-				<%= f.text_field :username, :autofocus => true %>
-				<div>https://encrypt.to/username	</div>
+				        <%= f.label :username %>
+								<%= f.text_field :username, :autofocus => true %>
+								<div>https://encrypt.to/username	</div>
 				
-				<br />
+								<br />
 				
-				<%= f.label :email %>
-	  		<%= f.email_field :email %>
+								<%= f.label :email %>
+					  		<%= f.email_field :email %>
 			
-	  		<%= f.label :password %>
-	  		<%= f.password_field :password %>
+					  		<%= f.label :password %>
+					  		<%= f.password_field :password %>
 			
-				<%= f.label :password_confirmation %>
-	  		<%= f.password_field :password_confirmation %>
+								<%= f.label :password_confirmation %>
+					  		<%= f.password_field :password_confirmation %>
 			
-				<br />
+								<br />
 			
-				<%= f.label :public_key %>
-	  		<%= f.text_area :public_key, :rows => 15, :cols => 75 %>
+								<%= f.label :public_key %>
+					  		<%= f.text_area :public_key, :rows => 15, :cols => 75 %>
 			
-				<p class="alert" style="display:none;" id="invalid"></p>
-				<p class="notice" style="display:none;" id="valid"></p>
+								<p class="alert" style="display:none;" id="invalid"></p>
+								<p class="notice" style="display:none;" id="valid"></p>
 
-				<p>By clicking on "Create an account" below, you are agreeing to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>.</p>
+								<p>By clicking on "Create an account" below, you are agreeing to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>.</p>
 				
-				<%= f.submit "Create an account", :class => "pure-button pure-button-primary", :id => "submit", :disabled => "disabled" %>
+								<%= f.submit "Create an account", :class => "pure-button pure-button-primary", :id => "submit", :disabled => "disabled" %>
 			
-			</fieldset>
+							</fieldset>
 		
-			<% end %>
+							<% end %>
 
-			<br />
+							<br />
 
-			<%= render "devise/shared/links" %>
+							<%= render "devise/shared/links" %>
 
-    </div>
-</div>
+                    </div>
+                </div>
 
-</div>
+                <div class="pure-u-1-2">
+                    <div class="l-box">
+                      
+											<br />
+											<br />
+																						
+											<h3>Why should I sign up?</h3>
+
+											<p>You get an unique link <span class="marker_success">encrypt.to/username</span>.</p>
+
+											<p>Your public key will be private at our <span class="marker_success">non-public key server</span>.</p>
+
+											<h3>How do I get a public key?</h3>
+
+											<p>There are many tools like <a href="https://gpgtools.org/">GPGTools</a> for Mac, <a href="https://projects.gnome.org/seahorse/index.html">Seahorse</a> for Linux or <a href="http://www.gpg4win.org/">Gpg4win</a> for Windows.</p>
+											
+											<p style="font-size:small;">
+											 * I don't know what you talkin 'bout. <a href="http://gpg4win.de/doc/en/gpg4win-compendium_8.html">Read how PGP works.</a>
+											</p>
+
+                    </div>
+                </div>
+
+            </div> <!-- end information -->
+        </div> <!-- end l-content -->
+
 
 <div id="keyvalid"></div>
+
+
+
+
+
+			
