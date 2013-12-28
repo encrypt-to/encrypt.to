@@ -62,8 +62,9 @@ $(function(){
 
    $('#encrypt').on("click",function(e){
 	   encrypt();
+		 $('#send').text('Send');
 	   $('#send').show();
-       $('#encrypt').hide();
+     $('#encrypt').hide();
    });
 
    // validate form on submit
