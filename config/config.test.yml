@@ -1,0 +1,16 @@
+address:
+port:
+domain:
+user_name:
+password:
+authentication:
+enable_starttls_auto:
+openssl_verify_mode:
+sender:
+service_name:
+owner:
+owner_keyid:
+keyserver:
+app_token: 
+devise_token: 
+host:

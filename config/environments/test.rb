@@ -1,4 +1,4 @@
-APP_CONFIG = YAML.load_file("#{Rails.root}/config/config.yml")[Rails.env]
+APP_CONFIG = YAML.load_file("#{Rails.root}/config/config.test.yml")
 
 Encryptto::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
