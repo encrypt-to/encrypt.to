@@ -1,7 +1,6 @@
 restart.sh
 .bundle
 db/*.sqlite3
-config/database.yml
 config/config.yml
 tmp/
 .sass-cache/
