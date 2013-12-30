@@ -19,9 +19,6 @@ development:
 	host: 
   <<: *defaults
 
-test:
-  <<: *defaults
-
 production:
   keyserver:
   app_token:
