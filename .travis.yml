@@ -6,4 +6,3 @@ before_script:
 script: "bundle exec rake $TASK --trace"
 notifications:
   email: false
-	
