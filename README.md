@@ -3,6 +3,8 @@ Encrypt.to
 
 Send encrypted PGP messages via https://encrypt.to/
 
+[![Build Status](https://secure.travis-ci.org/encrypt-to/encrypt.to.png)](https://travis-ci.org/encrypt-to/encrypt.to)
+
 ### How does it work?
 
 When your public key is added to a public keyserver open the link: `https://encrypt.to/{your-email}` or `https://encrypt.to/{your-key-id}`.
