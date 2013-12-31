@@ -3,7 +3,9 @@
     <div class="information pure-g-r">
         <div class="pure-u-1-2">
             <div class="l-box">
-                <h3 class="information-head">Hello <%= current_user.username %></h3>
+                <h3 class="information-head">Hello</h3>
+
+								<p><a class="marker_success" href="/<%= current_user.username %>"><%= 'https://' + APP_CONFIG['host'] + '/' + current_user.username %></a></p>
 
 								<% if !current_user.public_key %>
 
