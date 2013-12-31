@@ -35,7 +35,7 @@
 
 								<%= link_to "Settings", "users/edit"  %>
 								<br><br>
-								<%= link_to "Change public key", "users/#{current_user.id}/edit"  %>
+								<%= link_to "Change public key", "#{current_user.username}/edit"  %>
 								<br><br>
 								<%= link_to "Sign out", "/users/sign_out" %>
 

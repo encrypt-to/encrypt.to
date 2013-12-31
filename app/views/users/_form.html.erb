@@ -5,7 +5,7 @@
             <div class="l-box">
 
 
-<%= form_for(@user, :html => { :class => "pure-form pure-form-stacked" }) do |f| %>
+<%= form_for(@user, :url => "/#{@user.username}/edit", :html => { :class => "pure-form pure-form-stacked" }) do |f| %>
   <% if @user.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
