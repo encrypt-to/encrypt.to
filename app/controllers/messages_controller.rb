@@ -7,35 +7,39 @@ class MessagesController < ApplicationController
   def new
     @message = Message.new
     @uid = params[:uid]
-    # get local user  
-    user = User.find(:first, :conditions => [ "lower(username) = ?", @uid.downcase ])  
-    if user
-      @pubkey = user.public_key
-      @to = @uid      
-    else
-      if is_email?(@uid)
-         # email
-         begin       
-           result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&exact=on&options=mr").read
-           @keyid = get_keyid(result, @uid)
-           @to = @uid
-         rescue
-           # key not found
-         end         
-      elsif @uid.include?("0x")
-         # keyid
-         begin
-           result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&fingerprint=on&options=mr").read
-           @to = get_emails(result)
-           @keyid = @uid
-         rescue
-           # key not found
-         end
-      end   
-      begin 
-        @pubkey = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@keyid}&options=mr").read if @keyid
-      rescue
-        # key not found
+    if @uid
+      # get local user  
+      user = User.find(:first, :conditions => [ "lower(username) = ?", @uid.downcase ]) 
+      if user
+        # local user
+        @pubkey = user.public_key
+        @to = @uid
+      else
+        # remote user
+        if is_email?(@uid)
+           # email
+           begin       
+             result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&exact=on&options=mr").read
+             @keyid = get_keyid(result, @uid)
+             @to = @uid
+           rescue
+             # key not found
+           end         
+        elsif @uid.include?("0x")
+           # keyid
+           begin
+             result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&fingerprint=on&options=mr").read
+             @to = get_emails(result)
+             @keyid = @uid
+           rescue
+             # key not found
+           end
+        end   
+        begin 
+          @pubkey = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@keyid}&options=mr").read if @keyid
+        rescue
+          # key not found
+        end
       end
     end
     # render
