@@ -8,7 +8,7 @@ class MessagesController < ApplicationController
     @message = Message.new
     @uid = params[:uid]
     # get local user  
-    user = User.find_by_username(@uid)    
+    user = User.find(:first, :conditions => [ "lower(username) = ?", @uid.downcase ])  
     if user
       @pubkey = user.public_key
       @to = @uid      
