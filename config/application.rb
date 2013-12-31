@@ -61,5 +61,8 @@ module Encryptto
     
     # stop asset pipeline looging
     config.quiet_assets = true
+    
+    # skip validation locales
+    config.i18n.enforce_available_locales = false
   end
 end

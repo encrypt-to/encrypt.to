@@ -3,13 +3,15 @@ class UsersController < ApplicationController
   
   # GET /users/1/edit
   def edit
-    @user = User.find(params[:id])
+    @uid = params[:uid]
+    @user = User.find(:first, :conditions => [ "lower(username) = ?", @uid.downcase ]) 
     redirect_to "/" if current_user != @user
   end
 
   # PUT /users/1
   def update
-    @user = User.find(params[:id])
+    @uid = params[:uid]
+    @user = User.find(:first, :conditions => [ "lower(username) = ?", @uid.downcase ])
     respond_to do |format|
       if current_user != @user
         redirect_to "/"

@@ -36,4 +36,9 @@ RSpec.configure do |config|
   # the seed, which is printed after each run.
   #     --seed 1234
   config.order = "random"
+  
+  # FactoryGirl
+  config.include FactoryGirl::Syntax::Methods
+  # Devise
+  config.include Devise::TestHelpers, :type => :controller
 end

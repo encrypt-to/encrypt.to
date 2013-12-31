@@ -2,10 +2,13 @@ Encryptto::Application.routes.draw do
   
   match 'terms' => 'home#terms', via: :get
   match 'privacy' => 'home#privacy', via: :get
-      
+
   devise_for :users
   
   resources :users
+  
+  match ':uid/edit' => 'users#edit', via: :get
+  match ':uid/edit' => 'users#update', via: :put
 
   resources :messages
   
@@ -62,7 +65,6 @@ Encryptto::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  #root :to => 'messages#new'
   root :to => 'home#index'
 
   # See how all your routes lay out with "rake routes"
