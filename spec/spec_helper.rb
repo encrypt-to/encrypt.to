@@ -39,6 +39,20 @@ RSpec.configure do |config|
   
   # FactoryGirl
   config.include FactoryGirl::Syntax::Methods
+  
   # Devise
   config.include Devise::TestHelpers, :type => :controller
+  
+  # Poltergeist
+  require 'capybara/poltergeist'
+  polter_options = {
+    :js_errors => true,
+    :inspector => true,
+    :debug => false
+  }
+  Capybara.default_driver = :poltergeist
+  Capybara.javascript_driver = :poltergeist
+  Capybara.register_driver :poltergeist do |app|
+    Capybara::Poltergeist::Driver.new(app, polter_options)
+  end
 end

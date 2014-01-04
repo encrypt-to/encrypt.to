@@ -36,6 +36,10 @@ group :test do
   gem 'capybara' 
   gem 'guard-rspec' 
   gem 'launchy' 
+  gem 'poltergeist'
+  gem 'email_spec'
+  gem 'webmock'
+  gem 'vcr'
 end
 
 # To use ActiveModel has_secure_password

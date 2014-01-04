@@ -37,7 +37,7 @@
                       
                       <h3>Public key</h3>
                       
-                      <p><a href="/users/<%= current_user.id %>/edit">Change public key</a></p>
+                      <p><%= link_to "Change public key", "/#{current_user.username}/edit"  %></p>
                       
                       <h3>Cancel my account</h3>
 
