@@ -1,6 +1,6 @@
 class MessagesController < ApplicationController
 
-  require 'open-uri'
+  require 'net/http'
   require 'digest/md5'
 
   # GET /messages/new
@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
         if is_email?(@uid)
            # email
            begin       
-             result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&exact=on&options=mr").read
+             result = Net::HTTP.get(URI.parse("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&exact=on&options=mr"))
              @keyid = get_keyid(result, @uid)
              @to = @uid
            rescue
@@ -28,7 +28,7 @@ class MessagesController < ApplicationController
         elsif @uid.include?("0x")
            # keyid
            begin
-             result = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&fingerprint=on&options=mr").read
+             result = Net::HTTP.get(URI.parse("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&fingerprint=on&options=mr"))
              @to = get_emails(result)
              @keyid = @uid
            rescue
@@ -36,7 +36,7 @@ class MessagesController < ApplicationController
            end
         end   
         begin 
-          @pubkey = open("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@keyid}&options=mr").read if @keyid
+          @pubkey = Net::HTTP.get(URI.parse("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@keyid}&options=mr")) if @keyid
         rescue
           # key not found
         end
