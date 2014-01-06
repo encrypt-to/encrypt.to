@@ -77,5 +77,15 @@ describe MessagesController do
       ActionMailer::Base.deliveries.last.to.should == [from]
     end
   end
+  
+  describe "POST message" do
+    it "has a 302 status code if params are invalid" do
+      message = ""
+      from = "hello@encrypt.to"
+      post :create, :message => { to: user.email, from: from, body: message }
+      expect(response.status).to eq(302)
+      flash[:notice].should match('Sorry something went wrong. Try again!')
+    end
+  end
 
 end
