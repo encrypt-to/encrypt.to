@@ -6,7 +6,7 @@ password:
 authentication:
 enable_starttls_auto:
 openssl_verify_mode:
-sender:
+sender: 'test@encrypt.to'
 service_name:
 owner:
 owner_keyid:
