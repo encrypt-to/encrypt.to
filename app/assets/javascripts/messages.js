@@ -29,7 +29,7 @@ $(function(){
 	// focus body on load
    $("#message_body").focus();
    
-	if (window.crypto.getRandomValues) {
+	if (window.crypto && window.crypto.getRandomValues) {
 	    // ready
 		 } else {
 	  	$('.marker_browser').show();

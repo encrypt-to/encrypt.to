@@ -54,7 +54,7 @@ function check() {
 
 $(function(){
 	$("#submin").prop('disabled', false);
-	if (window.crypto.getRandomValues) {
+	if (window.crypto && window.crypto.getRandomValues) {
 		$('#user_public_key').bind('input propertychange', function() {
 			check();
 		});
