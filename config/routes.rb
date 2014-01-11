@@ -1,5 +1,6 @@
 Encryptto::Application.routes.draw do
   
+  match 'index' => 'home#index', via: :get
   match 'terms' => 'home#terms', via: :get
   match 'privacy' => 'home#privacy', via: :get
 
