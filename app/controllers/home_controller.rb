@@ -11,5 +11,4 @@ class HomeController < ApplicationController
   # GET /privacy
   def privacy
   end
-  
 end

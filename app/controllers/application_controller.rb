@@ -10,22 +10,14 @@ class ApplicationController < ActionController::Base
   end
   
   def get_keyid(result, email)
-     id = []
-     list = []
-     uids = []
-     result.each_line do |line|
-       uids << line
-     end
-     uids.reverse!
-     for uid in uids
-     	id << uid.split(":")[1] if uid.include?("uid")
-       if uid.include?("pub")
-         id << uid.split(":")[1] 
-         list << id
-         id = []
-       end	
-     end
-     found = list.select{|x|x.join.include?(email)}
-     return "0x#{found[0].last}"
+    modified_string = result.gsub(/\s+/, '').strip
+    uids = modified_string.split("pub:")
+    for uid in uids
+      if uid.include?(email)
+        found = uid.split(":")[0]
+        break
+      end
+    end
+    return "0x#{found}"
   end  
 end
