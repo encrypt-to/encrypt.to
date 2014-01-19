@@ -8,9 +8,9 @@ class MessageMailer < ActionMailer::Base
     mail(to: to, reply_to: from, subject: subject, :body => body)
   end
   
-  def thanks_message(to, from)
+  def thanks_message(to, from, username = nil)
     subject = "Thanks for using Encrypt.to"
-    @to = to
+    @to = username.nil? ? to : username
     mail(to: from, subject: subject)
   end
     
