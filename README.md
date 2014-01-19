@@ -1,5 +1,4 @@
-Encrypt.to
-==========
+# Encrypt.to
 
 Send encrypted PGP messages via https://encrypt.to/
 
@@ -15,8 +14,8 @@ Read [Diaspora](https://diasp.eu/u/info "Status") or [Twitter](https://twitter.c
 
 ### Browser Compatibility
 
-* Desktop: Chrome >= 11, Firefox >= 21, IE >= 11, Opera >= 15, Safari >= 3.1
-* Mobile: Chrome >= 23, Firefox >= 21, Safari >= iOS 6
+	* Desktop: Chrome >= 11, Firefox >= 21, IE >= 11, Opera >= 15, Safari >= 3.1
+	* Mobile: Chrome >= 23, Firefox >= 21, Safari >= iOS 6
 
 ### I don't like Ruby
 
@@ -32,6 +31,51 @@ v0.1 Dec 09, 2013
 - Send PGP messages to PGP users
 - Load keys from public sks key server
 
+### I don't have a public/private keypair
+
+Everyone can and should have a public and private key. There are many free tools for key management like [GPGTools](https://gpgtools.org/ "GPGTools") for Mac, [Seahorse](https://projects.gnome.org/seahorse/index.html "Seahorse") for Linux or [Gpg4win](http://www.gpg4win.org/ "Gpg4win") for Windows.
+
+### My public key is stored on a public key server
+
+No signup needed!
+
+	Open the link: https://encrypt.to/{your-email} or https://encrypt.to/{your-key-id}
+
+### My public key should be private!
+
+You can use our private key server by uploading your public key on [Encrypt.to](https://encrypt.to/users/sign_up "Encrypt.to").
+
+#### How to export your public key
+
+##### GPGTools
+
+Select the key you want to export by clicking on the corresponding key on your list, and then clicking the right mouse button and on [Export] in the popup menu. Choose a file to export your key to, e.g. my-key.asc. 
+
+##### Seahorse
+
+Open the "My personal keys" tab and select the key you want to export by clicking on the corresponding key on your list, and then clicking on the [Export] of the main menu. Choose a file to export your key to, e.g. my-key.asc. A popup window will let you know whether the operation was successful.
+
+##### Gpg4win
+
+Select the key you want to export by clicking on the corresponding key on your list, and then clicking on the [Export] icon of the main GPA menu. Choose a file to export your key to, e.g. my-key.asc. A popup window will let you know whether the operation was successful. Then click on [OK].
+
+##### Command line
+
+	gpg -a --output my-key.asc --export {your-key-id}
+
+#### How to import your public key at Encrypt.to
+
+Open the file e.g. my-key.asc with a text editor, which will show your public key as a series of blocks containing text and numbers.
+
+Highlight the whole key portion from
+
+	-----BEGIN PGP PUBLIC KEY BLOCK-----
+	to
+	-----END PGP PUBLIC KEY BLOCK-----
+
+and copy it using the copy function on your toolbar or a keyboard shortcut such as CMD+C or Ctrl+C. This saves your key on the clipboard until you are ready to paste it, as described next.
+
+Open [Encrypt.to](https://encrypt.to/users/sign_up "Encrypt.to") in your browser and then click on "Sign up" https://encrypt.to/users/sign_up. Paste your public key into the input field such as CMD+V or Ctrl+V. Fill the form and click on "Create an account".
 
 ### MIT License
 
