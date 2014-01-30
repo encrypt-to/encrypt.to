@@ -59,7 +59,7 @@ class MessagesController < ApplicationController
     from = params[:message][:from]
     body = params[:message][:body]
     # local user
-    user = User.find_by_username(to)   
+    user = User.find(:first, :conditions => [ "lower(username) = ?", to.downcase ]) 
     to = user.email if user
     # protect spam
     tohash = Digest::MD5.hexdigest(to)
@@ -72,7 +72,8 @@ class MessagesController < ApplicationController
       elsif is_email?(to) and is_email?(from) and spam.size <= 5 and body.include?("BEGIN PGP MESSAGE") and body.include?("END PGP MESSAGE")
         Message.create!(:tohash => tohash, :fromhash => fromhash) # ignore message body
         MessageMailer.send_message(to, from, body).deliver
-        MessageMailer.thanks_message(to, from).deliver
+        username = user.username.downcase if user
+        MessageMailer.thanks_message(to, from, username).deliver
         format.html { redirect_to "/", notice: 'Encrypted message sent! Thanks.' }
       else
         format.html { redirect_to "/", notice: 'Sorry something went wrong. Try again!' }
