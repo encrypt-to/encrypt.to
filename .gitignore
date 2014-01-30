@@ -5,7 +5,6 @@ config/config.yml
 tmp/
 .sass-cache/
 *.DS_Store
-public/assets
 public/system
 public/images
 *.sql
