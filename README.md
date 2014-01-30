@@ -8,6 +8,10 @@ Send encrypted PGP messages via https://encrypt.to/
 
 When your public key is added to a public keyserver open the link: `https://encrypt.to/{your-email}` or `https://encrypt.to/{your-key-id}`.
 
+### Security audit tool
+
+Start the [code audit now](http://encrypt-to.github.io "code audit now") with the [Security audit tool](https://github.com/encrypt-to/encrypt-to.github.io "Security audit tool").
+
 ### Updates
 
 Read [Diaspora](https://diasp.eu/u/info "Status") or [Twitter](https://twitter.com/encrypt_to "Status") for updates.
