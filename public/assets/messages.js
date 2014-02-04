@@ -5,20 +5,21 @@ function encrypt() {
 		// validate form
 	} else {
 		// let's encrypt
-		openpgp.init();
-   		var publicKeys = openpgp.read_publicKey($('#pubkey').text());
-		for (var i = 0; i < publicKeys.length; i++) {
-			$('#check-pubkey').text(publicKeys[i].toString());
-		}				
-   		var message = document.getElementById("message_body_input");
+		publicKeys = openpgp.key.readArmored($('#pubkey').text()).keys[0];
+		var validatePublicKeys = JSON.stringify(publicKeys).replace(/,/g,'\n');
+		$('#check-pubkey').text(validatePublicKeys);
+
+   	var message = document.getElementById("message_body_input");
 		
-   		var plaintext = message.value;
-   		var ciphertext = openpgp.write_encrypted_message(publicKeys,plaintext);
-		var result = openpgp.read_message(ciphertext);
-		for (var i = 0; i < result.length; i++) {
-			$('#check-message').text(result[i].toString());
-		}	
-   		message.value = ciphertext;	
+   	var plaintext = message.value;
+   	var ciphertext = openpgp.encryptMessage([publicKeys],plaintext);
+		
+		var result = openpgp.message.readArmored(ciphertext);
+		console.log(result);
+		var validateMessage = JSON.stringify(result).replace(/,/g,'\n');
+		$('#check-message').text(validateMessage);
+
+   	message.value = ciphertext;	
 		var message_body = document.getElementById("message_body");
 		message_body.value = ciphertext;
 	
