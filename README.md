@@ -27,13 +27,8 @@ The secure contact form is available for [PHP](https://github.com/encrypt-to/sec
 
 ### Changelog
 
-v0.2 Dec 23, 2013
-- Added non-public key server
+[Changelog](https://github.com/encrypt-to/encrypt.to/blob/master/Changelog.md "Changelog")
 
-v0.1 Dec 09, 2013
-- Initial version
-- Send PGP messages to PGP users
-- Load keys from public sks key server
 
 ### I don't have a public/private keypair
 
