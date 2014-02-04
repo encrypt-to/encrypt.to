@@ -19,14 +19,14 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 		<%= form_for @message, :html => { :class => "pure-form pure-form-aligned"  } do |f| %>
 
 		<h2>To:&nbsp;<%= receiver(@to, f) %></h2>
-		<p><%= link_to "Public key: #{@keyid}", "http://pgpkey.org/pks/lookup?op=vindex&search=#{@keyid}&fingerprint=on" if @keyid %></p>
+		<div style="text-align:right;"><%= link_to "Public key: #{@keyid}", "http://pgpkey.org/pks/lookup?op=vindex&search=#{@keyid}&fingerprint=on" if @keyid %></div>
 		<fieldset>
 			<div class="pure-control-group">
-				<%= f.text_area :body_input, :cols => 100, :rows => 10, :placeholder => "Message", :focus => true, "data-validation-length".to_sym => "min1" %>
+				<%= f.text_area :body_input, :rows => 10, :placeholder => "Message", :focus => true, "data-validation-length".to_sym => "min1", :style=>"width: 100%" %>
 			</div>
 			<br>
 			<div class="pure-control-group">
-				<%= f.text_field :from, :placeholder => "Your Email", :size => 50, :focus => false, "data-validation".to_sym => "email" %>
+				<%= f.text_field :from, :placeholder => "Your Email", :focus => false, "data-validation".to_sym => "email", :style=>"width: 50%" %>
 		
 			</div>
 			<%= f.hidden_field :to, :value => @to.is_a?(Array) ? @to[0] : @to %>
@@ -45,13 +45,13 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 		</table>
 		<br>
 		<h3 class="hidden">OpenPGP Public Key</h3>
-		<textarea cols="100" id="pubkey" rows="20" disabled="disabled"><%= @pubkey %></textarea>
+		<textarea style="width: 100%" id="pubkey" rows="20" disabled="disabled"><%= @pubkey %></textarea>
 		<br>
 		<h3 class="hidden">Validate OpenPGP Public Key</h3>
-		<textarea cols="100" id="check-pubkey" rows="20" disabled="disabled">Please click on the Encrypt button to see the public key validation.</textarea>
+		<textarea style="width: 100%" id="check-pubkey" rows="20" disabled="disabled">Please click on the Encrypt button to see the public key validation.</textarea>
 		<br>
 		<h3 class="hidden">Validate OpenPGP Message</h3>
-		<textarea cols="100" id="check-message" rows="20" disabled="disabled">Please click on the Encrypt button to see the message validation.</textarea>
+		<textarea style="width: 100%" id="check-message" rows="20" disabled="disabled">Please click on the Encrypt button to see the message validation.</textarea>
 				
 		</fieldset>
 
