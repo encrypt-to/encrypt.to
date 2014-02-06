@@ -2,6 +2,16 @@
 
 ## Features
 
+## Bug fixes
+
+## Refactor
+
+# 0.2.1
+
+Feb 06, 2014
+
+## Features
+
 * Show link to public key
 * [Security Audit Tool](http://encrypt-to.github.io/)
 
