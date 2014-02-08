@@ -1,6 +1,3 @@
-// Place all the behaviors and hooks related to the matching controller here.
-// All this logic will automatically be available in application.js.
-
 function valid(msg) {
 	$('#invalid').hide();
 	$('#valid').text(msg);
@@ -26,19 +23,18 @@ function validateEmail($email) {
 
 function check() {
 	var user_public_key = $('#user_public_key').val();
-	if (user_public_key.indexOf("BEGIN PGP PUBLIC KEY BLOCK") !== -1 && user_public_key.indexOf("END PGP PUBLIC KEY BLOCK") !== -1) {
+	if (user_public_key !== "" && user_public_key.indexOf("BEGIN PGP PUBLIC KEY BLOCK") !== -1 && user_public_key.indexOf("END PGP PUBLIC KEY BLOCK") !== -1) {
 		// validate public key
-		openpgp.init();
 		try {
-	 		var publicKeys = openpgp.read_publicKey($('#user_public_key').val());
+			publicKeys = openpgp.key.readArmored(user_public_key);
 			var publicEmails = ""
-			for (var i=0; i < publicKeys[0].userIds.length; i++) {
-			  publicEmails += publicKeys[0].userIds[i].text;
+			for (var k=0; k < publicKeys.keys.length; k++) {				
+				for (var u=0; u < publicKeys.keys[k].users.length; u++) {					
+					publicEmails += publicKeys.keys[k].users[u].userId.userid;
+				}
 			}
 			var email = $('#user_email').val();
-			console.log(email);
-			console.log(publicEmails);
-			if (publicEmails.indexOf(email) !== -1) {
+			if (email !== "" && validateEmail($('#user_email').val()) && publicEmails.indexOf(email) !== -1) {
 				valid("Public key is valid.");
 			} else {
 				invalid("Email does not belong to the public key. Try again!");
@@ -47,8 +43,6 @@ function check() {
 		catch(err) {
 			invalid("Sorry the public key is invalid. Try again!");
 		}	
-	} else {
-		invalid("Sorry the public key is invalid. Try again!");
 	}	
 }
 
@@ -59,12 +53,10 @@ $(function(){
 			check();
 		});
 		$('#user_email').bind('input propertychange', function() {
-			if (validateEmail($('#user_email').val()) && $('#user_public_key').val() !== "") {
-				 check();
-			 }
+			check();
 		});
-		 } else {
-	  	$('.marker_browser').show();
-			$('#send').hide();
-		}
-	});
+	} else {
+		$('.marker_browser').show();
+		$('#send').hide();
+	}
+});

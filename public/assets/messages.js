@@ -15,7 +15,6 @@ function encrypt() {
    	var ciphertext = openpgp.encryptMessage([publicKeys],plaintext);
 		
 		var result = openpgp.message.readArmored(ciphertext);
-		console.log(result);
 		var validateMessage = JSON.stringify(result).replace(/,/g,'\n');
 		$('#check-message').text(validateMessage);
 
