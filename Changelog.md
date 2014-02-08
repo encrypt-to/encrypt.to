@@ -4,6 +4,8 @@
 
 ## Bug fixes
 
+* Check public key validation on sign up page [#21](https://github.com/encrypt-to/encrypt.to/issues/21)
+
 ## Refactor
 
 # 0.2.1
