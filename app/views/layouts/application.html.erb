@@ -6,16 +6,16 @@
 	<meta name="description" content="Send Encrypted Messages to 3.5 million PGP users by one click.">
 	<meta name="keywords" content="pgp, openpgp, encryption, encrypt, privacy">
 	<meta name="robots" content="index,follow">
-  <script src="/assets/jquery.js" type="text/javascript"></script>
-  <script src="/assets/jquery.form-validator.min.js" type="text/javascript"></script>
-  <script src="/assets/messages.js" type="text/javascript"></script>
-  <script src="/assets/openpgp.min.js" type="text/javascript"></script>
-  <script src="/assets/users.js" type="text/javascript"></script>
-  <script src="/assets/validate.min.js" type="text/javascript"></script>
+  <script src="/assets/jquery.js?<%= Time.now.to_i %>" type="text/javascript"></script>
+  <script src="/assets/jquery.form-validator.min.js?<%= Time.now.to_i %>" type="text/javascript"></script>
+  <script src="/assets/messages.js?<%= Time.now.to_i %>" type="text/javascript"></script>
+  <script src="/assets/openpgp.min.js?<%= Time.now.to_i %>" type="text/javascript"></script>
+  <script src="/assets/users.js?<%= Time.now.to_i %>" type="text/javascript"></script>
+  <script src="/assets/validate.min.js?<%= Time.now.to_i %>" type="text/javascript"></script>
 
-  <link href="/assets/application.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="/assets/messages.css" media="all" rel="stylesheet" type="text/css" />
-  <link href="/assets/pure-min.css" media="all" rel="stylesheet" type="text/css" />
+  <link href="/assets/application.css?<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css" />
+  <link href="/assets/messages.css?<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css" />
+  <link href="/assets/pure-min.css?<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css" />
 
   <%= csrf_meta_tags %>
 </head>
