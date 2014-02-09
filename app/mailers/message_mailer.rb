@@ -8,7 +8,7 @@ class MessageMailer < ActionMailer::Base
     file = opts[:file] ||= false
     filename = opts[:filename] ||= false
     if file and filename
-      attachments[filename] = {:mime_type => 'application/x-gzip', :content => file}
+      attachments[filename] = {:mime_type => 'application/x-gzip', :content => Base64.decode64(file)}
     end
     subject = "#{from} has sent you an encrypted mail"
     mail(to: to, reply_to: from, subject: subject, :body => body)
