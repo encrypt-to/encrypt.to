@@ -4,7 +4,7 @@ function encrypt() {
 	if (message_body_input.indexOf("-----BEGIN PGP MESSAGE-----") !== -1 && message_body_input.indexOf("-----END PGP MESSAGE-----") !== -1) {
 		// validate form
 	} else {
-		// let's encrypt
+		// encrypt message
 		publicKeys = openpgp.key.readArmored($('#pubkey').text()).keys[0];
 		var validatePublicKeys = JSON.stringify(publicKeys).replace(/,/g,'\n');
 		$('#check-pubkey').text(validatePublicKeys);
@@ -13,7 +13,7 @@ function encrypt() {
 		
    	var plaintext = message.value;
    	var ciphertext = openpgp.encryptMessage([publicKeys],plaintext);
-		
+		console.log(openpgp);
 		var result = openpgp.message.readArmored(ciphertext);
 		var validateMessage = JSON.stringify(result).replace(/,/g,'\n');
 		$('#check-message').text(validateMessage);
@@ -21,8 +21,39 @@ function encrypt() {
    	message.value = ciphertext;	
 		var message_body = document.getElementById("message_body");
 		message_body.value = ciphertext;
-	
 	}
+}
+
+function file() {
+	
+	// encrypt file		
+	var file = $("#message_file_input").get(0).files[0];
+	
+	if (file.size > 1048576) {
+		alert("Sorry file size > 1 MB!");
+		$("#message_file_input").val("");
+		return
+	}
+	
+	$("#message_file_input").hide();
+	$("#encrypting").text("Encrypting...");
+	$("#encrypting").show();
+	
+  var reader = new FileReader();
+  reader.onload = function(e) {
+  	var msg = openpgp.message.fromBinary(e.target.result);
+		publicKeys = openpgp.key.readArmored($('#pubkey').text()).keys[0];
+		msg = msg.encrypt([publicKeys]);
+		var armored = openpgp.armor.encode(openpgp.enums.armor.message, msg.packets.write());
+		var message_file = document.getElementById("message_file");
+		message_file.value = armored;
+		var message_filename = document.getElementById("message_filename");
+		message_filename.value = file.name + ".gpg"
+		$("#encrypting").text(file.name + ".gpg encrypted.");
+		$('#remove').show();
+  }
+  reader.readAsBinaryString(file);
+	
 }
 
 $(function(){
@@ -55,6 +86,22 @@ $(function(){
        }
    });
 	 
+   // file input
+   $('#message_file_input').on('change', function() {
+			file();
+   });
+	 
+   // remove attachment
+   $('#remove').on('click', function() {
+			$('#message_file_input').val("");
+			$('#message_file_input').show();
+			$('#message_file').val("");
+			$('#message_filename').val("");
+			$('#encrypting').val("");
+			$('#encrypting').hide();
+			$('#remove').hide();
+   });
+	 
    // receiver update
    $('#message_receiver').on('change', function() {
 			$('#message_to').val(this.value);
@@ -63,8 +110,8 @@ $(function(){
    $('#encrypt').on("click",function(e){
 	   encrypt();
 		 $('#send').text('Send');
-	   $('#send').show();
-     $('#encrypt').hide();
+		 $('#send').show();
+		 $('#encrypt').hide();
    });
 
    // validate form on submit

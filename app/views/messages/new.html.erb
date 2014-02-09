@@ -24,14 +24,20 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 			<div class="pure-control-group">
 				<%= f.text_area :body_input, :rows => 10, :placeholder => "Message", :focus => true, "data-validation-length".to_sym => "min1", :style=>"width: 100%" %>
 			</div>
-			<br>
+			<br />
 			<div class="pure-control-group">
 				<%= f.text_field :from, :placeholder => "Your Email", :focus => false, "data-validation".to_sym => "email", :style=>"width: 50%" %>
 		
 			</div>
 			<%= f.hidden_field :to, :value => @to.is_a?(Array) ? @to[0] : @to %>
 			<%= f.hidden_field :body %>
-		<br>
+			<%= f.hidden_field :file %>
+			<%= f.hidden_field :filename %>
+		<br />
+		<h3>Attachment max. 1 MB (beta feature)</h3><input type="file" id="message_file_input" />
+		<div id="encrypting" style="display:none;">Encrypting...</div>
+		<a id="remove" href="#" style="display:none;">remove</a>
+		<br /><br />
 		<table>
 			<tr>
 				<td>
@@ -43,16 +49,16 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 				</td>
 			</tr>
 		</table>
-		<br>
+		<br />
 		<h3 class="hidden">OpenPGP Public Key</h3>
 		<textarea style="width: 100%" id="pubkey" rows="20" disabled="disabled"><%= @pubkey %></textarea>
-		<br>
+		<br />
 		<h3 class="hidden">Validate OpenPGP Public Key</h3>
 		<textarea style="width: 100%" id="check-pubkey" rows="20" disabled="disabled">Please click on the Encrypt button to see the public key validation.</textarea>
-		<br>
+		<br />
 		<h3 class="hidden">Validate OpenPGP Message</h3>
 		<textarea style="width: 100%" id="check-message" rows="20" disabled="disabled">Please click on the Encrypt button to see the message validation.</textarea>
-				
+		
 		</fieldset>
 
 		<% end %>

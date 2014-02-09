@@ -3,7 +3,13 @@ class MessageMailer < ActionMailer::Base
   
   default from: APP_CONFIG['sender']
   
-  def send_message(to, from, body)
+  def send_message(to, from, body, *args)
+    opts = args.extract_options!
+    file = opts[:file] ||= false
+    filename = opts[:filename] ||= false
+    if file and filename
+      attachments[filename] = {:mime_type => 'application/x-gzip', :content => file}
+    end
     subject = "#{from} has sent you an encrypted mail"
     mail(to: to, reply_to: from, subject: subject, :body => body)
   end

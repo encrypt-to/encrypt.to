@@ -58,6 +58,8 @@ class MessagesController < ApplicationController
     to = params[:message][:to]
     from = params[:message][:from]
     body = params[:message][:body]
+    file = params[:message][:file].blank? ? nil : params[:message][:file]
+    filename = params[:message][:filename].blank? ? nil : params[:message][:filename]
     # local user
     user = User.find(:first, :conditions => [ "lower(username) = ?", to.downcase ]) 
     to = user.email if user
@@ -71,7 +73,7 @@ class MessagesController < ApplicationController
         format.html { redirect_to "/", notice: 'Spam? Please wait 5 minutes!' }
       elsif is_email?(to) and is_email?(from) and spam.size <= 5 and body.include?("BEGIN PGP MESSAGE") and body.include?("END PGP MESSAGE")
         Message.create!(:tohash => tohash, :fromhash => fromhash) # ignore message body
-        MessageMailer.send_message(to, from, body).deliver
+        MessageMailer.send_message(to, from, body, :file => file, :filename => filename).deliver
         username = user.username.downcase if user
         MessageMailer.thanks_message(to, from, username).deliver
         format.html { redirect_to "/", notice: 'Encrypted message sent! Thanks.' }
