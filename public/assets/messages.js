@@ -116,15 +116,17 @@ $(function(){
 
    // validate form on submit
    $.validate({
-	   validateOnBlur : false,
-	   errorMessagePosition : 'top',
-	   scrollToTopOnError : false,
-	   form : '#new_message',
-    	onValidate : function() {       	
+	 	validateOnBlur : false,
+	  errorMessagePosition : 'top',
+	  scrollToTopOnError : false,
+	  form : '#new_message',
+    onValidate : function() {       	
 			encrypt();
-    	},
+    },
 		onSuccess : function() {
 			encrypt();
-     	},
-   	});
+			$('#send').text('Uploading...');
+			$('#encrypt').text('Uploading...');
+    },
+	});
 });
