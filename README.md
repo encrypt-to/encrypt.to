@@ -25,6 +25,10 @@ Read [Diaspora](https://diasp.eu/u/info "Status") or [Twitter](https://twitter.c
 
 The secure contact form is available for [PHP](https://github.com/encrypt-to/secure.contactform.php "PHP") and [Perl](https://github.com/encrypt-to/secure.contactform.perl "Perl").
 
+### Ready for Heroku
+
+Easily deployable on Heroku [https://github.com/encrypt-to/secure.contactform.ruby](https://github.com/encrypt-to/secure.contactform.ruby).
+
 ### Changelog
 
 [Changelog](https://github.com/encrypt-to/encrypt.to/blob/master/Changelog.md "Changelog")
