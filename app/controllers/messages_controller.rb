@@ -47,7 +47,7 @@ class MessagesController < ApplicationController
       if @pubkey && @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK")
         format.html
       else
-        format.html { redirect_to "/", notice: "Sorry we can't find the user. Try again!" }
+        format.html { redirect_to "/", notice: "Sorry no user with this email or key-id exists. Try again!" }
       end  
     end
   end

@@ -24,8 +24,7 @@ function encrypt() {
 	}
 }
 
-function file() {
-	
+function file() {	
 	// encrypt file		
 	var file = $("#message_file_input").get(0).files[0];
 	
@@ -58,7 +57,7 @@ function file() {
 
 $(function(){
 	// focus body on load
-   $("#message_body").focus();
+   $("#message_body_input").focus();
    
 	if (window.crypto && window.crypto.getRandomValues) {
 	    // ready
