@@ -1,6 +1,6 @@
 function validateKeyId($keyid) {
   var keyid = /[0][x].*/;
-  if( !keyid.test( $keyid ) ) {
+  if (!keyid.test( $keyid)) {
     return false;
   } else {
     return true;
@@ -9,7 +9,7 @@ function validateKeyId($keyid) {
 
 function validateEmail($email) {
   var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
-  if( !emailReg.test( $email ) ) {
+  if (!emailReg.test($email)) {
     return false;
   } else {
     return true;
@@ -17,7 +17,7 @@ function validateEmail($email) {
 }
 
 function checkEmailAndKeyId() {
-	if (validateEmail($("#key").val()) || validateKeyId($("#key").val())) {
+	if ($("#key").val() != "" && (validateEmail($("#key").val()) || validateKeyId($("#key").val()))) {
 		return true;
 	} else {
 		return false;
