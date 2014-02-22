@@ -2,11 +2,15 @@
 
 ## Features
 
+* Encrypt files upto 1 mb without web worker
+
 ## Bug fixes
 
 * Check public key validation on sign up page [#21](https://github.com/encrypt-to/encrypt.to/issues/21)
 
 ## Refactor
+
+* Show fingerprint instead of key id in form [#20](https://github.com/encrypt-to/encrypt.to/issues/20)
 
 # 0.2.1
 
