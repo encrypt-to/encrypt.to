@@ -3,6 +3,7 @@
 ## Features
 
 * Encrypt files upto 1 mb without web worker
+* User can select a key id [#19](https://github.com/encrypt-to/encrypt.to/issues/19)
 
 ## Bug fixes
 
