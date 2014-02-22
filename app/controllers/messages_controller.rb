@@ -19,7 +19,7 @@ class MessagesController < ApplicationController
         if is_email?(@uid)
            # email
            begin
-             @keyid = Keyserver.get_keyid_by_email(@uid)
+             @keyids = Keyserver.get_keys_by_email(@uid)             
              @to = @uid
            rescue
              # key not found
@@ -29,13 +29,13 @@ class MessagesController < ApplicationController
            begin
              result = Keyserver.request_user_by_keyid(@uid)
              @to = get_emails(result)
-             @keyid = @uid
+             @keyids = [@uid]
            rescue
              # key not found
            end
         end   
         begin 
-          @pubkey = Keyserver.request_key_by_user(@keyid) if @keyid
+          @pubkey = Keyserver.request_key_by_user(@keyids.first) if @keyids
         rescue
           # key not found
         end

@@ -79,13 +79,15 @@ $(function(){
    // advanced mode
    $('#advanced').change(function(){
        if($(this).is(':checked')){
-       		$('#pubkey').show();
+       		$('#change-pubkey').show();
+					$('#pubkey').show();
 		   		$('#check-pubkey').show();
 		   		$('#check-message').show();
 		   		$('.hidden').show();
 		   		$('#send').hide();
           $('#encrypt').show();		   
        } else {
+				 	$('#change-pubkey').hide();
           $('#pubkey').hide();
 		   		$('#check-pubkey').hide();
 		   		$('#check-message').hide();
@@ -115,7 +117,12 @@ $(function(){
    $('#message_receiver').on('change', function() {
 			$('#message_to').val(this.value);
    });
-
+	 
+   // change key
+   $('#message_keyid').on('change', function() {
+			window.location.href = "/" + this.value;
+   });
+	 
    $('#encrypt').on("click",function(e){
 	   encrypt();
 		 $('#send').text('Send');

@@ -59,7 +59,7 @@ body {
   border: 1px dotted #eee; 
 }
 
-#pubkey, #check-message, #check-pubkey {
+#pubkey, #check-message, #check-pubkey, #change-pubkey {
 	display:none;
 	background-color: #fff;
 	color: #999;

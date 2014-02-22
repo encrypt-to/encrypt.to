@@ -2,17 +2,17 @@ class Keyserver
   
   require 'net/http'
 
-  def self.get_keyid_by_email(email)
+  def self.get_keys_by_email(email)
     result = self.request_user_by_email(email)    
     modified_string = result.gsub(/\s+/, '').strip
     uids = modified_string.split("pub:")
+    found = []
     for uid in uids
       if uid.include?(email)
-        found = uid.split(":")[0]
-        break
+        found << "0x" + uid.split(":")[0]
       end
     end
-    return "0x#{found}"
+    return found
   end
   
   def self.request_user_by_email(email)

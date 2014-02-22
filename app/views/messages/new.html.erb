@@ -19,7 +19,7 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 		<%= form_for @message, :html => { :class => "pure-form pure-form-aligned"  } do |f| %>
 
 		<h2>To:&nbsp;<%= receiver(@to, f) %></h2>
-		<div style="text-align:left;padding:0px 0 10px 0;"><%= link_to "Public key: #{@keyid}", "http://pgpkey.org/pks/lookup?op=vindex&search=#{@keyid}&fingerprint=on", :id => "fingerprint" if @keyid %></div>
+		<div style="text-align:left;padding:0px 0 10px 0;"><%= link_to "Public key: #{@keyids.first}", "http://pgpkey.org/pks/lookup?op=vindex&search=#{@keyids.first}&fingerprint=on", :id => "fingerprint" %></div>
 		<fieldset>
 			<div class="pure-control-group">
 				<%= f.text_area :body_input, :rows => 10, :placeholder => "Message", :focus => true, "data-validation-length".to_sym => "min1", :style=>"width: 100%" %>
@@ -50,6 +50,11 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 			</tr>
 		</table>
 		<br />
+		<% if @keyids.size > 1 %>
+		<h3 class="hidden">Change Public Key</h3>
+		<div id="change-pubkey"><%= keyid(@keyids, f) if @keyids %></div>
+		<br />
+		<% end %>
 		<h3 class="hidden">OpenPGP Public Key</h3>
 		<textarea style="width: 100%" id="pubkey" rows="20" disabled="disabled"><%= @pubkey %></textarea>
 		<br />
