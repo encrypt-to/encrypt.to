@@ -1,12 +1,12 @@
 class MessagesController < ApplicationController
 
-  require 'net/http'
+  require './lib/keyserver.rb' 
   require 'digest/md5'
 
   # GET /messages/new
   def new
     @message = Message.new
-    @uid = params[:uid]
+    @uid = params[:uid]    
     if @uid
       # get local user  
       user = User.find(:first, :conditions => [ "lower(username) = ?", @uid.downcase ]) 
@@ -18,9 +18,8 @@ class MessagesController < ApplicationController
         # remote user
         if is_email?(@uid)
            # email
-           begin       
-             result = Net::HTTP.get(URI.parse("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&exact=on&options=mr"))
-             @keyid = get_keyid(result, @uid)
+           begin
+             @keyid = Keyserver.get_keyid_by_email(@uid)
              @to = @uid
            rescue
              # key not found
@@ -28,7 +27,7 @@ class MessagesController < ApplicationController
         elsif @uid.include?("0x")
            # keyid
            begin
-             result = Net::HTTP.get(URI.parse("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{@uid}&fingerprint=on&options=mr"))
+             result = Keyserver.request_user_by_keyid(@uid)
              @to = get_emails(result)
              @keyid = @uid
            rescue
@@ -36,7 +35,7 @@ class MessagesController < ApplicationController
            end
         end   
         begin 
-          @pubkey = Net::HTTP.get(URI.parse("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{@keyid}&options=mr")) if @keyid
+          @pubkey = Keyserver.request_key_by_user(@keyid) if @keyid
         rescue
           # key not found
         end
