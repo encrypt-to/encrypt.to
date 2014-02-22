@@ -13,7 +13,7 @@ class MessagesController < ApplicationController
       if user
         # local user
         @pubkey = user.public_key
-        @to = @uid
+        @to = @uid        
       else
         # remote user
         if is_email?(@uid)

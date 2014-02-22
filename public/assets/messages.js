@@ -66,7 +66,6 @@ $(function(){
 	 
 	 // show fingerprint
 	 var fp = fingerprint(openpgp.key.readArmored($('#pubkey').text()).keys[0]);
-	 console.log(fp);
 	 $("#fingerprint").text(fp);
    
 	if (window.crypto && window.crypto.getRandomValues) {
