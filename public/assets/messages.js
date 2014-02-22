@@ -13,7 +13,7 @@ function encrypt() {
 		
    	var plaintext = message.value;
    	var ciphertext = openpgp.encryptMessage([publicKeys],plaintext);
-		console.log(openpgp);
+		
 		var result = openpgp.message.readArmored(ciphertext);
 		var validateMessage = JSON.stringify(result).replace(/,/g,'\n');
 		$('#check-message').text(validateMessage);
@@ -55,9 +55,19 @@ function file() {
 	
 }
 
+function fingerprint(key) {
+	var fpr = openpgp.util.hexstrdump(key.getKeyPacket().getFingerprint()).toUpperCase();
+  return "Fingerprint: " + fpr.slice(0, 4) + ' ' + fpr.slice(4, 8) + ' ' + fpr.slice(8, 12) + ' ' + fpr.slice(12, 16) + ' ' + fpr.slice(16, 20) + ' ' + fpr.slice(20, 24) + ' ' + fpr.slice(24, 28) + ' ' + fpr.slice(28, 32) + ' ' + fpr.slice(32, 36) + ' ' + fpr.slice(36);
+}
+
 $(function(){
 	// focus body on load
    $("#message_body_input").focus();
+	 
+	 // show fingerprint
+	 var fp = fingerprint(openpgp.key.readArmored($('#pubkey').text()).keys[0]);
+	 console.log(fp);
+	 $("#fingerprint").text(fp);
    
 	if (window.crypto && window.crypto.getRandomValues) {
 	    // ready
