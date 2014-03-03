@@ -1,6 +1,7 @@
 class MessagesController < ApplicationController
 
   require './lib/keyserver.rb' 
+  require './lib/util.rb' 
   require 'digest/md5'
 
   # GET /messages/new
@@ -16,10 +17,10 @@ class MessagesController < ApplicationController
         @to = @uid        
       else
         # remote user
-        if is_email?(@uid)
+        if Util.is_email?(@uid)
            # email
            begin
-             @keyids = Keyserver.get_keys_by_email(@uid)             
+             @keyids = Keyserver.get_keyids_by_email(@uid)             
              @to = @uid
            rescue
              # key not found
@@ -27,15 +28,15 @@ class MessagesController < ApplicationController
         elsif @uid.include?("0x")
            # keyid
            begin
-             result = Keyserver.request_user_by_keyid(@uid)
-             @to = get_emails(result)
+             result = Keyserver.get_users_by_keyid(@uid)
+             @to = Util.get_emails(result)
              @keyids = [@uid]
            rescue
              # key not found
            end
         end   
         begin 
-          @pubkey = Keyserver.request_key_by_user(@keyids.first) if @keyids
+          @pubkey = Keyserver.get_publickey_by_keyid(@keyids.first) if @keyids
         rescue
           # key not found
         end
@@ -70,7 +71,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if spam.size >= 5
         format.html { redirect_to "/", notice: 'Spam? Please wait 5 minutes!' }
-      elsif is_email?(to) and is_email?(from) and spam.size <= 5 and body.include?("BEGIN PGP MESSAGE") and body.include?("END PGP MESSAGE")
+      elsif Util.is_email?(to) and Util.is_email?(from) and spam.size <= 5 and body.include?("BEGIN PGP MESSAGE") and body.include?("END PGP MESSAGE")
         Message.create!(:tohash => tohash, :fromhash => fromhash) # ignore message body
         MessageMailer.send_message(to, from, body, :file => file, :filename => filename).deliver
         username = user.username.downcase if user
