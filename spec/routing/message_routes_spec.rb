@@ -30,4 +30,3 @@ describe "routing to profiles" do
   end
 
 end
-
