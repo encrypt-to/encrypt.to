@@ -91,7 +91,7 @@ Please enable Javascript in your browser and then refresh this page!
 <div>	
     <div class="content">
         <div class="l-box">
-            <h2>Browser Compatibility</h2>
+            <h2><span class="marker_success">Browser Compatibility</span></h2>
             <p>We need a cryptographically secure PRNG to be implemented (i.e. the window.crypto method) based on <a href="http://www.w3.org/TR/WebCryptoAPI/">Web Cryptography API</a> <i>(W3C Working Draft 25 June 2013)</i>.</p>
             <table class="pure-table pure-table-horizontal">
               <thead>
@@ -137,7 +137,7 @@ Please enable Javascript in your browser and then refresh this page!
     <div class="content">
         <div class="l-box">
 
-<h2>I don't have a public key.</h2>
+<h2><span class="marker_success">Where can I get a public key?</span></h2>
 
 <p>There are many tools like <a href="https://gpgtools.org/">GPGTools</a> for Mac, <a href="https://projects.gnome.org/seahorse/index.html">Seahorse</a> for Linux or <a href="http://www.gpg4win.org/">Gpg4win</a> for Windows.</p>
 
@@ -150,12 +150,32 @@ Please enable Javascript in your browser and then refresh this page!
     </div>	
 </div>
 
+<div>	
+    <div class="content">
+        <div class="l-box">
+            <h2><span class="marker_success">Can I host this myself?</span></h2>
+			<p>Yes, you can. The software is available for <a href="https://github.com/encrypt-to/secure.contactform.ruby">Ruby</a>, <a href="https://github.com/encrypt-to/secure.contactform.php">PHP</a> and <a href="https://github.com/encrypt-to/secure.contactform.perl">Perl</a>. Simple deployment on your Webhost or Heroku.</p>						
+        </div>
+    </div>	
+</div>
 
 <div>	
     <div class="content">
         <div class="l-box">
-            <h2>Can I host this myself?</h2>
-			<p>Yes, you can. The software is available for <a href="https://github.com/encrypt-to/secure.contactform.ruby">Ruby</a>, <a href="https://github.com/encrypt-to/secure.contactform.php">PHP</a> and <a href="https://github.com/encrypt-to/secure.contactform.perl">Perl</a>. Simple deployment on your Webhost or Heroku.</p>						
+            <h2><span class="marker_success">API v1</span></h2>
+			<p>All API access is over HTTPS and accessed from https://encrypt.to/api/v1/. All data is sent and received as JSON.</p>
+			<br />
+			<h3>Client errors</h3>
+			<pre>curl https://encrypt.to/api/v1/keyserver/lookup</pre>
+			<pre>{"status":"error","message":"Wrong params, please try again."}</pre>
+			<br />
+			<h3>Get public key by email</h3>
+			<pre>curl https://encrypt.to/api/v1/keyserver/lookup?email=hello@encrypt.to</pre>
+			<pre>{"status":"success","keys":[{"key_id":"0x11489A1F","public_key":"-----BEGIN PGP PUBLIC KEY BLOCK-----"}]}</pre>
+			<br />
+			<h3>Get public key by key id</h3>
+			<pre>curl https://encrypt.to/api/v1/keyserver/lookup?keyid=0x11489A1F</pre>			
+			<pre>{"status":"success","keys":[{"key_id":"0x11489A1F","public_key":"-----BEGIN PGP PUBLIC KEY BLOCK-----"}]}</pre>	
         </div>
     </div>	
 </div>
