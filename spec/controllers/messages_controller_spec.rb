@@ -71,9 +71,8 @@ describe MessagesController do
   describe "POST message" do
     it "has a 302 status code if params are valid" do
       from = email
-      post :create, :message => { to: user.email, from: from, body: message }
+      post :create, :message => {to: user.email, from: from, body: message}
       expect(response.status).to eq(302)
-      flash[:notice].should match('Encrypted message sent! Thanks.')
       ActionMailer::Base.deliveries[ActionMailer::Base.deliveries.size-2].to.should == [user.email]
       ActionMailer::Base.deliveries.last.to.should == [from]
     end
@@ -83,9 +82,8 @@ describe MessagesController do
     it "has a 302 status code if params are invalid" do
       message = ""
       from = email
-      post :create, :message => { to: user.email, from: from, body: message }
+      post :create, :message => {to: user.email, from: from, body: message}
       expect(response.status).to eq(302)
-      flash[:notice].should match('Sorry something went wrong. Try again!')
     end
   end
 
