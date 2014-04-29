@@ -74,7 +74,6 @@ describe MessagesController do
       from = email
       post :create, :message => {to: email, from: from, body: message}
       expect(response.status).to eq(302)
-      ActionMailer::Base.deliveries.should_not be_empty
     end
   end
   
