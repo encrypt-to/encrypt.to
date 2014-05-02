@@ -9,7 +9,7 @@ Please enable Javascript in your browser and then refresh this page!
 				<br />
 				<p><h1>Send encrypted messages by one click.</h1></p>
 				<br />
-				<p><h2>Encrypt.to/<input id="key" type="text" placeholder="your-email or key-id"></h2></p>
+				<p><h2>Encrypt.to/<input id="key" type="text" placeholder="your-email or key-id (0x...)"></h2></p>
 		    <p>Your public key will be loaded from a <a href="https://sks-keyservers.net/status/">public keyserver</a>.</p>		
 		</div>
 
@@ -26,18 +26,13 @@ Please enable Javascript in your browser and then refresh this page!
     <div class="content legal">
         <div class="l-box">
 					
-            <h2><span class="marker_success">No signup needed</span> if your public key is stored on a public key server!</h2>						
+            <h2><mark>No signup needed</mark> if your public key is stored on a public key server!</h2>						
 				
 			<p>Open the link: <span class="marker_email">https://encrypt.to/{your-email}</span> or <span class="marker_email">https://encrypt.to/{your-key-id}</span></p>
 
 			<p>For example: <a href="/hello@encrypt.to">encrypt.to/hello@encrypt.to</a> belongs to <a href="http://pgpkey.org/pks/lookup?op=get&fingerprint=on&search=0x0CAF1E5B11489A1F"> this public key</a>.</p>
 			
-			<p><i>* Sign up if your public key should be private!</i></p>
-			
-			<p>
-	    	<a class="pure-button pure-button-cta" href="/users/sign_up">Sign Up</a>
-				<a class="pure-button pure-button-secondary" href="/users/sign_in">Login</a>
-	    </p>
+			<p><i><a href="#signup">* Sign up if your public key should be private!</a></i></p>
 			
         </div>
     </div>	
@@ -48,7 +43,7 @@ Please enable Javascript in your browser and then refresh this page!
         <div class="l-box">
 					
 					
-            <h2><span class="marker_success">Can I trust this service?</span> </h2>						
+            <h2><mark>Can I trust this service?</mark> </h2>						
 				
 			<p>We take the privacy of your data very seriously. Your browser encrypts the message before handing it to us! We're using <a href="http://en.wikipedia.org/wiki/End-to-end_encryption">End-to-end encryption</a> with OpenPGP.js. We cannot read your message!<p> 
 			
@@ -64,7 +59,7 @@ Please enable Javascript in your browser and then refresh this page!
     <div class="pure-u-1-3">
         <div class="l-box">
             <h3>Open Source.</h3>
-            <p><%= image_tag "/assets/oss.png", :width => 150 %><br>Here is the <a href="https://github.com/encrypt-to/encrypt.to">source code</a>. We are using client side encryption and we can't decrypt your message.</p>
+            <p><%= image_tag "/assets/oss.png", :width => 128 %><br>Here is the <a href="https://github.com/encrypt-to/encrypt.to">source code</a>. We are using client side encryption and we can't decrypt your message.</p>
 
         </div>
     </div>
@@ -89,9 +84,59 @@ Please enable Javascript in your browser and then refresh this page!
 <br><br>
 
 <div>	
-    <div class="content">
+    <div class="content legal" id="signup">
         <div class="l-box">
-            <h2><span class="marker_success">Browser Compatibility</span></h2>
+					
+            <h2><mark>Pricing & Signup</mark></h2>						
+				
+			<p>Risk free! 30-day free trial on all accounts.</p>
+
+            <table class="pure-table pure-table-horizontal">
+              <thead>
+                  <tr>
+                      <th><h2>Free</h2></th>
+                      <th><h2>Startup</h2></th>
+                      <th><h2>Business</h2></th>
+                  </tr>
+              </thead>
+                <tbody>
+                    <tr>
+                        <td><mark><strong>$0/month</strong></mark></td>
+                        <td><mark><strong>$9/month</strong></mark></td>
+                        <td><mark><strong>$29/month</strong></mark></td>
+                    </tr>
+                    <tr class="pure-table-odd">
+                        <td>1 MB Attachment</td>
+                        <td>50 MB Attachment</td>
+                        <td>200 MB Attachment</td>
+                    </tr>
+                    <tr>
+                        <td>Encrypt.to branding</td>
+                        <td>Custom branding</td>
+                        <td>Custom branding</td>
+                    </tr>
+                    <tr class="pure-table-odd">
+                        <td>Upload your public key</td>
+                        <td>Upload your public key</td>
+                        <td>Upload your public key</td>
+                    </tr>
+                    <tr>
+                        <td><a class="pure-button pure-button-cta" href="/users/sign_up">Sign Up</a></td>
+                        <td><a class="pure-button pure-button-cta" href="/sign_up">Sign Up</a></td>
+                        <td><a class="pure-button pure-button-cta" href="/sign_up">Sign Up</a></td>
+                    </tr>
+                </tbody>
+            </table>
+
+			<p>Need more attachment size? No problem. <a href="/hello@encrypt.to">Contact us</a> about a custom plan.</p>
+			  </div>
+    </div>	
+</div>
+
+<div>	
+    <div class="content legal">
+        <div class="l-box">
+            <h2><mark>Browser Compatibility</mark></h2>
             <p>We need a cryptographically secure PRNG to be implemented (i.e. the window.crypto method) based on <a href="http://www.w3.org/TR/WebCryptoAPI/">Web Cryptography API</a> <i>(W3C Working Draft 25 June 2013)</i>.</p>
             <table class="pure-table pure-table-horizontal">
               <thead>
@@ -134,10 +179,10 @@ Please enable Javascript in your browser and then refresh this page!
 </div>
 
 <div>	
-    <div class="content">
+    <div class="content legal">
         <div class="l-box">
 
-<h2><span class="marker_success">Where can I get a public key?</span></h2>
+<h2><mark>Where can I get a public key?</mark></h2>
 
 <p>There are many tools like <a href="https://gpgtools.org/">GPGTools</a> for Mac, <a href="https://projects.gnome.org/seahorse/index.html">Seahorse</a> for Linux or <a href="http://www.gpg4win.org/">Gpg4win</a> for Windows.</p>
 
@@ -151,18 +196,18 @@ Please enable Javascript in your browser and then refresh this page!
 </div>
 
 <div>	
-    <div class="content">
+    <div class="content legal">
         <div class="l-box">
-            <h2><span class="marker_success">Can I host this myself?</span></h2>
+            <h2><mark>Can I host this myself?</mark></h2>
 			<p>Yes, you can. The software is available for <a href="https://github.com/encrypt-to/secure.contactform.ruby">Ruby</a>, <a href="https://github.com/encrypt-to/secure.contactform.php">PHP</a> and <a href="https://github.com/encrypt-to/secure.contactform.perl">Perl</a>. Simple deployment on your Webhost or Heroku.</p>						
         </div>
     </div>	
 </div>
 
 <div>	
-    <div class="content">
+    <div class="content legal">
         <div class="l-box">
-            <h2><span class="marker_success">API v1</span></h2>
+            <h2><mark>API v1</mark></h2>
 			<p>All API access is over HTTPS and accessed from https://encrypt.to/api/v1/. All data is sent and received as JSON.</p>
 			<br />
 			<h3>Client errors</h3>
@@ -183,8 +228,8 @@ Please enable Javascript in your browser and then refresh this page!
 <div>	
     <div class="content">
         <div class="l-box">
-			<p><i>© 2014 Encrypt.to&nbsp;&nbsp;&nbsp;<a href="https://diasp.eu/u/info">Diaspora</a>&nbsp;&nbsp;&nbsp;<a href="https://twitter.com/encrypt_to">Twitter</a>&nbsp;&nbsp;&nbsp;<a href="https://github.com/encrypt-to">GitHub</a>&nbsp;&nbsp;&nbsp;<a href="/privacy">Privacy</a>&nbsp;&nbsp;&nbsp;<a href="/terms">Terms</a>&nbsp;&nbsp;&nbsp;<a href="/0x0CAF1E5B11489A1F">Contact</a></i></p>
-			<h5><span class="marker_success">Privacy is a human right.</span></h5>
+			<p><i>© 2014 Encrypt.to&nbsp;&nbsp;&nbsp;<a href="https://diasp.eu/u/info">Diaspora</a>&nbsp;&nbsp;&nbsp;<a href="https://twitter.com/encrypt_to">Twitter</a>&nbsp;&nbsp;&nbsp;<a href="https://github.com/encrypt-to">GitHub</a>&nbsp;&nbsp;&nbsp;<a href="/privacy">Privacy</a>&nbsp;&nbsp;&nbsp;<a href="/terms">Terms</a>&nbsp;&nbsp;&nbsp;<a href="/0x0CAF1E5B11489A1F">Contact</a>&nbsp;&nbsp;&nbsp;<a href="/users/sign_in">Login</a></i></p>
+			<h5><mark>Privacy is a human right.</mark></h5>
 			
         </div>
     </div>	

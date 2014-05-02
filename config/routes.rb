@@ -18,7 +18,9 @@ Encryptto::Application.routes.draw do
   devise_for :users
   
   resources :users
-  
+  resources :leads
+  match 'sign_up' => 'leads#new', via: :get
+    
   match ':uid/edit' => 'users#edit', via: :get
   match ':uid/edit' => 'users#update', via: :put
 

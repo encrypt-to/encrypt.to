@@ -26,7 +26,7 @@ function checkEmailAndKeyId() {
 
 $(function(){
 	$("#key").focus();
-	$("#try").prop('disabled', true);
+	//$("#try").prop('disabled', true);
 	// validate input
 	$('#key').bind('input propertychange', function() {
 		if (checkEmailAndKeyId()) {
@@ -37,7 +37,11 @@ $(function(){
 	});
 	// bind button
 	$('#try').bind('click', function() {
-		window.location.href = '/' + $("#key").val();
+		if ($("#key").val()==="") {
+			alert("Please enter your email or key-id (0x...) if your public key is stored on a public key server!");
+		} else {
+			window.location.href = '/' + $("#key").val();	
+		}
 	});
 	// bind enter
 	$('#key').keydown(function(e) {
