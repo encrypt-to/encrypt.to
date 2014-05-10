@@ -6,6 +6,10 @@ body {
 	font-family: 'Open Sans', sans-serif;
 }
 
+.lead_email {
+	font-size: 14px;
+}
+
 .marker {
 	background-color: #fff;
 	padding: 2px;
