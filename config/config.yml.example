@@ -15,14 +15,14 @@ defaults: &defaults
 development:
   keyserver:
   app_token:
-	devise_token:
-	host: 
+  devise_token:
+  host: 
   <<: *defaults
 
 production:
   keyserver:
   app_token:
-	devise_token: 
-	host:
+  devise_token: 
+  host:
   <<: *defaults
 
