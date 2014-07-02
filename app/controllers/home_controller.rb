@@ -2,6 +2,7 @@ class HomeController < ApplicationController
 
   # GET /
   def index
+    @count = Message.all.size.to_s
   end
 
   # GET /terms
