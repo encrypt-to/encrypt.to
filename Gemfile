@@ -14,7 +14,7 @@ end
 group :test, :development do
   gem 'quiet_assets'
   gem 'sqlite3'
-  gem 'rspec-rails'
+  gem 'rspec-rails', '2.99'
   gem 'factory_girl_rails'
 end
 
