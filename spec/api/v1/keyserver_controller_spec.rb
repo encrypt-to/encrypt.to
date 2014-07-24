@@ -40,7 +40,7 @@ describe "/api/v1/keyserver/lookup", :type => :api do
   end
   
   context "lookup with wrong params" do
-    let(:url) {"api/v1/keyserver/lookup?email=" + short_keyid}
+    let(:url) {"api/v1/keyserver/lookup?email=#{short_keyid}"}
     it "JSON" do
       get "#{url}"
       response.status.should eql(200)
@@ -49,7 +49,16 @@ describe "/api/v1/keyserver/lookup", :type => :api do
   end
   
   context "lookup with email" do
-    let(:url) {"api/v1/keyserver/lookup?email=" + email}
+    let(:url) {"api/v1/keyserver/lookup?email=#{email}"}
+    it "JSON" do
+      get "#{url}"
+      response.status.should eql(200)
+      response.body.should eql('{"status":"success","keys":[{"key_id":"' + short_keyid + '","public_key":"' + public_key + '"}]}')
+    end
+  end
+  
+  context "lookup with email upcase" do
+    let(:url) {"api/v1/keyserver/lookup?email=#{email.upcase}"}
     it "JSON" do
       get "#{url}"
       response.status.should eql(200)
@@ -58,7 +67,16 @@ describe "/api/v1/keyserver/lookup", :type => :api do
   end
   
   context "lookup with short keyid" do
-    let(:url) {"api/v1/keyserver/lookup?keyid=" + short_keyid}
+    let(:url) {"api/v1/keyserver/lookup?keyid=#{short_keyid}"}
+    it "JSON" do
+      get "#{url}"
+      response.status.should eql(200)
+      response.body.should eql('{"status":"success","keys":[{"key_id":"' + short_keyid + '","public_key":"' + public_key + '"}]}')
+    end
+  end
+  
+  context "lookup with short keyid upcase" do
+    let(:url) {"api/v1/keyserver/lookup?keyid=#{short_keyid.upcase}"}
     it "JSON" do
       get "#{url}"
       response.status.should eql(200)
@@ -67,7 +85,16 @@ describe "/api/v1/keyserver/lookup", :type => :api do
   end
   
   context "lookup with long keyid" do
-    let(:url) {"api/v1/keyserver/lookup?keyid=" + long_keyid}
+    let(:url) {"api/v1/keyserver/lookup?keyid=#{long_keyid}"}
+    it "JSON" do
+      get "#{url}"
+      response.status.should eql(200)
+      response.body.should eql('{"status":"success","keys":[{"key_id":"' + long_keyid + '","public_key":"' + public_key + '"}]}')
+    end
+  end
+  
+  context "lookup with long keyid upcase" do
+    let(:url) {"api/v1/keyserver/lookup?keyid=#{long_keyid.upcase}"}
     it "JSON" do
       get "#{url}"
       response.status.should eql(200)

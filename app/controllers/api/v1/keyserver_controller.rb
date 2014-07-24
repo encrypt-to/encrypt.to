@@ -22,10 +22,10 @@ class Api::V1::KeyserverController < ActionController::Metal
   protect_from_forgery
     
   def lookup
-    if params[:keyid] && params[:keyid].include?("0x")
-      keyids = [params[:keyid]]
+    if params[:keyid] && params[:keyid].downcase.include?("0x")
+      keyids = [params[:keyid].downcase]
     elsif params[:email] && Util.is_email?(params[:email])
-      keyids = Keyserver.get_keyids_by_email(params[:email])
+      keyids = Keyserver.get_keyids_by_email(params[:email].downcase)
     end
     
     if keyids
