@@ -7,7 +7,7 @@ class MessagesController < ApplicationController
   # GET /messages/new
   def new
     @message = Message.new
-    @uid = params[:uid]    
+    @uid = params[:uid].downcase    
     if @uid
       # get local user  
       user = User.find(:first, :conditions => [ "lower(username) = ?", @uid.downcase ]) 
