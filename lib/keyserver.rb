@@ -9,7 +9,7 @@ class Keyserver
     found = []
     for uid in uids
       if uid.include?(email)
-        found << "0x" + uid.split(":")[0]
+        found << "0x" + uid.split(":")[0].downcase
       end
     end
     return found
