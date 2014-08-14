@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Encrypt.to | beta version</title>
+  <title>Encrypt.to | Secure Contact Form</title>
 	<meta http-equiv="Pragma" content="no-cache">
 	<meta name="description" content="Send Encrypted Messages to 3.5 million PGP users by one click.">
 	<meta name="keywords" content="pgp, openpgp, encryption, encrypt, privacy">
@@ -17,6 +17,7 @@
   <link href="/assets/pure-min.css?<%= Time.now.to_i %>" media="all" rel="stylesheet" type="text/css" />
  
   <%= csrf_meta_tags %>
+  <%= yield(:head) %>
 </head>
 <body>
 	

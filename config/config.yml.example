@@ -10,13 +10,15 @@ defaults: &defaults
   sender:
   service_name: 
   owner: 
-  owner_keyid: 
+  owner_keyid:
 	    
 development:
   keyserver:
   app_token:
   devise_token:
   host: 
+  stripe_api_key:
+  stripe_public_key:
   <<: *defaults
 
 production:
@@ -24,5 +26,7 @@ production:
   app_token:
   devise_token: 
   host:
+  stripe_api_key:
+  stripe_public_key:
   <<: *defaults
 

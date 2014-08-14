@@ -1,15 +1,42 @@
+(function ($) {
+  var ready = $.fn.ready;
+  $.fn.ready = function (fn) {
+    if (this.context === undefined) {
+      // The $().ready(fn) case.
+      ready(fn);
+    } else if (this.selector) {
+      ready($.proxy(function(){
+        $(this.selector, this.context).each(fn);
+      }, this));
+    } else {
+      ready($.proxy(function(){
+        $(this).each(fn);
+      }, this));
+    }
+  }
+})(jQuery);
+
+jQuery.externalScript = function(url, options) {
+  options = $.extend(options || {}, {
+    dataType: "script",
+    cache: true,
+    url: url
+  });
+  return jQuery.ajax(options);
+};
+
 function valid(msg) {
 	$('#invalid').hide();
 	$('#valid').text(msg);
 	$('#valid').show();
-	$("#submit").removeAttr('disabled');
+	$("#submit_button").removeAttr('disabled');
 }
 
 function invalid(msg) {
 	$('#valid').hide();
 	$('#invalid').text(msg);
 	$('#invalid').show();
-	$("#submit").attr('disabled','disabled');
+	$("#submit_button").attr('disabled','disabled');
 }
 
 function validateEmail($email) {
@@ -59,4 +86,46 @@ $(function(){
 		$('.marker_browser').show();
 		$('#send').hide();
 	}
+	$('#user_username').bind('input propertychange', function() {
+		$('#check_username').text(this.value);
+	});
+	
+	
+  $.externalScript('https://js.stripe.com/v1/').done(function(script, textStatus) {
+      Stripe.setPublishableKey($('meta[name="stripe-key"]').attr('content'));
+      var subscription = {
+        setupForm: function() {
+          return $('.card_form').submit(function() {
+            $('input[type=submit]').prop('disabled', true);
+            if ($('#card_number').length) {
+              subscription.processCard();
+              return false;
+            } else {
+              return true;
+            }
+          });
+        },
+        processCard: function() {
+          var card;
+          card = {
+            name: $('#user_name').val(),
+            number: $('#card_number').val(),
+            cvc: $('#card_code').val(),
+            expMonth: $('#card_month').val(),
+            expYear: $('#card_year').val()
+          };
+          return Stripe.createToken(card, subscription.handleStripeResponse);
+        },
+        handleStripeResponse: function(status, response) {
+          if (status === 200) {
+            $('#user_stripe_token').val(response.id);
+						$('.card_form')[0].submit()
+          } else {
+            $('#stripe_error').text(response.error.message).show();
+            return $('input[type=submit]').prop('disabled', false);
+          }
+        }
+      };
+      return subscription.setupForm();
+  });
 });

@@ -10,7 +10,7 @@ function IsEmail(email) {
 $(function(){
 	$("#lead_email").focus();
 	
-	$('#submit').click(function(){
+	$('#submit_button').click(function(){
 		var email = $('#lead_email').val();
 		if(IsEmail(email)==false){
 			alert("Please enter a valid email address!")

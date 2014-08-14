@@ -7,16 +7,27 @@ Please enable Javascript in your browser and then refresh this page!
 </div>
 </noscript>
 
+<style>
+body {background-color: white;}
+
+</style>
+
 <div class="marker_browser">
 Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Firefox >= 21, Opera >= 15 or IE >= 11!
 </div>
+
+<% content_for :head do %>
+  <%= tag :meta, :name => "stripe-key", :content => APP_CONFIG['stripe_public_key'] %>
+<% end %>
+
+<div id="stripe_error" class="alert alert-error" style="display:none" ></div>
 
 <div class="l-content">
     <div class="information pure-g-r">
         <div class="pure-u-1-2">
             <div class="l-box">  
 
-							<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "pure-form pure-form-stacked"  }) do |f| %>
+							<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "pure-form pure-form-stacked card_form"  }) do |f| %>
 				  		<%= devise_error_messages! %>
 
 							<legend>Sign up</legend>
@@ -25,7 +36,7 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 
 				        <%= f.label :username %>
 								<%= f.text_field :username, :autofocus => true %>
-								<div>https://encrypt.to/username	</div>
+								<div style="font-size: 13px;">https://encrypt.to/<span id="check_username">username</span></div>
 				
 								<br />
 				
@@ -38,17 +49,51 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 								<%= f.label :password_confirmation %>
 					  		<%= f.password_field :password_confirmation %>
 			
-								<br />
-			
 								<%= f.label :public_key %>
-					  		<%= f.text_area :public_key, :rows => 15, :cols => 75 %>
+					  		<%= f.text_area :public_key, :rows => 10, :cols => 75 %>
+<br />
+
+  <% if @user.stripe_token %>
+    <p>Credit card acceptance is pending.</p>
+  <% else %>
+	
+	
+	<div class="pure-g">
+	    <div class="pure-u-1-2"><p>
+      <%= label_tag :card_number, "Credit Card Number" %>
+      <%= text_field_tag :card_number, nil, name: nil, size: '30', placeholder: '1111 2222 3333 4444' %>
+			<%= image_tag "/assets/cards.png", style: "padding: 0px 0px 15px 0px;" %>
+			</p></div>
+	    <div class="pure-u-1-2"><p>
+      <%= label_tag :card_code, "Card Security Code (CVV)" %>
+      <%= text_field_tag :card_code, nil, name: nil, size: '15', placeholder: '123' %>
+			</p></div>
+	</div>
+	
+	<%= label_tag :card_month, "Card Expiration" %>
+						<table border="0">
+							<tr>
+								<td><%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: 'input-medium'}  %></td>
+								<td><%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year", class: 'input-small'} %></td>
+							</tr>
+						</table>
+						
+					
+					
+
+    
+			<% end %>
+  <%= f.hidden_field :stripe_token %>
+	
 			
 								<p class="alert" style="display:none;" id="invalid"></p>
 								<p class="notice" style="display:none;" id="valid"></p>
 
+								<p>You won't be billed unless you keep your account open past your 14-day free trail.</p>
+
 								<p>By clicking on "Create an account" below, you are agreeing to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>.</p>
 				
-								<%= f.submit "Create an account", :class => "pure-button pure-button-primary", :id => "submit", :disabled => "disabled" %>
+								<%= f.submit "Create an account", :class => "pure-button pure-button-primary", :id => "submit_button", :disabled => "disabled" %>
 			
 							</fieldset>
 		

@@ -1,3 +1,7 @@
+<% content_for :head do %>
+  <%= tag :meta, :name => "stripe-key", :content => APP_CONFIG['stripe_public_key'] %>
+<% end %>
+
 <div class="l-content">
 
     <div class="information pure-g-r">
@@ -35,9 +39,12 @@
                 <div class="pure-u-1-2">
                     <div class="l-box">
                       
-                      <h3>Public key</h3>
+											
+                      <h3>Card</h3>
                       
-                      <p><%= link_to "Change public key", "/#{current_user.username}/edit"  %></p>
+											<p>
+											  Using card ending with <%= @user.last_4_digits %>
+											</p>
                       
                       <h3>Cancel my account</h3>
 

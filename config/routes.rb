@@ -11,6 +11,8 @@ Encryptto::Application.routes.draw do
     end
   end
   
+  mount StripeEvent::Engine => '/stripe'
+  
   match 'index' => 'home#index', via: :get
   match 'terms' => 'home#terms', via: :get
   match 'privacy' => 'home#privacy', via: :get
@@ -29,5 +31,5 @@ Encryptto::Application.routes.draw do
   match ':uid' => 'messages#new', via: :get
 
   root :to => 'home#index'
-
+  
 end

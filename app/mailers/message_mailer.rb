@@ -19,5 +19,17 @@ class MessageMailer < ActionMailer::Base
     @to = username.nil? ? to : username
     mail(to: from, subject: subject)
   end
+  
+  def expire_email(user)
+    mail(:to => user.email, :subject => "Encrypt.to Subscription Cancelled")
+  end
+  
+  def subscription_email(user)
+    mail(:to => user.email, :subject => "Encrypt.to Subscription Updated")
+  end
+  
+  def welcome_email(user)
+    mail(:to => user.email, :subject => "Welcome to Encrypt.to")
+  end
     
 end
