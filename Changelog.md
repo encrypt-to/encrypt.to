@@ -1,3 +1,21 @@
+# 0.3
+
+Aug 15,2014
+
+## Features
+
+* Added mysql for production
+* Added message count to landing page
+
+## Bug fixes
+
+* Ignore expired keys [#18](https://github.com/encrypt-to/encrypt.to/issues/18)
+* Api now case insensitive 
+
+## Refactor
+
+* Update openpgpjs to v0.7.1
+
 # 0.2.2
 
 Apr 04,2014
