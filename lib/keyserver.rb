@@ -3,28 +3,34 @@ class Keyserver
   require 'net/http'
 
   def self.get_keyids_by_email(email)
-    result = self.get_users_by_email(email)    
+    result = self.get_users_by_email(email)
+    return if result.nil?  
     modified_string = result.gsub(/\s+/, '').strip
     uids = modified_string.split("pub:")
     found = []
     for uid in uids
-      if uid.include?(email)
-        found << "0x" + uid.split(":")[0].downcase
-      end
+      found << "0x" + uid.split(":")[0].downcase if uid.include?(email)
     end
-    return found
+    found
   end
   
   def self.get_users_by_email(email)
-    Net::HTTP.get(URI.parse("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{email}&exact=on&options=mr"))
+    resp = Net::HTTP.get(URI.parse("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{email}&exact=on&options=mr"))
+    self.key_is_valid(resp) ? resp : nil
   end
   
   def self.get_users_by_keyid(keyid)
-    Net::HTTP.get(URI.parse("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{keyid}&fingerprint=on&options=mr"))
+    resp = Net::HTTP.get(URI.parse("#{APP_CONFIG['keyserver']}/pks/lookup?op=vindex&search=#{keyid}&fingerprint=on&options=mr"))
+    self.key_is_valid(resp) ? resp : nil
   end
   
   def self.get_publickey_by_keyid(user)
     Net::HTTP.get(URI.parse("#{APP_CONFIG['keyserver']}/pks/lookup?op=get&search=#{user}&options=mr"))
   end
   
+  def self.key_is_valid(key)
+    exp = key.split("pub:")[1].split("uid:")[0].split(":")[4].to_i
+    exp == 0 ? true : Time.now < Time.at(exp)
+  end
+
 end
