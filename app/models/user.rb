@@ -22,7 +22,7 @@ class User < ActiveRecord::Base
   end 
   
   def update_stripe
-    return if username == "admin" or Rails.env.test?
+    return if username == "admin" or Rails.env.test? or (!self.new_record? and customer_id.nil?)
     if customer_id.nil?
       if !stripe_token.present?
         raise "Stripe token not present. Can't create account."
