@@ -3,10 +3,19 @@
     <div class="information pure-g-r">
         <div class="pure-u-1-2">
             <div class="l-box">
-                <h3 class="information-head">Hello</h3>
+                <h3 class="information-head">Hello <%= current_user.username %></h3>
 
-								<p><a class="marker_success" href="/<%= current_user.username %>"><%= 'https://' + APP_CONFIG['host'] + '/' + current_user.username %></a></p>
-
+								<p>Your secure contact form: <a class="marker_success" href="/<%= current_user.username %>"><%= 'https://' + APP_CONFIG['host'] + '/' + current_user.username %></a></p>
+								
+								<p>Embed in your website:</p>
+								<form class="pure-form pure-form-aligned">
+								<fieldset>
+									<div class="pure-control-group">
+										<textarea rows="5" cols="50"><a href="#" onclick='javascript:window.open("https://encrypt.to/<%= current_user.username %>", "_blank", "toolbar=no, scrollbars=no, resizable=yes, width=800, height=650");'>test</a></textarea>
+									</div>
+								</fieldset>
+							</form>
+							
 								<% if !current_user.public_key %>
 
 								<%= form_for(current_user) do |f| %>
