@@ -9,7 +9,15 @@ describe UsersController do
     describe "edit user" do
       it "has a 302 status code if user logged out" do
         user = build(:user)
-        get :edit, uid: user.username
+        get :edit, uid: user.username, context: "publickey"
+        expect(response.status).to eq(302)
+      end
+    end
+    
+    describe "edit user" do
+      it "has a 302 status code if user logged out" do
+        user = build(:user)
+        get :edit, uid: user.username, context: "layout"
         expect(response.status).to eq(302)
       end
     end
@@ -25,7 +33,15 @@ describe UsersController do
     describe "edit user" do
       it "has a 200 status code if user logged in" do
         user = build(:user)
-        get :edit, uid: user.username
+        get :edit, uid: user.username, context: "publickey"
+        expect(response.status).to eq(200)
+      end
+    end
+    
+    describe "edit user" do
+      it "has a 200 status code if user logged in" do
+        user = build(:user)
+        get :edit, uid: user.username, context: "layout"
         expect(response.status).to eq(200)
       end
     end
