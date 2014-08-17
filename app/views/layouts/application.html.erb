@@ -8,6 +8,7 @@
 	<meta name="robots" content="index,follow">
   <script src="/assets/jquery.js?<%= Time.now.to_i %>" type="text/javascript"></script>
   <script src="/assets/jquery.form-validator.min.js?<%= Time.now.to_i %>" type="text/javascript"></script>
+	<script src="/assets/jscolor.js?<%= Time.now.to_i %>" type="text/javascript"></script>
   <script src="/assets/openpgp.min.js?<%= Time.now.to_i %>" type="text/javascript"></script>
   <script src="/assets/<%= loadjs(request[:controller]) %>.js?<%= Time.now.to_i %>" type="text/javascript"></script>
   <script src="/assets/validate.min.js?<%= Time.now.to_i %>" type="text/javascript"></script>
@@ -24,8 +25,15 @@
 	<% unless request[:controller] == "messages" %>
 	<div>
 	    <div class="hero-titles">
-				  <h1 class="logo"><a href="/">En</a></h1>
-				</div>
+				  <h1 class="logo"><a href="/">En</a>
+						<% if request[:controller] == "home" and !current_user %>
+						<div style="float:right;">
+							<a style="font-size: 40%;" class="pure-button pure-button-cta" href="/users/sign_in">Login</a>
+						</div>
+						<% end %>
+					</h1>
+			</div>
+
 	</div>
 	<% end %>
 	

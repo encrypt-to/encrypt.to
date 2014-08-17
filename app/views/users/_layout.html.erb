@@ -1,0 +1,51 @@
+<div class="l-content">
+
+    <div class="information pure-g-r">
+        <div class="pure-u-1-2">
+            <div class="l-box">
+
+
+<%= form_for(@user, :url => "/#{@user.username}/edit", :html => { :class => "pure-form pure-form-stacked" }) do |f| %>
+  <% if @user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% @user.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <h3>Form background color</h3>
+
+    <%= f.text_field :css_form_background, class:"color", value:"#{@user.css_form_background.nil? ? 'EBF1F4' : @user.css_form_background}" %>
+ 
+		 <h3>Form text color</h3>
+ 
+ 	  <%= f.text_field :css_form_color, class:"color", value:"#{@user.css_form_color.nil? ? '777777' : @user.css_form_color}" %>
+
+		<h3><%= f.check_box :form_attachment %>&nbsp;Allow attachment<h3>
+
+		<h3><%= f.check_box :form_advanced_mode %>&nbsp;Show advanced mode</h3>
+		
+		<p class="alert" style="display:none;" id="invalid"></p>
+		<p class="notice" style="display:none;" id="valid"></p>
+	
+    <br>
+    <%= f.submit "Update", :class => "pure-button pure-button-primary", :id => "submit" %>
+
+<% end %>
+
+            </div>
+        </div>
+
+        <div class="pure-u-1-2">
+            <div class="l-box">
+
+            </div>
+        </div>
+        
+    </div> <!-- end information -->
+</div> <!-- end l-content -->

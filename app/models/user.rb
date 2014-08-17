@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :public_key, :login, :username, :email, :password, :password_confirmation, :remember_me, :stripe_token
+  attr_accessible :public_key, :login, :username, :email, :password, :password_confirmation, :remember_me, :stripe_token, :css_form_background, :css_form_color, :form_attachment, :form_advanced_mode
   attr_accessor :login, :stripe_token
   
   validates :public_key, :presence => { :message => 'Public key cannot be blank!' }

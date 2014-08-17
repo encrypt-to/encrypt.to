@@ -7,6 +7,29 @@ Please enable Javascript in your browser and then refresh this page!
 </div>
 </noscript>
 
+<% if @user && !(@user.css_form_background == "EBF1F4" and @user.css_form_color == "777777") %>
+<style type="text/css">
+body {
+	background: #<%= @user.css_form_background %>;
+}
+a, h2, h3, table, input[type=file] {
+ 	color: #<%= @user.css_form_color %>;
+}
+
+.pure-form input[type=text], .pure-form textarea  {
+	border-color: #<%= @user.css_form_color %>;
+}
+
+.pure-form input[type=text]:focus, .pure-form textarea:focus {
+	border-color: #<%= @user.css_form_color %>;
+}
+.pure-button-primary, .pure-button-selected {
+	background-color: #<%= @user.css_form_color %>;
+	color: #<%= @user.css_form_background %>;
+}		
+</style>
+<% end %>
+
 <div class="marker_browser">
 Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Firefox >= 21, Opera >= 15 or IE >= 11!
 </div>
@@ -34,9 +57,11 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 			<%= f.hidden_field :file %>
 			<%= f.hidden_field :filename %>
 		<br />
+		<% if (@user && @user.form_attachment) or @user.nil? %>
 		<h3>Attachment max. 1 MB</h3><input type="file" id="message_file_input" />
 		<div id="encrypting" style="display:none;">Encrypting...</div>
 		<a id="remove" href="#" style="display:none;">remove</a>
+		<% end %>
 		<br /><br />
 		<table>
 			<tr>
@@ -45,7 +70,9 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 					<button id="encrypt" type="button" class="pure-button pure-button-primary">Encrypt</button>
 				</td>
 				<td>
-					&nbsp;&nbsp;&nbsp;<input id="advanced" type="checkbox" value=""> Advanced mode
+					<% if (@user && @user.form_advanced_mode) or @user.nil? %>
+						&nbsp;&nbsp;&nbsp;<input id="advanced" type="checkbox" value=""> Advanced mode
+					<% end %>
 				</td>
 			</tr>
 		</table>

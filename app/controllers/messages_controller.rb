@@ -11,10 +11,10 @@ class MessagesController < ApplicationController
     @uid.downcase! if @uid    
     if @uid
       # get local user  
-      user = User.find(:first, :conditions => [ "lower(username) = ?", @uid.downcase ]) 
-      if user
+      @user = User.find(:first, :conditions => [ "lower(username) = ?", @uid.downcase ]) 
+      if @user
         # local user
-        @pubkey = user.public_key
+        @pubkey = @user.public_key
         @to = @uid        
       else
         # remote user
