@@ -38,7 +38,7 @@ $(function(){
 	// bind button
 	$('#try').bind('click', function() {
 		if ($("#key").val()==="") {
-			alert("Please enter your email or key-id (0x...) if your public key is stored on a public key server!");
+			alert("Please enter an email or key-id (0x...) if the public key is stored on a public key server!");
 		} else {
 			window.location.href = '/' + $("#key").val();	
 		}

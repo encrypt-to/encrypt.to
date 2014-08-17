@@ -28,6 +28,21 @@ Please enable Javascript in your browser and then refresh this page!
     <div class="content legal">
         <div class="l-box">
 					
+            <h2><mark>Essentially a secure contact form</mark> </h2>						
+				
+			<p>It encrypts the message with PGP (client-side) and sends it on to the mail account. A user who does not use PGP can send failry secure mails to PGP-users. A simple vanity-style URL can be given to such users for easy access to the secure contact form.</p>
+			
+			<p><%= image_tag "/assets/form.png", :width => 750 %></p>
+			
+        </div>
+    </div>	
+</div>
+
+
+<div>	
+    <div class="content legal">
+        <div class="l-box">
+					
             <h2><mark>No signup needed</mark> if the public key is stored on a public key server!</h2>						
 				
 			<p>Open the link: <span class="marker_email">https://encrypt.to/{email}</span> or <span class="marker_email">https://encrypt.to/{key-id}</span></p>
@@ -61,7 +76,7 @@ Please enable Javascript in your browser and then refresh this page!
     <div class="pure-u-1-3">
         <div class="l-box">
             <h3>Open Source.</h3>
-            <p><%= image_tag "/assets/oss.png", :width => 128 %><br>Here is the <a href="https://github.com/encrypt-to/encrypt.to">source code</a>. We are using client side encryption and we can't decrypt your message.</p>
+            <p><%= image_tag "/assets/oss.png", :width => 128 %><br>The <a href="https://github.com/encrypt-to/encrypt.to">source code</a> is licensed under the MIT license and available on GitHub.</p>
 
         </div>
     </div>
