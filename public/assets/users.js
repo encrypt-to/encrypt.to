@@ -87,7 +87,7 @@ $(function(){
 		$('#send').hide();
 	}
 	$('#user_username').bind('input propertychange', function() {
-		$('#check_username').text(this.value);
+		$('.check_username').text(this.value);
 	});
 	
 	
