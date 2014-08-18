@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_filter :authenticate_user!
+  before_filter :authenticate_user!, except: [:show]
   
   # GET /users/1/edit
   def edit
@@ -21,5 +21,9 @@ class UsersController < ApplicationController
         format.html { redirect_to "/", notice: 'Not allowed.' }
       end
     end
+  end
+  
+  def show
+    @user = User.find(:first, :conditions => [ "lower(username) = ?", params[:uid] ])
   end
 end

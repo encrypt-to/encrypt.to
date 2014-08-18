@@ -23,6 +23,7 @@ Encryptto::Application.routes.draw do
     
   match ':uid/edit/:context' => 'users#edit', via: :get
   match ':uid/edit' => 'users#update', via: :put
+  match ':uid/thanks' => 'users#show', via: :get
 
   resources :messages
   

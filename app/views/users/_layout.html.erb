@@ -20,15 +20,19 @@
 
     <h3>Form background color</h3>
 
-    <%= f.text_field :css_form_background, class:"color", value:"#{@user.css_form_background.nil? ? 'EBF1F4' : @user.css_form_background}" %>
+    <%= f.text_field :css_form_background, class:"color", value:"#{@user.css_form_background.blank? ? 'EBF1F4' : @user.css_form_background}" %>
  
 		 <h3>Form text color</h3>
  
- 	  <%= f.text_field :css_form_color, class:"color", value:"#{@user.css_form_color.nil? ? '777777' : @user.css_form_color}" %>
+ 	  <%= f.text_field :css_form_color, class:"color", value:"#{@user.css_form_color.blank? ? '777777' : @user.css_form_color}" %>
 
 		<h3><%= f.check_box :form_attachment %>&nbsp;Allow attachment<h3>
 
 		<h3><%= f.check_box :form_advanced_mode %>&nbsp;Show advanced mode</h3>
+		
+		 <h3>Thanks message</h3>
+ 
+ 	  <%= f.text_field :thanks_message, size: '100', value:"#{@user.thanks_message.blank? ? 'Encrypted message sent! Thank you.' : @user.thanks_message}" %>
 		
 		<p class="alert" style="display:none;" id="invalid"></p>
 		<p class="notice" style="display:none;" id="valid"></p>

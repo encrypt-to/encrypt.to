@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20140816174246) do
+ActiveRecord::Schema.define(:version => 20140818182804) do
 
   create_table "messages", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -41,6 +41,7 @@ ActiveRecord::Schema.define(:version => 20140816174246) do
     t.string   "css_form_color"
     t.boolean  "form_attachment",        :default => true
     t.boolean  "form_advanced_mode",     :default => true
+    t.string   "thanks_message"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

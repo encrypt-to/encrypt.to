@@ -77,7 +77,11 @@ class MessagesController < ApplicationController
         MessageMailer.send_message(to, from, body, :file => file, :filename => filename).deliver
         username = user.username.downcase if user
         MessageMailer.thanks_message(to, from, username).deliver
-        format.html { redirect_to "/", notice: 'Encrypted message sent! Thanks.' }
+        if user
+          format.html { redirect_to "/#{user.username}/thanks" }
+        else
+          format.html { redirect_to "/", notice: 'Encrypted message sent! Thanks.' }
+        end
       else
         format.html { redirect_to "/", notice: 'Sorry something went wrong. Try again!' }
       end
