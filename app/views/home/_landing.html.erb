@@ -11,7 +11,7 @@ Please enable Javascript in your browser and then refresh this page!
 				<p><h1>Send encrypted messages by one click</h1></p>
 				<br />
 				<p><h2>Encrypt.to/<input id="key" type="text" placeholder="email or key-id (0x...)"></h2></p>
-		    <p>The public key will be loaded from a <a href="https://sks-keyservers.net/status/">public keyserver</a></p>		
+		    <p>The public key will be loaded from a <a target="_blank" href="https://sks-keyservers.net/status/">public keyserver</a></p>		
 		</div>
 
     <div class="hero-cta">
@@ -49,7 +49,7 @@ Please enable Javascript in your browser and then refresh this page!
 				
 			<p>Open the link: <span class="marker_email">https://encrypt.to/{email}</span> or <span class="marker_email">https://encrypt.to/{key-id}</span></p>
 
-			<p>For example: <a href="/hello@encrypt.to">encrypt.to/hello@encrypt.to</a> belongs to <a href="http://pgpkey.org/pks/lookup?op=get&fingerprint=on&search=0x0CAF1E5B11489A1F"> this public key</a>.</p>
+			<p>For example: <a href="/hello@encrypt.to">encrypt.to/hello@encrypt.to</a> belongs to <a target="_blank" href="http://pgpkey.org/pks/lookup?op=get&fingerprint=on&search=0x0CAF1E5B11489A1F"> this public key</a>.</p>
 			
 			<p><i><a href="#signup">* Sign up if your public key should be private!</a></i></p>
 			
@@ -64,13 +64,13 @@ Please enable Javascript in your browser and then refresh this page!
 					
             <h2><mark>Can I trust this service?</mark> </h2>						
 				
-			<p>We take the privacy of your data very seriously. Your browser encrypts the message before handing it to us! We're using <a href="http://en.wikipedia.org/wiki/End-to-end_encryption">End-to-end encryption</a> with OpenPGP.js. We cannot read your message!<p> 
+			<p>We take the privacy of your data very seriously. Your browser encrypts the message before handing it to us! We're using <a target="_blank" href="http://en.wikipedia.org/wiki/End-to-end_encryption">End-to-end encryption</a> with OpenPGP.js. We cannot read your message!<p> 
 			
-			<p>Use the <a href="http://encrypt-to.github.io/">Security audit tool</a> to audit the deployed source code.</p>
+			<p>Use the <a target="_blank" href="http://encrypt-to.github.io/">Security audit tool</a> to audit the deployed source code.</p>
 			
 			<%= image_tag "/assets/ssl-report.png" %>
 			
-			<p>* SSL Report: <a href="https://www.ssllabs.com/ssltest/analyze.html?d=encrypt.to">Assessed on: Mon Aug 18 19:10:51 UTC 2014.</a></p>
+			<p>* SSL Report: <a target="_blank" href="https://www.ssllabs.com/ssltest/analyze.html?d=encrypt.to">Assessed on: Mon Aug 18 19:10:51 UTC 2014.</a></p>
 			
         </div>
     </div>	
@@ -80,7 +80,7 @@ Please enable Javascript in your browser and then refresh this page!
     <div class="pure-u-1-3">
         <div class="l-box">
             <h3>Open Source.</h3>
-            <p><%= image_tag "/assets/oss.png", :width => 128 %><br>The <a href="https://github.com/encrypt-to/encrypt.to">source code</a> is licensed under the MIT license and available on GitHub.</p>
+            <p><%= image_tag "/assets/oss.png", :width => 128 %><br>The <a target="_blank" href="https://github.com/encrypt-to/encrypt.to">source code</a> is licensed under the MIT license and available on GitHub.</p>
 
         </div>
     </div>
@@ -88,7 +88,7 @@ Please enable Javascript in your browser and then refresh this page!
     <div class="pure-u-1-3">
         <div class="l-box">
             <h3>OpenPGP.js</h3>
-            <p><%= image_tag "/assets/openpgpjs.png", :width => 118 %><br>Encrypt.to is based on <a href="http://openpgpjs.org/">OpenPGP.js</a> a JavaScript implementation of the <a href="http://tools.ietf.org/search/rfc4880">OpenPGP standard</a>.</p>
+            <p><%= image_tag "/assets/openpgpjs.png", :width => 118 %><br>Encrypt.to is based on <a target="_blank" href="http://openpgpjs.org/">OpenPGP.js</a> a JavaScript implementation of the <a target="_blank" href="http://tools.ietf.org/search/rfc4880">OpenPGP standard</a>.</p>
             
         </div>
     </div>
@@ -96,7 +96,7 @@ Please enable Javascript in your browser and then refresh this page!
     <div class="pure-u-1-3">
         <div class="l-box">
             <h3>Privacy in mind.</h3>
-            <p><%= image_tag "/assets/diaspora.png", :width => 128 %><br>We are running <a href="https://diasp.eu">Diaspora</a> - a decentralized social networking platform built with your privacy in mind.</p>
+            <p><%= image_tag "/assets/diaspora.png", :width => 128 %><br>We are running <a target="_blank" href="https://diasp.eu">Diaspora</a> - a decentralized social networking platform built with your privacy in mind.</p>
 
         </div>
     </div>
@@ -160,7 +160,7 @@ Please enable Javascript in your browser and then refresh this page!
     <div class="content legal">
         <div class="l-box">
             <h2><mark>Browser Compatibility</mark></h2>
-            <p>We need a cryptographically secure PRNG to be implemented (i.e. the window.crypto method) based on <a href="http://www.w3.org/TR/WebCryptoAPI/">Web Cryptography API</a> <i>(W3C Working Draft 25 June 2013)</i>.</p>
+            <p>We need a cryptographically secure PRNG to be implemented (i.e. the window.crypto method) based on <a target="_blank" href="http://www.w3.org/TR/WebCryptoAPI/">Web Cryptography API</a> <i>(W3C Working Draft 25 June 2013)</i>.</p>
             <table class="pure-table pure-table-horizontal">
               <thead>
                   <tr>
@@ -207,12 +207,12 @@ Please enable Javascript in your browser and then refresh this page!
 
 <h2><mark>Where can I get a public key?</mark></h2>
 
-<p>There are many tools like <a href="https://gpgtools.org/">GPGTools</a> for Mac, <a href="https://projects.gnome.org/seahorse/index.html">Seahorse</a> for Linux or <a href="http://www.gpg4win.org/">Gpg4win</a> for Windows.</p>
+<p>There are many tools like <a target="_blank" href="https://gpgtools.org/">GPGTools</a> for Mac, <a target="_blank" href="https://projects.gnome.org/seahorse/index.html">Seahorse</a> for Linux or <a target="_blank" href="http://www.gpg4win.org/">Gpg4win</a> for Windows.</p>
 
 <p><%= image_tag "/assets/gpgtools.png", :height => 50 %><%= image_tag "/assets/seahorse.png", :height => 50 %><%= image_tag "/assets/gpg4win.png", :height => 50 %></p>
 
 <p style="font-size:small;">
- * I don't know what you talkin 'bout. <a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy">Read how PGP works.</a>
+ * I don't know what you talkin 'bout. <a target="_blank" href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy">Read how PGP works.</a>
 </p>
         </div>
     </div>	
@@ -222,7 +222,7 @@ Please enable Javascript in your browser and then refresh this page!
     <div class="content legal">
         <div class="l-box">
             <h2><mark>Can I host this myself?</mark></h2>
-			<p>Yes, you can. The software is available for <a href="https://github.com/encrypt-to/secure.contactform.ruby">Ruby</a>, <a href="https://github.com/encrypt-to/secure.contactform.php">PHP</a> and <a href="https://github.com/encrypt-to/secure.contactform.perl">Perl</a>. Simple deployment on your Webhost or Heroku.</p>						
+			<p>Yes, you can. The software is available for <a target="_blank" href="https://github.com/encrypt-to/secure.contactform.ruby">Ruby</a>, <a target="_blank" href="https://github.com/encrypt-to/secure.contactform.php">PHP</a> and <a target="_blank" href="https://github.com/encrypt-to/secure.contactform.perl">Perl</a>. Simple deployment on your Webhost or Heroku.</p>						
         </div>
     </div>	
 </div>
@@ -251,7 +251,7 @@ Please enable Javascript in your browser and then refresh this page!
 <div>	
     <div class="content">
         <div class="l-box">
-			<p><i>© 2014 Encrypt.to&nbsp;&nbsp;&nbsp;<a href="https://diasp.eu/u/info">Diaspora</a>&nbsp;&nbsp;&nbsp;<a href="https://twitter.com/encrypt_to">Twitter</a>&nbsp;&nbsp;&nbsp;<a href="http://wiegelmann.net">About</a>&nbsp;&nbsp;&nbsp;<a href="/privacy">Privacy</a>&nbsp;&nbsp;&nbsp;<a href="/terms">Terms</a>&nbsp;&nbsp;&nbsp;<a href="/0x0CAF1E5B11489A1F">Contact</a>&nbsp;&nbsp;&nbsp;<a href="/users/sign_in">Login</a></i></p>
+			<p><i>© 2014 Encrypt.to&nbsp;&nbsp;&nbsp;<a target="_blank" href="https://twitter.com/encrypt_to">Twitter</a>&nbsp;&nbsp;&nbsp;<a target="_blank" href="http://wiegelmann.net">About</a>&nbsp;&nbsp;&nbsp;<a href="/privacy">Privacy</a>&nbsp;&nbsp;&nbsp;<a href="/terms">Terms</a>&nbsp;&nbsp;&nbsp;<a href="/0x0CAF1E5B11489A1F">Contact</a>&nbsp;&nbsp;&nbsp;<a href="/users/sign_in">Login</a></i></p>
 			<h5><mark>Privacy is a human right.</mark></h5>
 			
         </div>
