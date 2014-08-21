@@ -17,8 +17,7 @@ Encryptto::Application.routes.draw do
   match 'terms' => 'home#terms', via: :get
   match 'privacy' => 'home#privacy', via: :get
 
-  devise_for :users
-  
+  devise_for :users, controllers: { registrations: "registrations" }
   resources :users
     
   match ':uid/edit/:context' => 'users#edit', via: :get
