@@ -44,13 +44,16 @@ class MessagesController < ApplicationController
       end
     end
     # render
+    Rails.logger.debug "---------- " + @to.inspect + "---------- " + @pubkey.inspect
     respond_to do |format|
-      if @to && @to.empty?
-        format.html { redirect_to "/", notice: "Sorry, this key-id has no associated email address." }
-      elsif @pubkey && @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK")
+      if @pubkey && @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK")
         format.html
+      elsif @uid && @uid.include?("0x")
+        format.html { redirect_to "/", notice: "Sorry, this key-id has no associated email address. Please try again!" }
+      elsif @uid && @uid.include?("@")
+        format.html { redirect_to "/", notice: "Sorry, this email has no associated email public key. Please try again!" }
       else
-        format.html { redirect_to "/", notice: "Sorry no user with this email or key-id exists. Try again!" }
+        format.html { redirect_to "/", notice: "Sorry, invalid link. Please use an email or key-id and try again!" }
       end  
     end
   end
