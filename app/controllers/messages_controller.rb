@@ -44,7 +44,6 @@ class MessagesController < ApplicationController
       end
     end
     # render
-    Rails.logger.debug "---------- " + @to.inspect + "---------- " + @pubkey.inspect
     respond_to do |format|
       if @pubkey && @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK")
         format.html
