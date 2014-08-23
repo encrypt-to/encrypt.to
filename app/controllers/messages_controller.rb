@@ -45,7 +45,9 @@ class MessagesController < ApplicationController
     end
     # render
     respond_to do |format|
-      if @pubkey && @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK")
+      if @to && @to.empty?
+        format.html { redirect_to "/", notice: "Sorry, this key-id has no associated email address." }
+      elsif @pubkey && @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK")
         format.html
       else
         format.html { redirect_to "/", notice: "Sorry no user with this email or key-id exists. Try again!" }
