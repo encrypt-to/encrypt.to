@@ -2,12 +2,12 @@ class RegistrationsController < Devise::RegistrationsController
 
   def create
     super
-    UserMailer.welcome_email(@user).deliver unless @user.invalid?
+    MessageMailer.welcome_email(@user).deliver unless @user.invalid?
   end
   
   def destroy
     super
-    UserMailer.expire_email(@user).deliver
+    MessageMailer.expire_email(@user).deliver
   end
 
   def update_card
