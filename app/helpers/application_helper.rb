@@ -1,7 +1,7 @@
 module ApplicationHelper
   
   def loadjs(ctrl)
-    ctrl == "devise/registrations" ? "users" : ctrl    
+    ["devise/sessions", "devise/passwords", "registrations"].include?(ctrl) ? "users" : ctrl    
   end
 
 end
