@@ -50,7 +50,7 @@ class MessagesController < ApplicationController
       elsif @uid && @uid.include?("0x")
         format.html { redirect_to "/", notice: "Sorry, this key-id has no associated email address. Please try again!" }
       elsif @uid && @uid.include?("@")
-        format.html { redirect_to "/", notice: "Sorry, this email has no associated email public key. Please try again!" }
+        format.html { redirect_to "/", notice: "Sorry, this email has no associated public key. Please try again!" }
       else
         format.html { redirect_to "/", notice: "Sorry, invalid link. Please use an email or key-id and try again!" }
       end  

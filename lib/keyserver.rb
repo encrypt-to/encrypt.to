@@ -29,7 +29,9 @@ class Keyserver
   end
   
   def self.key_is_valid(key)
-    exp = key.split("pub:")[1].split("uid:")[0].split(":")[4].to_i
+    revoke = key.split("pub:")[1].split("uid:")[0]
+    return false if revoke[revoke.size - 2] == "r"
+    exp = revoke.split(":")[4].to_i
     exp == 0 ? true : Time.now < Time.at(exp)
   end
 

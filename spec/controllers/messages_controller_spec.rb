@@ -63,7 +63,7 @@ describe MessagesController do
     it "has a 302 status code if params invalid email" do
       get :new, uid: invalid_email
       expect(response.status).to eq(302)
-      flash[:notice].should match('Sorry, this email has no associated email public key. Please try again!')
+      flash[:notice].should match('Sorry, this email has no associated public key. Please try again!')
     end
   end
   
@@ -95,7 +95,7 @@ describe MessagesController do
     it "has a 302 status code if params uid is an expired email" do
       get :new, uid: expired_email
       expect(response.status).to eq(302)
-      flash[:notice].should match('Sorry, this email has no associated email public key. Please try again!')
+      flash[:notice].should match('Sorry, this email has no associated public key. Please try again!')
     end
   end
   

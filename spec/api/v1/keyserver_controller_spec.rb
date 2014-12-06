@@ -4,11 +4,13 @@ public_key = "-----BEGIN PGP PUBLIC KEY BLOCK-----\\nVersion: SKS 1.1.4\\nCommen
 email = "hello@encrypt.to"
 expired_email = "expired@encrypt.to"
 unknown_email = "unknown@encrypt.to"
+revoked_email = "revoked@encrypt.to"
 short_keyid = "0x11489a1f"
 long_keyid = "0x0caf1e5b11489a1f"
 vindex_response = "info:1:2\npub:11489A1F:1:2048:1387447945::\nuid:Encrypt.to <hello@encrypt.to>:1387447945::\n\r\n"
 vindex_response_expired = "info:1:2\npub:11489A1F:1:2048:1387447945:1287447945:\nuid:Encrypt.to <expired@encrypt.to>:1387447945:1287447945:\n\r\n"
 vindex_response_unknown = "info:1:2\npub:11489A1F:1:2048:1387447945::\nuid:Encrypt.to <unknown@encrypt.to>:1387447945::\n\r\n"
+vindex_response_revoked = "info:1:2\npub:11489A1F:1:2048:1387447945::\nuid:Encrypt.to <revoked@encrypt.to>:1387447945::r\n\r\n"
 keyserver_url = "http://pgpkey.org/pks/lookup"
 error_msg = "Wrong params, please try again."
 
@@ -26,6 +28,9 @@ describe "/api/v1/keyserver/lookup", :type => :api do
     stub_request(:get, keyserver_url + "?exact=on&op=vindex&options=mr&search=#{unknown_email}").
       with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
       to_return(:status => 200, :body => vindex_response_unknown, :headers => {})
+    stub_request(:get, keyserver_url + "?exact=on&op=vindex&options=mr&search=#{revoked_email}").
+      with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
+      to_return(:status => 200, :body => vindex_response_revoked, :headers => {})
     stub_request(:get, keyserver_url + "?op=get&options=mr&search=#{short_keyid}").
       with(:headers => {'Accept'=>'*/*', 'User-Agent'=>'Ruby'}).
       to_return(:status => 200, :body => user.public_key, :headers => {})
@@ -85,8 +90,17 @@ describe "/api/v1/keyserver/lookup", :type => :api do
     end
   end
   
-  context "lookup with email and expired key" do
+  context "lookup with email and unknown key" do
     let(:url) {"api/v1/keyserver/lookup?email=#{unknown_email}"}
+    it "JSON" do
+      get "#{url}"
+      response.status.should eql(200)
+      response.body.should eql('{"status":"success","keys":[{"key_id":"' + short_keyid + '","public_key":"' + public_key + '"}]}')
+    end
+  end
+  
+  context "lookup with email and revoked key" do
+    let(:url) {"api/v1/keyserver/lookup?email=#{revoked_email}"}
     it "JSON" do
       get "#{url}"
       response.status.should eql(200)
