@@ -1,5 +1,14 @@
 # Next
 
+## Features
+
+## Bug fixes
+
+## Refactor
+
+# 0.4
+
+Dec 07,2014
 
 ## Features
 
@@ -8,7 +17,12 @@
 
 ## Bug fixes
 
+* Check if the key-id has an associated email address [#33]https://github.com/encrypt-to/encrypt.to/issues/33
+* Ignore revoked keys [#34]https://github.com/encrypt-to/encrypt.to/issues/34
+
 ## Refactor
+
+* Improve form validation
 
 # 0.3
 
