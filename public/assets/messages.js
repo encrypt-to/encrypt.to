@@ -1,8 +1,11 @@
 function encrypt() {
+  return {
+    then: function(callback) {
+			
 	var message_body_input = $('#message_body_input').val();
 	$("#message_body_input").attr("disabled", "disabled");
 	if (message_body_input.indexOf("-----BEGIN PGP MESSAGE-----") !== -1 && message_body_input.indexOf("-----END PGP MESSAGE-----") !== -1) {
-		// validate form
+		callback(true);	
 	} else {
 		// encrypt message
 		publicKeys = openpgp.key.readArmored($('#pubkey').text()).keys[0];
@@ -20,8 +23,13 @@ function encrypt() {
 	   	message.value = ciphertext;	
 			var message_body = document.getElementById("message_body");
 			message_body.value = ciphertext;
+			callback(true);	
+
    	});
 	}
+			
+  }
+};
 }
 
 function file() {	
@@ -60,7 +68,23 @@ function fingerprint(key) {
   return "Fingerprint: " + fpr.slice(0, 4) + ' ' + fpr.slice(4, 8) + ' ' + fpr.slice(8, 12) + ' ' + fpr.slice(12, 16) + ' ' + fpr.slice(16, 20) + ' ' + fpr.slice(20, 24) + ' ' + fpr.slice(24, 28) + ' ' + fpr.slice(28, 32) + ' ' + fpr.slice(32, 36) + ' ' + fpr.slice(36);
 }
 
+function validateEmail($email) {
+  var emailReg = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
+  if (!emailReg.test($email)) {
+    return false;
+  } else {
+    return true;
+  }
+}
+
 $(function(){
+	
+	// prevent form submit by enter
+	$("#new_message").bind("keypress", function (e) {
+	    if (e.keyCode == 13) {
+	        return false;
+	    }
+	});
 	
 	// init openpgp worker
 	openpgp.initWorker('/assets/openpgp.worker.min.js');
@@ -126,26 +150,28 @@ $(function(){
 			window.location.href = "/" + this.value;
    });
 	 
-   $('#encrypt').on("click",function(e){
-	   encrypt();
-		 $('#send').text('Send');
-		 $('#send').show();
-		 $('#encrypt').hide();
+   $('#encrypt').on("click",function(e){ 
+		 encrypt().then(function(done) {
+			 $('#send').text('Send');
+			 $('#send').show();
+			 $('#encrypt').hide();
+		 });
    });
-
-   // validate form on submit
-   $.validate({
-	 	validateOnBlur : false,
-	  errorMessagePosition : 'top',
-	  scrollToTopOnError : false,
-	  form : '#new_message',
-    onValidate : function() {       	
-			encrypt();
-    },
-		onSuccess : function() {
-			encrypt();
-			$('#send').text('Uploading...');
-			$('#encrypt').text('Uploading...');
-    },
-	});
+	 
+   $('#send').on("click",function(e){
+		 encrypt().then(function(done) {
+			 if (done) {
+				 var email = $('#message_from').val();
+				 // validate email
+				 if (email !== "" && validateEmail(email)) {
+					 $('#send').text('Uploading...');
+					 $('#encrypt').text('Uploading...');
+				   $('#new_message').submit();
+				 } else {
+				   alert("Please enter a valid email!");
+					 $('#send').text('Send');
+				 }
+			 } 
+		});
+   });
 });

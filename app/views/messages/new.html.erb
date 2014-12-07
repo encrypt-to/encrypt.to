@@ -39,18 +39,17 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 <div class="pure-u-1 form-box">
     <div class="l-box">
 		
-		<%= form_for @message, :html => { :class => "pure-form pure-form-aligned"  } do |f| %>
+		<%= form_for @message, :html => { :class => "pure-form pure-form-aligned" } do |f| %>
 
 		<h2>To:&nbsp;<%= receiver(@to, f) %></h2>
 		<div style="text-align:left;padding:0px 0 10px 0;"><%= link_to "Public key: #{@keyids.first}", "http://pgpkey.org/pks/lookup?op=vindex&search=#{@keyids.first}&fingerprint=on", :id => "fingerprint" if @keyids %></div>
 		<fieldset>
 			<div class="pure-control-group">
-				<%= f.text_area :body_input, :rows => 10, :placeholder => "Message", :focus => true, "data-validation-length".to_sym => "min1", :style=>"width: 100%" %>
+				<%= f.text_area :body_input, :rows => 10, :placeholder => "Message", :focus => true, :style=>"width: 100%" %>
 			</div>
 			<br />
 			<div class="pure-control-group">
-				<%= f.text_field :from, :placeholder => "Your Email", :focus => false, "data-validation".to_sym => "email", :style=>"width: 50%" %>
-		
+				<%= f.text_field :from, :placeholder => "Your Email", :focus => false, :style=>"width: 50%" %>
 			</div>
 			<%= f.hidden_field :to, :value => @to.is_a?(Array) ? @to[0] : @to %>
 			<%= f.hidden_field :body %>
@@ -66,8 +65,8 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 		<table>
 			<tr>
 				<td>
-					<button id="send" class="pure-button pure-button-primary">Encrypt & Send</button>
-					<button id="encrypt" type="button" class="pure-button pure-button-primary">Encrypt</button>
+					<div id="send" class="pure-button pure-button-primary">Encrypt & Send</div>
+					<div id="encrypt" type="button" class="pure-button pure-button-primary">Encrypt</div>
 				</td>
 				<td>
 					<% if (@user && @user.form_advanced_mode) or @user.nil? %>
