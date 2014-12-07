@@ -12,15 +12,15 @@ function encrypt() {
    	var message = document.getElementById("message_body_input");
 		
    	var plaintext = message.value;
-   	var ciphertext = openpgp.encryptMessage([publicKeys],plaintext);
-		
-		var result = openpgp.message.readArmored(ciphertext);
-		var validateMessage = JSON.stringify(result).replace(/,/g,'\n');
-		$('#check-message').text(validateMessage);
+   	openpgp.encryptMessage([publicKeys],plaintext).then(function(ciphertext) {
+			var result = openpgp.message.readArmored(ciphertext);
+			var validateMessage = JSON.stringify(result).replace(/,/g,'\n');
+			$('#check-message').text(validateMessage);
 
-   	message.value = ciphertext;	
-		var message_body = document.getElementById("message_body");
-		message_body.value = ciphertext;
+	   	message.value = ciphertext;	
+			var message_body = document.getElementById("message_body");
+			message_body.value = ciphertext;
+   	});
 	}
 }
 
@@ -61,6 +61,10 @@ function fingerprint(key) {
 }
 
 $(function(){
+	
+	// init openpgp worker
+	openpgp.initWorker('/assets/openpgp.worker.min.js');
+	
 	// focus body on load
    $("#message_body_input").focus();
 	 
