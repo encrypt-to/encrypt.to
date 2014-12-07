@@ -17,8 +17,8 @@ Dec 07,2014
 
 ## Bug fixes
 
-* Check if the key-id has an associated email address [#33]https://github.com/encrypt-to/encrypt.to/issues/33
-* Ignore revoked keys [#34]https://github.com/encrypt-to/encrypt.to/issues/34
+* Check if the key-id has an associated email address [#33](https://github.com/encrypt-to/encrypt.to/issues/33)
+* Ignore revoked keys [#34](https://github.com/encrypt-to/encrypt.to/issues/34)
 
 ## Refactor
 
