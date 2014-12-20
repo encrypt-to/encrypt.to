@@ -32,6 +32,7 @@ function encrypt() {
 };
 }
 
+
 function file() {	
 	// encrypt file		
 	var file = $("#message_file_input").get(0).files[0];
@@ -53,6 +54,7 @@ function file() {
 		msg = msg.encrypt([publicKeys]);
 		var armored = openpgp.armor.encode(openpgp.enums.armor.message, msg.packets.write());
 		var message_file = document.getElementById("message_file");
+		console.log(armored);
 		message_file.value = window.btoa(armored);
 		var message_filename = document.getElementById("message_filename");
 		message_filename.value = file.name + ".gpg"
@@ -80,7 +82,7 @@ function validateEmail($email) {
 $(function(){
 	
 	// prevent form submit by enter
-	$("#new_message").bind("keypress", function (e) {
+	$('input,select').bind("keypress", function (e) {
 	    if (e.keyCode == 13) {
 	        return false;
 	    }
