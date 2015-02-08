@@ -7,7 +7,6 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'stripe'
 gem 'stripe_event'
-gem "simple_form", ">= 2.1.0"
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
