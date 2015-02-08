@@ -16,10 +16,12 @@ class UsersController < ApplicationController
       if current_user != @user
         redirect_to "/"
       elsif @user.update_attributes(params[:user])
-        if params[:user][:stripe_token]
+        if params[:user].present? && params[:user][:stripe_token].present?
           format.html { redirect_to "/", notice: 'Credit card was successfully updated.' }
-        else
+        elsif params[:public_key].present? && params[:public_key].present?
           format.html { redirect_to "/", notice: 'Public key was successfully updated.' }
+        else
+          format.html { redirect_to "/", notice: 'Successfully updated.' }
         end
       else
         format.html { redirect_to "/", notice: 'Not allowed.' }
