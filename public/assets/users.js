@@ -96,7 +96,7 @@ $(function(){
       var subscription = {
         setupForm: function() {
           return $('.card_form').submit(function() {
-            $('input[type=submit]').prop('disabled', true);
+            //$('input[type=submit]').prop('disabled', true);
             if ($('#card_number').length) {
               subscription.processCard();
               return false;

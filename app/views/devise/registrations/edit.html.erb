@@ -39,13 +39,6 @@
                 <div class="pure-u-1-2">
                     <div class="l-box">
                       
-											
-                      <h3>Card</h3>
-                      
-											<p>
-											  Using card ending with <%= @user.last_4_digits %>
-											</p>
-                      
                       <h3>Cancel my account</h3>
 
                       <p>Unhappy? <%= button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class=>"pure-button pure-button-error" %></p>
@@ -55,5 +48,4 @@
 
             </div> <!-- end information -->
         </div> <!-- end l-content -->
-
 

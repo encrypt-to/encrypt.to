@@ -1,0 +1,67 @@
+<% content_for :head do %>
+  <%= tag :meta, :name => "stripe-key", :content => APP_CONFIG['stripe_public_key'] %>
+<% end %>
+
+<div class="l-content">
+
+    <div class="information pure-g-r">
+        <div class="pure-u-1-2">
+            <div class="l-box">
+              
+              <div id="stripe_error" class="alert alert-error" style="display:none" ></div>
+              
+              <h3>Card</h3>
+              
+							<p>
+							  Using card ending with <%= @user.last_4_digits %><br>
+              </p>
+
+<%= form_for(@user, :url => "/#{@user.username}/edit", :html => { :class => "pure-form pure-form-stacked card_form" }) do |f| %>
+
+  <%#= simple_form_for resource, :as => resource_name, :url => update_card_path, :html => {:method => :put, :class => 'form-horizontal card_form' } do |f| %>
+
+      <h3>Change Credit Card</h3>
+
+	<div class="pure-g">
+	    <div class="pure-u-1-2"><p>
+      <%= label_tag :card_number, "Credit Card Number" %>
+      <%= text_field_tag :card_number, nil, name: nil, size: '30', placeholder: '1111 2222 3333 4444' %>
+			</p></div>
+	    <div class="pure-u-1-2"><p>
+      <%= label_tag :card_code, "Card Security Code (CVV)" %>
+      <%= text_field_tag :card_code, nil, name: nil, size: '15', placeholder: '123' %>
+			</p></div>
+	</div>
+  
+	<%= label_tag :card_month, "Card Expiration" %>
+						<table border="0">
+							<tr>
+								<td><%= select_month nil, {add_month_numbers: true}, {name: nil, id: "card_month", class: 'input-medium'}  %></td>
+								<td><%= select_year nil, {start_year: Date.today.year, end_year: Date.today.year+10}, {name: nil, id: "card_year", class: 'input-small'} %></td>
+							</tr>
+						</table>
+
+
+      <%= f.hidden_field :username %>
+      <%= f.hidden_field :email %>
+      <%= f.hidden_field :stripe_token, value: @user.stripe_token %>
+<br>
+      <%= f.submit "Change Credit Card", :class => "pure-button pure-button-primary" %>
+    
+
+  <% end %>
+
+
+
+
+            </div>
+        </div>
+
+        <div class="pure-u-1-2">
+            <div class="l-box">
+
+            </div>
+        </div>
+        
+    </div> <!-- end information -->
+</div> <!-- end l-content -->

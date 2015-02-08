@@ -18,6 +18,9 @@ Encryptto::Application.routes.draw do
   match 'privacy' => 'home#privacy', via: :get
 
   devise_for :users, controllers: { registrations: "registrations" }
+  devise_scope :user do
+    put 'update_card', :to => 'registrations#update_card'
+  end
   resources :users
     
   match ':uid/edit/:context' => 'users#edit', via: :get

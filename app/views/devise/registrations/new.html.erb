@@ -29,7 +29,12 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 
 							<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "pure-form pure-form-stacked card_form"  }) do |f| %>
 				  		<%= devise_error_messages! %>
-
+              <% if resource.errors.any? %>
+              <%= f.hidden_field :plan %>
+              <% else %>
+              <%= f.hidden_field :plan, value: params[:plan]  %>
+              <% end %>
+              
 							<legend>Sign up</legend>
 
 							<fieldset>
@@ -91,7 +96,7 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 
 								<p>You won't be billed unless you keep your account open past your 14-day free trail. By clicking on "Create an account" below, you are agreeing to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>.</p>
 				
-								<%= f.submit "Create an account", :class => "pure-button pure-button-primary", :id => "submit_button", :disabled => "disabled" %>
+								<%= f.submit "Create an account", :class => "pure-button pure-button-primary", :id => "submit_button" %>
 			
 							</fieldset>
 		
