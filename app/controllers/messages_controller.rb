@@ -1,4 +1,5 @@
 class MessagesController < ApplicationController
+  before_filter :set_locale
 
   require './lib/keyserver.rb' 
   require './lib/util.rb' 
@@ -48,11 +49,11 @@ class MessagesController < ApplicationController
       if @pubkey && @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK")
         format.html
       elsif @uid && @uid.include?("0x")
-        format.html { redirect_to "/", notice: "Sorry, this key-id has no associated email address. Please try again!" }
+        format.html { redirect_to "/", notice: t(".no_mail") }
       elsif @uid && @uid.include?("@")
-        format.html { redirect_to "/", notice: "Sorry, this email has no associated public key. Please try again!" }
+        format.html { redirect_to "/", notice: t(".no_public_key") }
       else
-        format.html { redirect_to "/", notice: "Sorry, invalid link. Please use an email or key-id and try again!" }
+        format.html { redirect_to "/", notice: t(".invalid_link") }
       end  
     end
   end
@@ -84,12 +85,17 @@ class MessagesController < ApplicationController
         if user
           format.html { redirect_to "/#{user.username}/thanks" }
         else
-          format.html { redirect_to "/", notice: 'Encrypted message sent! Thanks.' }
+          format.html { redirect_to "/", notice: t(".success_send") }
         end
       else
-        format.html { redirect_to "/", notice: 'Sorry something went wrong. Try again!' }
+        format.html { redirect_to "/", notice: t(".error_send") }
       end
     end
+  end
+  
+  private
+  def set_locale
+    I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
   end
 
 end

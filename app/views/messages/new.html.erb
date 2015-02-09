@@ -3,10 +3,11 @@
 #send{display:none;}
 </style>
 <div class="marker_success">
-Please enable Javascript in your browser and then refresh this page!
+<%= t (".js_error") %>
 </div>
 </noscript>
-
+<input id="valid_mail" type="hidden" value="<%= t ".valid_mail" %>">
+<input id="sending" type="hidden" value="<%= t ".sending" %>">
 <% if @user && !(@user.css_form_background == "EBF1F4" and @user.css_form_color == "777777") %>
 <style type="text/css">
 body {
@@ -31,7 +32,7 @@ a, h2, h3, table, input[type=file] {
 <% end %>
 
 <div class="marker_browser">
-Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Firefox >= 21, Opera >= 15 or IE >= 11!
+<%= t (".browser_support") %>
 </div>
 
 <div>
@@ -41,15 +42,15 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 		
 		<%= form_for @message, :html => { :class => "pure-form pure-form-aligned" } do |f| %>
 
-		<h2>To:&nbsp;<%= receiver(@to, f) %></h2>
-		<div style="text-align:left;padding:0px 0 10px 0;"><%= link_to "Public key: #{@keyids.first}", "http://pgpkey.org/pks/lookup?op=vindex&search=#{@keyids.first}&fingerprint=on", :id => "fingerprint" if @keyids %></div>
+		<h2><%= t ".to" %>:&nbsp;<%= receiver(@to, f) %></h2>
+		<div style="text-align:left;padding:0px 0 10px 0;"><%= link_to t(".public_key") + ": #{@keyids.first}", "http://pgpkey.org/pks/lookup?op=vindex&search=#{@keyids.first}&fingerprint=on", :id => "fingerprint" if @keyids %></div>
 		<fieldset>
 			<div class="pure-control-group">
-				<%= f.text_area :body_input, :rows => 10, :placeholder => "Message", :focus => true, :style=>"width: 100%" %>
+				<%= f.text_area :body_input, :rows => 10, :placeholder => t(".message"), :focus => true, :style=>"width: 100%" %>
 			</div>
 			<br />
 			<div class="pure-control-group">
-				<%= f.text_field :from, :placeholder => "Your Email", :focus => false, :style=>"width: 50%" %>
+				<%= f.text_field :from, :placeholder => t(".your_mail"), :focus => false, :style=>"width: 50%" %>
 			</div>
 			<%= f.hidden_field :to, :value => @to.is_a?(Array) ? @to[0] : @to %>
 			<%= f.hidden_field :body %>
@@ -57,38 +58,38 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 			<%= f.hidden_field :filename %>
 		<br />
 		<% if (@user && @user.form_attachment) or @user.nil? %>
-		<h3>Attachment max. 1 MB</h3><input type="file" id="message_file_input" />
-		<div id="encrypting" style="display:none;">Encrypting...</div>
-		<a id="remove" href="#" style="display:none;">remove</a>
+		<h3><%= t ".attachment" %></h3><input type="file" id="message_file_input" />
+		<div id="encrypting" style="display:none;"><%= t ".encrypting" %></div>
+		<a id="remove" href="#" style="display:none;"><%= t ".remove" %></a>
 		<% end %>
 		<br /><br />
 		<table>
 			<tr>
 				<td>
-					<div id="send" class="pure-button pure-button-primary">Encrypt & Send</div>
-					<div id="encrypt" type="button" class="pure-button pure-button-primary">Encrypt</div>
+					<div id="send" class="pure-button pure-button-primary"><%= t ".encrypt_send" %></div>
+					<div id="encrypt" type="button" class="pure-button pure-button-primary"><%= t ".encrypt" %></div>
 				</td>
 				<td>
 					<% if (@user && @user.form_advanced_mode) or @user.nil? %>
-						&nbsp;&nbsp;&nbsp;<input id="advanced" type="checkbox" value=""> Advanced mode
+						&nbsp;&nbsp;&nbsp;<input id="advanced" type="checkbox" value=""> <%= t ".advanced_mode" %>
 					<% end %>
 				</td>
 			</tr>
 		</table>
 		<br />
 		<% if @keyids && @keyids.size > 1 %>
-		<h3 class="hidden">Change Public Key</h3>
+		<h3 class="hidden"><%= t ".change_key" %></h3>
 		<div id="change-pubkey"><%= keyid(@keyids, f) if @keyids %></div>
 		<br />
 		<% end %>
-		<h3 class="hidden">OpenPGP Public Key</h3>
+		<h3 class="hidden"><%= t ".public_key" %></h3>
 		<textarea style="width: 100%" id="pubkey" rows="20" disabled="disabled"><%= @pubkey %></textarea>
 		<br />
-		<h3 class="hidden">Validate OpenPGP Public Key</h3>
-		<textarea style="width: 100%" id="check-pubkey" rows="20" disabled="disabled">Please click on the Encrypt button to see the public key validation.</textarea>
+		<h3 class="hidden"><%= t ".validate_public_key" %></h3>
+		<textarea style="width: 100%" id="check-pubkey" rows="20" disabled="disabled"><%= t ".please_click" %></textarea>
 		<br />
-		<h3 class="hidden">Validate OpenPGP Message</h3>
-		<textarea style="width: 100%" id="check-message" rows="20" disabled="disabled">Please click on the Encrypt button to see the message validation.</textarea>
+		<h3 class="hidden"><%= t ".validate_message" %></h3>
+		<textarea style="width: 100%" id="check-message" rows="20" disabled="disabled"><%= t ".please_click" %></textarea>
 		
 		</fieldset>
 

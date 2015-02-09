@@ -81,6 +81,7 @@ GEM
       rspec (>= 2.99.0, < 4.0)
     hike (1.2.3)
     hitimes (1.2.2)
+    http_accept_language (2.0.5)
     i18n (0.6.11)
     journey (1.0.4)
     jquery-rails (3.1.2)
@@ -231,6 +232,7 @@ DEPENDENCIES
   factory_girl_rails
   faker
   guard-rspec
+  http_accept_language
   jquery-rails
   launchy
   mysql2

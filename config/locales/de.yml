@@ -1,0 +1,30 @@
+# Sample localization file for English. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+de:
+  success_send: "Verschlüsselte Nachricht wurde erfolgreich versendet. Danke."
+  error_send: "Irgendwas ging schief. Bitte nochmals versuchen!"
+  messages:
+    new:
+      js_error: "Bitte aktivieren Sie Javascript in Ihrem Browser und laden Sie die Seite neu!"
+      browser_support: "Sorry Ihr Browser wird nicht unterstützt. Bitte verwenden Sie Chrome >= 11, Safari >= 3.1, Firefox >= 21, Opera >= 15 oder IE >= 11!"
+      to: "An"
+      attachment: "Anhang max. 1 MB"
+      message: "Nachricht"
+      your_mail: "Ihre E-Mail"
+      encrypt_send: "Verschlüsseln & Senden"
+      encrypt: "Verschlüsseln"
+      advanced_mode: "Pro Modus"
+      public_key: "OpenPGP Öffentlicher Schlüssel"
+      validate_public_key: "Validierung: OpenPGP Öffentlicher Schlüssel"
+      validate_message: "Validierung: OpenPGP Nachricht"
+      please_click: "Bitte klicken Sie auf den Verschlüsseln Button um die Validierung zu auszuführen."
+      remove: "entfernen"
+      change_key: "Öffentlicher Schlüssel wechseln"
+      encrypting: "Verschlüsseln..."
+      sending: "Senden..."
+      public_key: "Öffentlicher Schlüssel"
+      valid_mail: "Bitte geben Sie eine gültige E-Mail Adresse ein!"
+      no_mail: "Sorry, dieser Schlüssel hat keine hinterlegten E-Mail Adressen!"
+      no_public_key: "Sorry, diese E-Mail ist nicht auf dem Schlüsselserver hinterlegt!"
+      invalid_link: "Sorry, falscher Link. Bitte nutzen Sie eine gültige E-Mail oder einen Öffentlichen Schlüssel!"

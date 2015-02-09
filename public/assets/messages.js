@@ -158,11 +158,11 @@ $(function(){
 				var email = $('#message_from').val();
 				// validate email
 				if (email !== "" && validateEmail(email)) {
-					$('#send').text('Uploading...');
-					$('#encrypt').text('Uploading...');
+					$('#send').text($('#sending').val());
+					$('#encrypt').text($('#sending').val());
 					$('#new_message').submit();
 				} else {
-					alert("Please enter a valid email!");
+					alert($('#valid_mail').val());
 					$('#send').text('Send');
 				}
 			} 

@@ -7,6 +7,7 @@ gem 'jquery-rails'
 gem 'devise'
 gem 'stripe'
 gem 'stripe_event'
+gem 'http_accept_language'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
