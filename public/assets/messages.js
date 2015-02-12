@@ -146,7 +146,7 @@ $(function(){
 	 
 	$('#encrypt').on("click",function(e){ 
 		encrypt().then(function(done) {
-			$('#send').text('Send');
+			$('#send').text($('#send_button').val());
 			$('#send').show();
 			$('#encrypt').hide();
 		});

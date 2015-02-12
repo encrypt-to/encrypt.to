@@ -23,6 +23,7 @@ en:
       change_key: "Change Public Key"
       encrypting: "Encrypting..."
       sending: "Sending..."
+      send: "Send"
       public_key: "Public Key"
       valid_mail: "Please enter a valid email!"
       no_mail: "Sorry, this key-id has no associated email address. Please try again!"

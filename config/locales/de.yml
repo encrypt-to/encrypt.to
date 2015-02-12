@@ -23,6 +23,7 @@ de:
       change_key: "Öffentlicher Schlüssel wechseln"
       encrypting: "Verschlüsseln..."
       sending: "Senden..."
+      send: "Absenden"
       public_key: "Öffentlicher Schlüssel"
       valid_mail: "Bitte geben Sie eine gültige E-Mail Adresse ein!"
       no_mail: "Sorry, dieser Schlüssel hat keine hinterlegten E-Mail Adressen!"
