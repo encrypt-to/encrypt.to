@@ -1,0 +1,31 @@
+# Sample localization file for Romanian. Add more files in this directory for other locales.
+# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
+
+en:
+  success_send: "Mesajul criptat a fost trimis! Mulțumim."
+  error_send: "A intervenit o eroare. Încercați din nou!"
+  messages:
+    new:
+      js_error: "Vă rugăm să activați Javascript în navigatorul dumneavoastră apoi actualizați pagina!"
+      browser_support: "Navigatorul dumneavoastră nu este compatibil. Utilizați Chrome >= 11, Safari >= 3.1, Firefox >= 21, Opera >= 15 sau IE >= 11!"
+      to: "Către"
+      attachment: "Conținut atașat max. 1 MB"
+      message: "Mesaj"
+      your_mail: "Emailul dumneavoastră"
+      encrypt_send: "Criptare și expediere"
+      encrypt: "Criptare"
+      advanced_mode: "Mod avansat"
+      public_key: "Cheie publică OpenPGP"
+      validate_public_key: "Validare cheie publică OpenPGP"
+      validate_message: "Validare mesaj OpenPGP"
+      please_click: "Acționați butonul Criptare pentru a efectua validarea."
+      remove: "Ștergere"
+      change_key: "Actualizare cheie publică"
+      encrypting: "Criptare în progress..."
+      sending: "Expediere mesaj..."
+      send: "Expediere"
+      public_key: "Cheie publică"
+      valid_mail: "Introduceți un email valid!"
+      no_mail: "Din păcate această cheie nu are asociată o adresă de email. Încercați o altă cheie!"
+      no_public_key: "Din păcate nu am găsit o cheie pentru această adresă de email. Încercați o adresă alternativă!"
+      invalid_link: "Legătură nevalidă. Încercați din nou folosind o adresă de email sau id!"
