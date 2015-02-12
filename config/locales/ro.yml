@@ -1,7 +1,7 @@
 # Sample localization file for Romanian. Add more files in this directory for other locales.
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
-en:
+ro:
   success_send: "Mesajul criptat a fost trimis! Mulțumim."
   error_send: "A intervenit o eroare. Încercați din nou!"
   messages:
