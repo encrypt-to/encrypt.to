@@ -55,7 +55,7 @@ describe MessagesController do
     it "has a 302 status code if params empty" do
       get :new
       expect(response.status).to eq(302)
-      flash[:notice].should match(I18n.t('.invalid_link'))
+      flash[:notice].should match(I18n.t('messages.new.invalid_link'))
     end
   end
   
@@ -63,7 +63,7 @@ describe MessagesController do
     it "has a 302 status code if params invalid email" do
       get :new, uid: invalid_email
       expect(response.status).to eq(302)
-      flash[:notice].should match(I18n.t('.no_public_key'))
+      flash[:notice].should match(I18n.t('messages.new.no_public_key'))
     end
   end
   
@@ -71,7 +71,7 @@ describe MessagesController do
     it "has a 302 status code if params invalid key-id" do
       get :new, uid: invalid_keyid
       expect(response.status).to eq(302)
-      flash[:notice].should match(I18n.t('.no_mail'))
+      flash[:notice].should match(I18n.t('messages.new.no_mail'))
     end
   end
   
@@ -95,7 +95,7 @@ describe MessagesController do
     it "has a 302 status code if params uid is an expired email" do
       get :new, uid: expired_email
       expect(response.status).to eq(302)
-      flash[:notice].should match(I18n.t('.no_public_key'))
+      flash[:notice].should match(I18n.t('messages.new.no_public_key'))
     end
   end
   
