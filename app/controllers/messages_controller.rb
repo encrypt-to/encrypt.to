@@ -49,11 +49,11 @@ class MessagesController < ApplicationController
       if @pubkey && @pubkey.include?("BEGIN PGP PUBLIC KEY BLOCK")
         format.html
       elsif @uid && @uid.include?("0x")
-        format.html { redirect_to "/", notice: t(".no_mail") }
+        format.html { redirect_to "/", notice: t("messages.new.no_mail") }
       elsif @uid && @uid.include?("@")
-        format.html { redirect_to "/", notice: t(".no_public_key") }
+        format.html { redirect_to "/", notice: t("messages.new.no_public_key") }
       else
-        format.html { redirect_to "/", notice: t(".invalid_link") }
+        format.html { redirect_to "/", notice: t("messages.new.invalid_link") }
       end  
     end
   end
