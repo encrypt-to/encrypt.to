@@ -9,7 +9,7 @@ class Keyserver
     uids = modified_string.split("pub:")
     found = []
     for uid in uids
-      found << "0x" + uid.split(":")[0].downcase if uid.include?(email)
+      found << "0x" + uid.split(":")[0].downcase if uid.downcase.include?(email)
     end
     found
   end
