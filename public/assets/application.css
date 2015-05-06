@@ -46,6 +46,10 @@ a {
 	color: #333;	
 }
 
+h2 > input {
+	color: #777;
+}
+
 body {
     color: #777;
 }
