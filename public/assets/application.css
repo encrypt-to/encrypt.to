@@ -34,6 +34,10 @@ body {
  font-size: 125%;
 }
 
+#advanced_mode {
+	display: none;
+}
+
 #error_explanation {
 	font-size: 75%;
 	display: block;

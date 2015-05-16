@@ -100,19 +100,11 @@ $(function(){
 	// advanced mode
 	$('#advanced').change(function(){
 		if($(this).is(':checked')){
-			$('#change-pubkey').show();
-			$('#pubkey').show();
-			$('#check-pubkey').show();
-			$('#check-message').show();
-			$('.hidden').show();
+			$('#advanced_mode').show();
 			$('#send').hide();
 			$('#encrypt').show();		   
 		} else {
-			$('#change-pubkey').hide();
-			$('#pubkey').hide();
-			$('#check-pubkey').hide();
-			$('#check-message').hide();
-			$('.hidden').hide();
+			$('#advanced_mode').hide();
 			$('#send').show();
 			$('#encrypt').hide();
 		}

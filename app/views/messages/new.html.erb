@@ -78,19 +78,21 @@ a, h2, h3, table, input[type=file] {
 			</tr>
 		</table>
 		<br />
+    <div id="advanced_mode">
 		<% if @keyids && @keyids.size > 1 %>
-		<h3 class="hidden"><%= t ".change_key" %></h3>
+		<h3><%= t ".change_key" %></h3>
 		<div id="change-pubkey"><%= keyid(@keyids, f) if @keyids %></div>
 		<br />
 		<% end %>
-		<h3 class="hidden"><%= t ".public_key" %></h3>
+		<h3><%= t ".public_key" %></h3>
 		<textarea style="width: 100%" id="pubkey" rows="20" disabled="disabled"><%= @pubkey %></textarea>
 		<br />
-		<h3 class="hidden"><%= t ".validate_public_key" %></h3>
+		<h3><%= t ".validate_public_key" %></h3>
 		<textarea style="width: 100%" id="check-pubkey" rows="20" disabled="disabled"><%= t ".please_click" %></textarea>
 		<br />
-		<h3 class="hidden"><%= t ".validate_message" %></h3>
+		<h3><%= t ".validate_message" %></h3>
 		<textarea style="width: 100%" id="check-message" rows="20" disabled="disabled"><%= t ".please_click" %></textarea>
+    </div>
 		
 		</fieldset>
 

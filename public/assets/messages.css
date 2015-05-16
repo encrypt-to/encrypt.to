@@ -60,7 +60,7 @@ body {
 }
 
 #pubkey, #check-message, #check-pubkey, #change-pubkey {
-	display:none;
+	display:block;
 	background-color: #fff;
 	color: #999;
 }
