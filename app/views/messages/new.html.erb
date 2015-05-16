@@ -58,12 +58,12 @@ a, h2, h3, table, input[type=file] {
 			<%= f.hidden_field :file %>
 			<%= f.hidden_field :filename %>
 		<br />
-		<% if (@user && @user.form_attachment) or @user.nil? %>
+		<% if (@user && @user.form_attachment) %>
 		<h3><%= t ".attachment" %></h3><input type="file" id="message_file_input" />
 		<div id="encrypting" style="display:none;"><%= t ".encrypting" %></div>
 		<a id="remove" href="#" style="display:none;"><%= t ".remove" %></a>
-		<% end %>
 		<br /><br />
+    <% end %>
 		<table>
 			<tr>
 				<td>
