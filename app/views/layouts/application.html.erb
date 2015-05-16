@@ -23,13 +23,12 @@
 	<% unless request[:controller] == "messages" %>
 	<div>
 	    <div class="hero-titles">
-				  <h1 class="logo"><a href="/">En</a>
+				  <a href="/"><img class="logo" src="/assets/logo.png"></a>
 						<% if request[:controller] == "home" and !current_user %>
-						<div style="float:right;">
-							<a style="font-size: 40%;" class="pure-button pure-button-cta" href="/users/sign_in">Login</a>
+						<div style="float:right;padding-top: 15px;">
+							<a style="font-size: 80%;" class="pure-button pure-button-cta" href="/users/sign_in">Login</a>
 						</div>
 						<% end %>
-					</h1>
 			</div>
 
 	</div>
