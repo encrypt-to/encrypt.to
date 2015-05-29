@@ -33,7 +33,7 @@ Please enable Javascript in your browser and then refresh this page!
 					
             <h2><mark>We believe privacy is a human right.</mark> </h2>						
 				
-						<p><b>Add a secure contact form to any site in minutes with no coding required.</b></p>
+						<p><b>Add the secure contact form to any site in minutes with no coding required.</b></p>
 				
 			<p>It encrypts the message with PGP (client-side) and sends it on to the mail account. A user who does not use PGP can send fairly secure mails to PGP-users. A simple vanity-style URL can be given to such users for easy access to the secure contact form.</p>
 			
@@ -83,7 +83,7 @@ Please enable Javascript in your browser and then refresh this page!
     <div class="pure-u-1-3">
         <div class="l-box">
             <h3>Open Source.</h3>
-            <p><%= image_tag "/assets/oss.png", :width => 128 %><br>The <a target="_blank" href="https://github.com/encrypt-to/encrypt.to">source code</a> is licensed under the MIT license and available on GitHub.</p>
+            <p><%= image_tag "/assets/oss.png", :width => 128 %><br>The <a target="_blank" href="https://github.com/encrypt-to/encrypt.to">source code</a> is licensed under the MIT license and available on GitHub. Available for Ruby, PHP and Perl. Simple deployment on your Webhost or Heroku.</p>
 
         </div>
     </div>
@@ -182,7 +182,7 @@ Please enable Javascript in your browser and then refresh this page!
                 </tbody>
             </table>
 
-			<p>Need a custom solution? Wanna pay via bitcoin? No problem. Please <a href="/hello@encrypt.to">contact us!</a></p>
+			<p>Need a custom solution? Wanna pay with bitcoin? No problem. Please <a href="/hello@encrypt.to">contact us!</a></p>
 			  </div>
     </div>	
 </div>
@@ -191,7 +191,7 @@ Please enable Javascript in your browser and then refresh this page!
     <div class="content legal">
         <div class="l-box">
             <h2><mark>Browser Compatibility</mark></h2>
-            <p>We need a cryptographically secure PRNG to be implemented (i.e. the window.crypto method) based on <a target="_blank" href="http://www.w3.org/TR/WebCryptoAPI/">Web Cryptography API</a> <i>(W3C Working Draft 25 June 2013)</i>.</p>
+            <p>We need a cryptographically secure PRNG to be implemented (i.e. the window.crypto method) based on <a target="_blank" href="http://caniuse.com/#feat=cryptography">Web Cryptography API</a> <i>(W3C Candidate Recommendation 11 December 2014)</i>.</p>
             <table class="pure-table pure-table-horizontal">
               <thead>
                   <tr>
@@ -242,6 +242,10 @@ Please enable Javascript in your browser and then refresh this page!
 
 <p><%= image_tag "/assets/gpgtools.png", :height => 50 %><%= image_tag "/assets/seahorse.png", :height => 50 %><%= image_tag "/assets/gpg4win.png", :height => 50 %></p>
 
+<p>Join a <a target="_blank" href="https://twitter.com/encrypt_to/lists/crypto-party">CryptoParty</a> in your neighborhood!</p>
+
+<p><%= image_tag "/assets/cryptoparty.png", :height => 50 %></>
+
 <p style="font-size:small;">
  * I don't know what you talkin 'bout. <a target="_blank" href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy">Read how PGP works.</a>
 </p>
@@ -252,29 +256,19 @@ Please enable Javascript in your browser and then refresh this page!
 <div>	
     <div class="content legal">
         <div class="l-box">
-            <h2><mark>Can I host this myself?</mark></h2>
-			<p>Yes, you can. The software is available for <a target="_blank" href="https://github.com/encrypt-to/secure.contactform.ruby">Ruby</a>, <a target="_blank" href="https://github.com/encrypt-to/secure.contactform.php">PHP</a> and <a target="_blank" href="https://github.com/encrypt-to/secure.contactform.perl">Perl</a>. Simple deployment on your Webhost or Heroku.</p>						
-        </div>
-    </div>	
-</div>
-
-<div>	
-    <div class="content legal">
-        <div class="l-box">
-            <h2><mark>API v1</mark></h2>
+      <h2><mark>API v1</mark></h2>
 			<p>All API access is over HTTPS and accessed from https://encrypt.to/api/v1/. All data is sent and received as JSON.</p>
-			<br />
-			<h3>Client errors</h3>
-			<pre>curl https://encrypt.to/api/v1/keyserver/lookup</pre>
-			<pre>{"status":"error","message":"Wrong params, please try again."}</pre>
-			<br />
 			<h3>Get public key by email</h3>
 			<pre>curl https://encrypt.to/api/v1/keyserver/lookup?email=hello@encrypt.to</pre>
 			<pre>{"status":"success","keys":[{"key_id":"0x11489A1F","public_key":"-----BEGIN PGP PUBLIC KEY BLOCK-----"}]}</pre>
 			<br />
 			<h3>Get public key by key id</h3>
 			<pre>curl https://encrypt.to/api/v1/keyserver/lookup?keyid=0x11489A1F</pre>			
-			<pre>{"status":"success","keys":[{"key_id":"0x11489A1F","public_key":"-----BEGIN PGP PUBLIC KEY BLOCK-----"}]}</pre>	
+			<pre>{"status":"success","keys":[{"key_id":"0x11489A1F","public_key":"-----BEGIN PGP PUBLIC KEY BLOCK-----"}]}</pre>
+      <br />
+      <h3>Client errors</h3>
+			<pre>curl https://encrypt.to/api/v1/keyserver/lookup</pre>
+			<pre>{"status":"error","message":"Wrong params, please try again."}</pre>    
         </div>
     </div>	
 </div>
