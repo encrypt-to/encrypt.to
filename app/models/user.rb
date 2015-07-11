@@ -57,7 +57,7 @@ class User < ActiveRecord::Base
       customer = Stripe::Customer.retrieve(customer_id)
       unless customer.nil? or customer.respond_to?('deleted')
         subscription = customer.subscriptions.data[0]
-        if subscription.status == 'active' or subscription.status == 'trialing'
+        if subscription && (subscription.status == 'active' or subscription.status == 'trialing')
           customer.cancel_subscription
         end
       end
