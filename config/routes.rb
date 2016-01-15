@@ -21,7 +21,6 @@ Encryptto::Application.routes.draw do
   devise_scope :user do
     put 'update_card', :to => 'registrations#update_card'
   end
-  resources :users
     
   match ':uid/edit/:context' => 'users#edit', via: :get
   match ':uid/edit' => 'users#update', via: :put
