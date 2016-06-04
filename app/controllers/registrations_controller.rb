@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def create
-    if params[:user][:plan].present? and ["pro5","enterprise25"].include?(params[:user][:plan])
+    if params[:user][:plan].present? and ["pro5","pro49"].include?(params[:user][:plan])
       super
       MessageMailer.welcome_email(@user).deliver unless @user.invalid?
     else
