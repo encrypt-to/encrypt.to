@@ -7,18 +7,22 @@ function encrypt() {
 				callback(true);	
 			} else {
 				// encrypt message
-				publicKeys = openpgp.key.readArmored($('#pubkey').text()).keys[0];
+        var pubkey = $('#pubkey').text();
+				publicKeys = openpgp.key.readArmored(pubkey).keys[0];
 				var validatePublicKeys = JSON.stringify(publicKeys).replace(/,/g,'\n');
 				$('#check-pubkey').text(validatePublicKeys);
 				var message = document.getElementById("message_body_input");
-				var plaintext = message.value;
-				openpgp.encryptMessage([publicKeys],plaintext).then(function(ciphertext) {
-					var result = openpgp.message.readArmored(ciphertext);
+        var options = {
+          data: message.value,
+          publicKeys: openpgp.key.readArmored(pubkey).keys
+        };
+				openpgp.encrypt(options).then(function(ciphertext) {
+					var result = openpgp.message.readArmored(ciphertext.data);
 					var validateMessage = JSON.stringify(result).replace(/,/g,'\n');
 					$('#check-message').text(validateMessage);
-					message.value = ciphertext;	
+					message.value = ciphertext.data;	
 					var message_body = document.getElementById("message_body");
-					message_body.value = ciphertext;
+					message_body.value = ciphertext.data;
 					callback(true);	
 				});
 			}	
@@ -42,7 +46,8 @@ function file() {
 	
 	var reader = new FileReader();
 	reader.onload = function(e) {
-		var msg = openpgp.message.fromBinary(e.target.result);
+    bytes = new Uint8Array(e.target.result);
+		var msg = openpgp.message.fromBinary(bytes, file.name);
 		publicKeys = openpgp.key.readArmored($('#pubkey').text()).keys[0];
 		msg = msg.encrypt([publicKeys]);
 		var armored = openpgp.armor.encode(openpgp.enums.armor.message, msg.packets.write());
@@ -53,7 +58,7 @@ function file() {
 		$("#encrypting").text(file.name + ".gpg encrypted.");
 		$('#remove').show();
 	}
-	reader.readAsBinaryString(file);
+	reader.readAsArrayBuffer(file);
 	
 }
 
@@ -81,7 +86,7 @@ $(function(){
 	});
 	
 	// init openpgp worker
-	openpgp.initWorker('/assets/openpgp.worker.min.js');
+	openpgp.initWorker({path: '/assets/openpgp.worker.min.js'});
 	
 	// focus body on load
 	$("#message_body_input").focus();
