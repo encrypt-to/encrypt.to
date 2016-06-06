@@ -9,7 +9,7 @@ de:
       js_error: "Bitte aktivieren Sie Javascript in Ihrem Browser und laden Sie die Seite neu!"
       browser_support: "Sorry Ihr Browser wird nicht unterstützt. Bitte verwenden Sie Chrome >= 11, Safari >= 3.1, Firefox >= 21, Opera >= 15 oder IE >= 11!"
       to: "An"
-      attachment: "Anhang max. 1 MB"
+      attachment: "Anhang max. 10 MB"
       message: "Nachricht"
       your_mail: "Ihre E-Mail"
       encrypt_send: "Verschlüsseln & Senden"
