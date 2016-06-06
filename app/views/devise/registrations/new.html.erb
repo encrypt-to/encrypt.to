@@ -61,8 +61,7 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
   <% if @user.stripe_token %>
     <p>Credit card acceptance is pending.</p>
   <% else %>
-	
-	<p>Wanna pay with bitcoin? No problem. Please <a href="/hello@encrypt.to">contact us!</a></p>
+  
 	<div class="pure-g">
 	    <div class="pure-u-1-2"><p>
       <%= label_tag :card_number, "Credit Card Number" %>
@@ -94,7 +93,7 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 								<p class="alert" style="display:none;" id="invalid"></p>
 								<p class="notice" style="display:none;" id="valid"></p>
 
-								<p>You won't be billed unless you keep your account open past your 14-day free trail. By clicking on "Create an account" below, you are agreeing to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>.</p>
+								<p>You won't be billed unless you keep your account open past your 7-days free trail. By clicking on "Create an account" below, you are agreeing to the <a href="/terms">Terms of Service</a> and the <a href="/privacy">Privacy Policy</a>.</p>
 				
 								<%= f.submit "Create an account", :class => "pure-button pure-button-primary", :id => "submit_button" %>
 			
@@ -120,6 +119,7 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 											<ul style="list-style: inherit;">
 												<li>Get unique link encrypt.to/<span class="check_username">username</span>.</li>
 												<li>Your public key will be private at our non-public key server.</li>
+                        <li>Send PGP messages with attachments.</li>
 												<li>Customize the secure contact form in layout and colors.</li>
 											</ul>
 
@@ -131,8 +131,7 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 											 * I don't know what you talkin 'bout. <a href="http://en.wikipedia.org/wiki/Pretty_Good_Privacy">Read how PGP works.</a>
 											</p>
 											
-											<br />
-											<br />
+                      <h3>Secure payment</h3>
 										
 											<div><%= image_tag "/assets/rapidssl.png", width: '219px' %><%= image_tag "/assets/ssl-aplus.png", :width => 120 %>
 												<br/>
@@ -143,6 +142,11 @@ Sorry your browser is not supported. Please use Chrome >= 11, Safari >= 3.1, Fir
 													<li>SSL 256-Bit Encryption</li>
 												</ul>
 											</div>
+                      
+                      <h3>Or pay with bitcoin</h3>
+                      
+                    	<p><%= image_tag "/assets/bitcoin.png", width: '150px' %><br> Wanna pay with bitcoin? No problem. Please <a href="/hello@encrypt.to">contact us!</a></p>
+	
 
                     </div>
                 </div>
