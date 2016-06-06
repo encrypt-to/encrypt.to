@@ -86,7 +86,9 @@ $(function(){
 	});
 	
 	// init openpgp worker
-	openpgp.initWorker({path: '/assets/openpgp.worker.min.js'});
+  var unixTS = Math.round(+new Date()/1000);
+  var workerPath = "/assets/openpgp.worker.min.js?" + unixTS
+	openpgp.initWorker({path: workerPath});
 	
 	// focus body on load
 	$("#message_body_input").focus();
