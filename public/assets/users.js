@@ -63,18 +63,20 @@ function check() {
 			var email = $('#user_email').val();
 			if (email !== "" && validateEmail($('#user_email').val()) && publicEmails.indexOf(email) !== -1) {
 				valid("Public key is valid.");
+        $("#submit").prop('disabled', false);
 			} else {
 				invalid("Email does not belong to the public key. Try again!");
+        $("#submit").prop('disabled', true);
 			}
 		}
 		catch(err) {
 			invalid("Sorry the public key is invalid. Try again!");
+      $("#submit").prop('disabled', true);
 		}	
 	}	
 }
 
 $(function(){
-	$("#submin").prop('disabled', false);
 	if (window.crypto && window.crypto.getRandomValues) {
 		$('#user_public_key').bind('input propertychange', function() {
 			check();
