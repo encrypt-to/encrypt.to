@@ -1,6 +1,6 @@
 language: ruby
 rvm:
-  - 2.0.0
+  - 2.3.3
 before_script:
   - "bundle exec rake db:setup"
 notifications:
