@@ -8,24 +8,26 @@ function encrypt() {
 			} else {
 				// encrypt message
         var keystatus = {0:"invalid", 1:"expired", 2:"revoked", 3:"valid", 4:"no_self_cert"};
-        // {invalid: 0, expired: 1, revoked: 2, valid: 3, no_self_cert: 4}
         var pubkey = $('#pubkey').text();
-        publicKeys = openpgp.key.readArmored(pubkey).keys[0];
-        //console.log(publicKeys);
-        var verifyPrimaryKey = publicKeys.verifyPrimaryKey();
-        if (verifyPrimaryKey != 3) {
-          alert("Sorry, the primary key is " + keystatus[verifyPrimaryKey]);
-        }
-        var verifySubKey = publicKeys.subKeys[0].verify(publicKeys.primaryKey);
-        if (verifySubKey != 3) {
-          alert("Sorry, the sub key is " + keystatus[verifySubKey]);
-        }
-				var validatePublicKeys = JSON.stringify(publicKeys).replace(/,/g,'\n');
+        var readArmored = openpgp.key.readArmored(pubkey);
+        var verifyPrimaryKey = readArmored.keys[0].verifyPrimaryKey();
+        verifyPrimaryKey.then(function(value) {
+          if (value != 3) {
+            alert("Sorry, the primary key is " + keystatus[verifyPrimaryKey]);
+          }
+        });
+        var verifySubKey = readArmored.keys[0].subKeys[0].verify(readArmored.keys[0].primaryKey);
+        verifySubKey.then(function(value) {
+          if (value != 3) {
+            alert("Sorry, the primary key is " + keystatus[verifySubKey]);
+          }
+        });
+        var validatePublicKeys = JSON.stringify(readArmored.keys[0]).replace(/,/g,'\n');
         $('#check-pubkey').text(validatePublicKeys);
 				var message = document.getElementById("message_body_input");
         var options = {
           data: message.value,
-          publicKeys: openpgp.key.readArmored(pubkey).keys
+          publicKeys: readArmored.keys
         };
         openpgp.encrypt(options).then(function(ciphertext) {
         	var result = openpgp.message.readArmored(ciphertext.data);
