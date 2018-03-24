@@ -100,7 +100,7 @@ $(function(){
 	
 	// init openpgp worker
   var unixTS = Math.round(+new Date()/1000);
-  var workerPath = "/assets/openpgp.worker.min.js?" + unixTS;
+  var workerPath = "/assets/openpgp.worker_v303.min.js?" + unixTS;
 	openpgp.initWorker({path: workerPath});
 	
 	// focus body on load
