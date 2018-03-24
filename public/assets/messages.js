@@ -60,19 +60,22 @@ function file() {
 	var reader = new FileReader();
 	reader.onload = function(e) {
     bytes = new Uint8Array(e.target.result);
-		var msg = openpgp.message.fromBinary(bytes, file.name);
-		publicKeys = openpgp.key.readArmored($('#pubkey').text()).keys[0];
-		msg = msg.encrypt([publicKeys]);
-		var armored = openpgp.armor.encode(openpgp.enums.armor.message, msg.packets.write());
-		var message_file = document.getElementById("message_file");
-		message_file.value = window.btoa(armored);
-		var message_filename = document.getElementById("message_filename");
-		message_filename.value = file.name + ".gpg"
-		$("#encrypting").text(file.name + ".gpg encrypted.");
-		$('#remove').show();
+		publicKeys = openpgp.key.readArmored($('#pubkey').text()).keys;
+    var options = {
+        data: bytes,
+        publicKeys: publicKeys,
+        filename: file.name
+    };
+    openpgp.encrypt(options).then(function(ciphertext) {
+    		var message_file = document.getElementById("message_file");
+    		message_file.value = window.btoa(ciphertext.data);
+    		var message_filename = document.getElementById("message_filename");
+    		message_filename.value = file.name + ".gpg"
+    		$("#encrypting").text(file.name + ".gpg encrypted.");
+    		$('#remove').show();
+    });
 	}
 	reader.readAsArrayBuffer(file);
-	
 }
 
 function fingerprint(key) {
