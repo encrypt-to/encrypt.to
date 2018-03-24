@@ -22,17 +22,15 @@
 
       <h3>Change Credit Card</h3>
 
-	<div class="pure-g">
-	    <div class="pure-u-1-2"><p>
+	    <p>
       <%= label_tag :card_number, "Credit Card Number" %>
       <%= text_field_tag :card_number, nil, name: nil, size: '30', placeholder: '1111 2222 3333 4444' %>
-			</p></div>
-	    <div class="pure-u-1-2"><p>
+			</p>
+      <p>
       <%= label_tag :card_code, "Card Security Code (CVV)" %>
       <%= text_field_tag :card_code, nil, name: nil, size: '15', placeholder: '123' %>
-			</p></div>
-	</div>
-  
+			</p>
+	
 	<%= label_tag :card_month, "Card Expiration" %>
 						<table border="0">
 							<tr>
