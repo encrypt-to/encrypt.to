@@ -29,3 +29,6 @@ de:
       no_mail: "Sorry, dieser Schlüssel hat keine hinterlegten E-Mail Adressen!"
       no_public_key: "Sorry, diese E-Mail ist nicht auf dem Schlüsselserver hinterlegt!"
       invalid_link: "Sorry, falscher Link. Bitte nutzen Sie eine gültige E-Mail oder einen Öffentlichen Schlüssel!"
+		create:
+		  success_send: "Verschlüsselte Nachricht wurde erfolgreich versendet. Danke."
+		  error_send: "Irgendwas ging schief. Bitte nochmals versuchen!"
