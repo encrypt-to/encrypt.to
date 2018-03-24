@@ -26,6 +26,6 @@ en:
       no_mail: "Sorry, this key-id has no associated email address. Please try again!"
       no_public_key: "Sorry, this email has no associated public key. Please try again!"
       invalid_link: "Sorry, invalid link. Please use an email or key-id and try again!"
-		create:
-		  success_send: "Encrypted message sent! Thanks."
-		  error_send: "Sorry something went wrong. Try again!"
+    create:
+      success_send: "Encrypted message sent! Thanks."
+      error_send: "Sorry something went wrong. Try again!"

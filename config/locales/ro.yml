@@ -29,6 +29,6 @@ ro:
       no_mail: "Din păcate această cheie nu are asociată o adresă de email. Încercați o altă cheie!"
       no_public_key: "Din păcate nu am găsit o cheie pentru această adresă de email. Încercați o adresă alternativă!"
       invalid_link: "Legătură nevalidă. Încercați din nou folosind o adresă de email sau id!"
-		create:
-		  success_send: "Mesajul criptat a fost trimis! Mulțumim."
-		  error_send: "A intervenit o eroare. Încercați din nou!"
+    create:
+      success_send: "Mesajul criptat a fost trimis! Mulțumim."
+      error_send: "A intervenit o eroare. Încercați din nou!"
