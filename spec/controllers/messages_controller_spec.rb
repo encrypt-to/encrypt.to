@@ -1,4 +1,4 @@
-require "spec_helper"
+require "rails_helper"
 
 email = "hello@encrypt.to"
 expired_email = "expired@encrypt.to"
@@ -14,7 +14,7 @@ vindex_response_invalid = ""
 message = "-----BEGIN PGP MESSAGE-----\nVersion: OpenPGP.js v.1.20130306\nComment: http://openpgpjs.org\n\nwcBMA3VR7lR02L1RAQf/T/DHX8b1Ka65EpXZcffKjgzYch11Kvm0SJcXne0G\n2M/k3vAsKnru+zsbOnV+9IpXIywJIyDWOFasrqZggmHlMVOSr5CjKX27RspY\nfRPJ/9AU+Oada0iqocMIexY1QkoeGO16je0QWd7sbq+ejZZbJwfSvG/orW87\nHhX/r0pfUEpcwSNQcc4588NQ6qRvi9QwXt+Ykktozqi+JGurWOotLwe4/SQk\nJ2PePxYX6hBP1mUW7WVIHL3imM44Fe4x8yhFCVWpZDeKY1aA4B5Sg4STuuCJ\nnUgnpoeC4lDX+PyEoFq+QUi1sTHWdrZq6u8LUYX/Ode6tW/olVxYOoabWZ3y\nUtI4AZITMAgOOeDueWxbR214x3wqMQc7W1IuZWpzL4ogE+zjWwHU1j6EgD31\npEnyQbmBDMgGlxPqcis=\n=W15x\n-----END PGP MESSAGE-----"
 keyserver_url = "http://pgpkey.org/pks/lookup"
 
-describe MessagesController do
+describe MessagesController, type: :controller do
   
   let(:user) { create :user }
   
@@ -55,7 +55,7 @@ describe MessagesController do
     it "has a 302 status code if params empty" do
       get :new
       expect(response.status).to eq(302)
-      flash[:notice].should match(I18n.t('messages.new.invalid_link'))
+      expect(flash[:notice]).to eq(I18n.t('messages.new.invalid_link'))
     end
   end
   
@@ -63,7 +63,7 @@ describe MessagesController do
     it "has a 302 status code if params invalid email" do
       get :new, uid: invalid_email
       expect(response.status).to eq(302)
-      flash[:notice].should match(I18n.t('messages.new.no_public_key'))
+      expect(flash[:notice]).to eq(I18n.t('messages.new.no_public_key'))
     end
   end
   
@@ -71,7 +71,7 @@ describe MessagesController do
     it "has a 302 status code if params invalid key-id" do
       get :new, uid: invalid_keyid
       expect(response.status).to eq(302)
-      flash[:notice].should match(I18n.t('messages.new.no_mail'))
+      expect(flash[:notice]).to eq(I18n.t('messages.new.no_mail'))
     end
   end
   
@@ -95,7 +95,7 @@ describe MessagesController do
     it "has a 302 status code if params uid is an expired email" do
       get :new, uid: expired_email
       expect(response.status).to eq(302)
-      flash[:notice].should match(I18n.t('messages.new.no_public_key'))
+      expect(flash[:notice]).to eq(I18n.t('messages.new.no_public_key'))
     end
   end
   

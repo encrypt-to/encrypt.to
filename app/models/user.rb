@@ -2,7 +2,6 @@ class User < ActiveRecord::Base
 
   devise :database_authenticatable, :registerable, :recoverable, :rememberable, :trackable, :validatable
 
-  attr_accessible :public_key, :login, :username, :email, :password, :password_confirmation, :remember_me, :stripe_token, :css_form_background, :css_form_color, :form_attachment, :form_advanced_mode, :thanks_message, :plan
   attr_accessor :name, :login, :stripe_token
   
   validates :public_key, :presence => { :message => 'Public key cannot be blank!' }
@@ -69,7 +68,7 @@ class User < ActiveRecord::Base
   end
   
   def expire
-    MessageMailer.expire_email(self).deliver
+    MessageMailer.expire_email(self).deliver_now
     destroy
   end 
    

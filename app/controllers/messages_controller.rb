@@ -12,7 +12,7 @@ class MessagesController < ApplicationController
     @uid.downcase! if @uid    
     if @uid
       # get local user  
-      @user = User.find(:first, :conditions => [ "lower(username) = ?", @uid.downcase ]) 
+      @user = User.where("lower(username) = ?", @uid.downcase).first 
       if @user
         # local user
         @pubkey = @user.public_key
@@ -67,21 +67,21 @@ class MessagesController < ApplicationController
     file = params[:message][:file].blank? ? nil : params[:message][:file]
     filename = params[:message][:filename].blank? ? nil : params[:message][:filename]
     # local user
-    user = User.find(:first, :conditions => [ "lower(username) = ?", to.downcase ]) 
+    user = User.where("lower(username) = ?", to.downcase).first
     to = user.email if user
     # protect spam
     tohash = Digest::MD5.hexdigest(to)
     fromhash = Digest::MD5.hexdigest(from)
-    spam = Message.find(:all, :conditions => ["created_at > ? and tohash = ?", DateTime.now - 5.minutes, tohash])
+    spam = Message.where("created_at > ? and tohash = ?", DateTime.now - 5.minutes, tohash)
     # render    
     respond_to do |format|
       if spam.size >= 5
         format.html { redirect_to "/", notice: 'Spam? Please wait 5 minutes!' }
       elsif Util.is_email?(to) and Util.is_email?(from) and spam.size <= 5 and body.include?("BEGIN PGP MESSAGE") and body.include?("END PGP MESSAGE")
         Message.create!(:tohash => tohash, :fromhash => fromhash) # ignore message body
-        MessageMailer.send_message(to, from, body, :file => file, :filename => filename).deliver
+        MessageMailer.send_message(to, from, body, :file => file, :filename => filename).deliver_now
         username = user.username.downcase if user
-        MessageMailer.thanks_message(to, from, username).deliver
+        MessageMailer.thanks_message(to, from, username).deliver_now
         if user
           format.html { redirect_to "/#{user.username}/thanks" }
         else
@@ -97,5 +97,8 @@ class MessagesController < ApplicationController
   def set_locale
     I18n.locale = http_accept_language.compatible_language_from(I18n.available_locales)
   end
-
+  
+  def message_params
+    params.require(:message).permit(:tohash, :fromhash, :keyid)
+  end
 end

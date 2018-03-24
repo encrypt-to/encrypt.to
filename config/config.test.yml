@@ -13,4 +13,4 @@ owner_keyid:
 keyserver: 'http://pgpkey.org'
 app_token: '376ded85a00d7ea284a22410cbb1c254bb29e3c83b5ff7b837f5e8e6b9a5e2957389afb0fe3f090328dba625df380470204f3577e54c9352477d582657b20cfc'
 devise_token: 'c243da97a6437573af79e79344afec4b296f0a5ae20efd7a15dc80dcaea97853f54c76c3d79829a64af5e201fbe6d91ed541f0ebbd207a24327971dcfc07ad61'
-host:
+host: 'localhost:3000'

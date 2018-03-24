@@ -1,24 +1,25 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.22'
+gem 'rails', '4.2.10'
 gem 'thin'
-gem "therubyracer"
+gem 'therubyracer'
 gem 'jquery-rails'
 gem 'devise'
 gem 'stripe'
 gem 'stripe_event'
 gem 'http_accept_language'
+gem 'responders', '~> 2.0'
 
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'uglifier', '>= 1.0.3'
+  gem 'sass-rails'
+  gem 'uglifier'
 end
 
 group :test, :development do
   gem 'quiet_assets'
   gem 'sqlite3'
-  gem 'rspec-rails', '2.99'
-  gem 'factory_girl_rails'
+  gem 'rspec-rails'
+  gem 'factory_bot_rails'
 end
 
 group :test do
@@ -30,6 +31,7 @@ group :test do
   gem 'email_spec'
   gem 'webmock'
   gem 'vcr'
+  gem 'database_cleaner'
 end
 
 group :production do

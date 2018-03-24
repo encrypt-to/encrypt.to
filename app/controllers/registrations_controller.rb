@@ -1,17 +1,14 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def create
-    if params[:user][:plan].present? and ["pro5","pro11"].include?(params[:user][:plan])
-      super
-      MessageMailer.welcome_email(@user).deliver unless @user.invalid?
-    else
-      redirect_to "/", notice: "Sorry, wrong plan. Please try again!"
-    end
+    params[:user][:plan] ||= "pro11"
+    super
+    MessageMailer.welcome_email(@user).deliver_now unless @user.invalid?
   end
   
   def destroy
     super
-    MessageMailer.expire_email(@user).deliver
+    MessageMailer.expire_email(@user).deliver_now
   end
 
   def update_card

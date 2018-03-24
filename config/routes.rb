@@ -13,24 +13,24 @@ Encryptto::Application.routes.draw do
   
   mount StripeEvent::Engine => '/stripe'
   
-  match 'index' => 'home#index', via: :get
-  match 'terms' => 'home#terms', via: :get
-  match 'privacy' => 'home#privacy', via: :get
+  get 'index' => 'home#index'
+  get 'terms' => 'home#terms'
+  get 'privacy' => 'home#privacy'
 
   devise_for :users, controllers: { registrations: "registrations" }
   devise_scope :user do
     put 'update_card', :to => 'registrations#update_card'
   end
     
-  match ':uid/edit/:context' => 'users#edit', via: :get
-  match ':uid/edit' => 'users#update', via: :put
-  match ':uid/thanks' => 'users#show', via: :get
+  get ':uid/edit/:context' => 'users#edit'
+  patch ':uid/edit' => 'users#update'
+  get ':uid/thanks' => 'users#show'
 
   resources :messages
   
-  match ':uid' => 'messages#new', via: :get, :constraints => { :uid => /.+@.+\..*/ }
-  match ':uid' => 'messages#new', via: :get, :constraints => { :uid => /[0][x].*/ } 
-  match ':uid' => 'messages#new', via: :get
+  get ':uid' => 'messages#new', :constraints => { :uid => /.+@.+\..*/ }
+  get ':uid' => 'messages#new', :constraints => { :uid => /[0][x].*/ } 
+  get ':uid' => 'messages#new'
 
   root :to => 'home#index'
   

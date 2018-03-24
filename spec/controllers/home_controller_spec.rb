@@ -1,6 +1,6 @@
-require "spec_helper"
+require "rails_helper"
 
-describe HomeController do
+describe HomeController, type: :controller do
   
   describe "GET index" do
     it "has a 200 status code" do

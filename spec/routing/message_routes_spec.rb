@@ -1,6 +1,6 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe "routing to profiles" do
+describe "routing to profiles", type: :routing do
   
   it "routes /:uid to messages#new for email" do
     email = "hello@encrypt.to"

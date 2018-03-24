@@ -1,17 +1,17 @@
-require 'spec_helper'
+require 'rails_helper'
 
-describe User do
+describe User, type: :model do
   it "has a valid factory" do
-    create(:user).should be_valid
+    expect(create(:user)).to be_valid
   end
   it "is invalid without a username" do
-    build(:user, username: nil).should_not be_valid
+    expect(build(:user, username: nil)).not_to eq(be_valid)
   end
   it "is invalid without a password" do
-    build(:user, password: nil).should_not be_valid
+    expect(build(:user, password: nil)).not_to eq(be_valid)
   end
   it "is invalid without a public key" do
-    build(:user, public_key: nil).should_not be_valid
+    expect(build(:user, public_key: nil)).not_to eq(be_valid)
   end
   
 end

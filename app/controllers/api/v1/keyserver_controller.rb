@@ -15,10 +15,6 @@ class Api::V1::KeyserverController < ActionController::Metal
   include AbstractController::Callbacks
   include Rails.application.routes.url_helpers
  
-  append_view_path "#{Rails.root}/app/views"
-  
-  respond_to :json
-  
   protect_from_forgery
     
   def lookup
