@@ -35,7 +35,7 @@ if (!numAnim.error) {
 					
             <h2><mark>We believe privacy is a human right.</mark> </h2>						
 				
-						<p><b>Add the secure contact form to any site in minutes with no coding required.</b></p>
+						<p><b>Add the secure contact form to your website in minutes, no coding required.</b></p>
 				
 			<p>It encrypts the message with PGP (client-side) and sends it on to the mail account. A user who does not use PGP can send fairly secure mails to PGP-users. A simple vanity-style URL can be given to such users for easy access to the secure contact form.</p>
 			
@@ -78,13 +78,13 @@ if (!numAnim.error) {
 					
             <h2><mark>Can I trust this service?</mark> </h2>						
 				
-			<p>We take the privacy of your data very seriously. Your browser encrypts the message before handing it to us! We're using <a target="_blank" href="http://en.wikipedia.org/wiki/End-to-end_encryption">End-to-end encryption</a> with OpenPGP.js. We cannot read your message!<p> 
+			<p>We take the privacy of your data very seriously. Your browser encrypts the message before handing it to us! We're using <a target="_blank" href="http://en.wikipedia.org/wiki/End-to-end_encryption">End-to-end encryption</a> with OpenPGP.js. We cannot decrypt your message!<p> 
 			
 			<p>Use the <a target="_blank" href="http://encrypt-to.github.io/">Security audit tool</a> to audit the deployed source code.</p>
 			
 			<%= image_tag "/assets/ssl-report.png" %>
 			
-			<p>* SSL Report: <a target="_blank" href="https://www.ssllabs.com/ssltest/analyze.html?d=encrypt.to">Assessed on: Thu Jan 29 11:23:08 PST 2015</a></p>
+			<p>* SSL Report: <a target="_blank" href="https://www.ssllabs.com/ssltest/analyze.html?d=encrypt.to">Assessed on: Sun, 25 Mar 2018 21:31:11 UTC</a></p>
 			
         </div>
     </div>	
@@ -94,7 +94,7 @@ if (!numAnim.error) {
     <div class="pure-u-1-3">
         <div class="l-box">
             <h3>Open Source.</h3>
-            <p><%= image_tag "/assets/oss.png", :width => 128 %><br>The <a target="_blank" href="https://github.com/encrypt-to/encrypt.to">source code</a> is licensed under the MIT license and available on GitHub. Available for Ruby, PHP and Perl. Simple deployment on your Webhost or Heroku.</p>
+            <p><%= image_tag "/assets/oss.png", :width => 128 %><br>The <a target="_blank" href="https://github.com/encrypt-to/encrypt.to">source code</a> is licensed under MIT and available on GitHub. Available for Ruby, PHP and Perl. Simple deployment on your Webhost or Heroku.</p>
 
         </div>
     </div>
@@ -258,11 +258,7 @@ if (!numAnim.error) {
 			<br />
 			<h3>Get public key by key id</h3>
 			<pre>curl https://encrypt.to/api/v1/keyserver/lookup?keyid=0x11489A1F</pre>			
-			<pre>{"status":"success","keys":[{"key_id":"0x11489A1F","public_key":"-----BEGIN PGP PUBLIC KEY BLOCK-----"}]}</pre>
-      <br />
-      <h3>Client errors</h3>
-			<pre>curl https://encrypt.to/api/v1/keyserver/lookup</pre>
-			<pre>{"status":"error","message":"Wrong params, please try again."}</pre>    
+			<pre>{"status":"success","keys":[{"key_id":"0x11489A1F","public_key":"-----BEGIN PGP PUBLIC KEY BLOCK-----"}]}</pre>  
         </div>
     </div>	
 </div>
