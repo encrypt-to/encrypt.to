@@ -3,29 +3,31 @@
 Please enable Javascript in your browser and then refresh this page!
 </div>
 </noscript>
-		
-		
+	
+
+
 <div class="hero legal">
 	
     <div class="hero-titles">
 
 				
-				<p><b><%= @count %> messages successfully delivered</b></p>
-				<p><h1>Send encrypted PGP messages by one click</h1></p>
-				<br />
-				<p><h2>Encrypt.to/<input id="key" type="text" placeholder="email or key-id (0x...)"></h2></p>
-		    <p>The public key will be loaded from a <a target="_blank" href="https://sks-keyservers.net/status/">public keyserver</a></p>		
-		</div>
+				<p><h1>Send encrypted PGP messages with one click</h1><br />
+				<h2><i><span id="mycounter"></span> messages delivered</i></h2></p>
 
-    <div class="hero-cta">
-      	
-				<p>
-		    	<button class="pure-button pure-button-primary" id="try">Try now</button>
-		    </p>
-				
-    </div>
+		</div>
 		
 </div>
+
+<script>
+var numAnim = new CountUp("mycounter", 0, <%= @count %>);
+if (!numAnim.error) {
+    numAnim.start();
+} else {
+    console.error(numAnim.error);
+}
+</script>
+
+
 
 <div>	
     <div class="content legal">
@@ -54,6 +56,15 @@ Please enable Javascript in your browser and then refresh this page!
 
 			<p>For example: <a href="/hello@encrypt.to">encrypt.to/hello@encrypt.to</a> belongs to <a target="_blank" href="http://pool.sks-keyservers.net/pks/lookup?op=get&fingerprint=on&search=0x0CAF1E5B11489A1F"> this public key</a>.</p>
 			
+			<p><h2>Encrypt.to/<input id="key" type="text" placeholder="email or key-id (0x...)"></h2></p>
+	    <p>The public key will be loaded from a <a target="_blank" href="https://sks-keyservers.net/status/">public keyserver</a></p>	
+      <div class="hero-cta">
+      	
+  				<p>
+  		    	<button class="pure-button pure-button-primary" id="try">Try now</button>
+  		    </p>
+				
+      </div>
 			<p><i><a href="#signup">* Sign up if your email address and public key should be private!</a></i></p>
 			
         </div>

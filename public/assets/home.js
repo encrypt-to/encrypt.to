@@ -25,7 +25,7 @@ function checkEmailAndKeyId() {
 }
 
 $(function(){
-	$("#key").focus();
+  //$("#key").focus();
 	//$("#try").prop('disabled', true);
 	// validate input
 	$('#key').bind('input propertychange', function() {
