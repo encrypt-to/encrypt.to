@@ -9,7 +9,7 @@ ro:
       js_error: "Vă rugăm să activați Javascript în navigatorul dumneavoastră apoi actualizați pagina!"
       browser_support: "Navigatorul dumneavoastră nu este compatibil. Utilizați Chrome >= 37, Firefox >= 34, Opera >= 24, Safari >= 7.1!"
       to: "Către"
-      attachment: "Conținut atașat max. 10 MB"
+      attachment: "Conținut atașat max. 25 MB"
       message: "Mesaj"
       your_mail: "Emailul dumneavoastră"
       encrypt_send: "Criptare și expediere"

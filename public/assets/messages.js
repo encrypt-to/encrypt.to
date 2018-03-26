@@ -47,8 +47,8 @@ function file() {
 	// encrypt file		
 	var file = $("#message_file_input").get(0).files[0];
 	
-	if (file.size > 10485760) {
-		alert("Sorry file size > 10 MB!");
+	if (file.size > 26214400) {
+		alert("Sorry file size > 25 MB!");
 		$("#message_file_input").val("");
 		return
 	}

@@ -6,7 +6,7 @@ en:
       js_error: "Please enable Javascript in your browser and then refresh this page!"
       browser_support: "Sorry your browser is not supported. Please use Chrome >= 37, Firefox >= 34, Opera >= 24, Safari >= 7.1!"
       to: "To"
-      attachment: "Attachment max. 10 MB"
+      attachment: "Attachment max. 25 MB"
       message: "Message"
       your_mail: "Your Mail"
       encrypt_send: "Encrypt & Send"
