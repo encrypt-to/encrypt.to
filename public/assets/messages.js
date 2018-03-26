@@ -57,7 +57,7 @@ function file() {
 	$("#encrypting").text("Encrypting...");
 	$("#encrypting").show();
 	
-	var reader = new FileReader();
+  var reader = new FileReader();
 	reader.onload = function(e) {
     bytes = new Uint8Array(e.target.result);
 		publicKeys = openpgp.key.readArmored($('#pubkey').text()).keys;
@@ -72,10 +72,12 @@ function file() {
     		var message_filename = document.getElementById("message_filename");
     		message_filename.value = file.name + ".gpg"
     		$("#encrypting").text(file.name + ".gpg encrypted.");
-    		$('#remove').show();
+        $('#remove').show();
     });
+
 	}
 	reader.readAsArrayBuffer(file);
+  
 }
 
 function fingerprint(key) {
@@ -114,6 +116,9 @@ $(function(){
 	$("#fingerprint").text(fp);
   
   var cryptoObj = window.crypto || window.msCrypto; // for IE 11
+  if (window.msCrypto) {
+      window.crypto = window.msCrypto;
+  }
 	if (cryptoObj && cryptoObj.getRandomValues) {
 		// ready
 	} else {

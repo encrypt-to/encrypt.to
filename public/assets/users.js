@@ -78,6 +78,9 @@ function check() {
 
 $(function(){
   var cryptoObj = window.crypto || window.msCrypto; // for IE 11
+  if (window.msCrypto) {
+      window.crypto = window.msCrypto;
+  }
 	if (cryptoObj && cryptoObj.getRandomValues) {
 		$('#user_public_key').bind('input propertychange', function() {
 			check();
