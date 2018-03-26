@@ -18,8 +18,8 @@ Read [Diaspora](https://diasp.eu/u/info "Status") or [Twitter](https://twitter.c
 
 ### Browser Compatibility
 
-	* Desktop: Chrome >= 11, Firefox >= 21, IE >= 11, Opera >= 15, Safari >= 3.1
-	* Mobile: Chrome >= 23, Firefox >= 21, Safari >= iOS 6
+	* Desktop: Chrome >= 37, Firefox >= 34, Opera >= 24, Safari >= 7.1
+	* Mobile: Chrome >= 64, Android >= 62, Opera >= 37, Safari >= iOS 8
 
 ### I don't like Ruby
 

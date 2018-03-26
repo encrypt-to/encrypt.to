@@ -7,7 +7,7 @@ ro:
   messages:
     new:
       js_error: "Vă rugăm să activați Javascript în navigatorul dumneavoastră apoi actualizați pagina!"
-      browser_support: "Navigatorul dumneavoastră nu este compatibil. Utilizați Chrome >= 11, Safari >= 3.1, Firefox >= 21, Opera >= 15 sau IE >= 11!"
+      browser_support: "Navigatorul dumneavoastră nu este compatibil. Utilizați Chrome >= 37, Firefox >= 34, Opera >= 24, Safari >= 7.1!"
       to: "Către"
       attachment: "Conținut atașat max. 10 MB"
       message: "Mesaj"
