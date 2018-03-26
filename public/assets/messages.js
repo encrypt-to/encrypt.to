@@ -112,8 +112,9 @@ $(function(){
 	// show fingerprint
 	var fp = fingerprint(openpgp.key.readArmored($('#pubkey').text()).keys[0]);
 	$("#fingerprint").text(fp);
-   
-	if (window.crypto && window.crypto.getRandomValues) {
+  
+  var cryptoObj = window.crypto || window.msCrypto; // for IE 11
+	if (cryptoObj && cryptoObj.getRandomValues) {
 		// ready
 	} else {
 		$('.marker_browser').show();
