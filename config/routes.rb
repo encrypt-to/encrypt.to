@@ -16,6 +16,7 @@ Encryptto::Application.routes.draw do
   get 'index' => 'home#index'
   get 'terms' => 'home#terms'
   get 'privacy' => 'home#privacy'
+  get 'blog' => 'home#blog'
 
   devise_for :users, controllers: { registrations: "registrations" }
   devise_scope :user do

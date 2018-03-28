@@ -12,4 +12,8 @@ class HomeController < ApplicationController
   # GET /privacy
   def privacy
   end
+  
+  # GET /blog
+  def blog
+  end
 end

@@ -1,0 +1,40 @@
+<div>	
+<div class="content legal">
+<div class="l-box">
+<h1>Blog</h1>
+<div style="text-align:right;">28. March 2018</div>
+<h2>Let's encrypt a 100 MB file using the latest browser!</h2>
+<h3>WebCrypto API Speed Test</h3>
+<div>
+<p><strong>TL;DR</strong><br>Firefox encrypts a file 4 times faster than Opera. Safari and Chrome crashes on files &gt; 75 MB.</p>
+<br>How long does it take to encrypt a file using the WebCrypto API on the latest browsers? We measured the speed on Firefox, Chrome, Safari, Opera, and IE11 does support Web Cryptography, but that's based on an old version of the spec. <a href="https://caniuse.com">https://caniuse.com/#feat=cryptography</a><br><br>The W3C Recommendation from 26 January 2017 describes a JavaScript API for performing basic cryptographic operations in web applications, such as hashing, signature generation and verification, and encryption and decryption. <a href="https://www.w3.org/TR/WebCryptoAPI/">https://www.w3.org/TR/WebCryptoAPI/</a><br><br>Test setup: 2,4 GHz Intel Core i5, 16 GB 1333 MHz DDR3, Intel HD 3000 512 MB, running macOS Sierra v10.12.6.<br>JavaScript encryption library: OpenPGP.js v3.0.3 <a href="https://github.com/openpgpjs/openpgpjs">https://github.com/openpgpjs/openpgpjs</a><br><br><strong>And the winner is Firefox 59!<br></strong><br>
+</div><blockquote>25 MB --- 3.0 seconds<br>50 MB --- 5.8 seconds<br>100 MB --- 14.2 seconds</blockquote><div>
+<br><strong>2. Safari 11<br></strong><br>
+</div><blockquote>25 MB --- 4.2 seconds<br>50 MB --- 7.3 seconds<br>100 MB --- timeout</blockquote><div>
+<br><strong>3. Chrome 65<br></strong><br>
+</div><blockquote>25 MB --- 10.0 seconds<br>50 MB --- 19.1 seconds<br>100 MB --- timeout</blockquote><div>
+<br><strong>4. Opera 52<br></strong><br>
+</div><blockquote>25 MB --- 13.6 seconds<br>50 MB --- 22.5 seconds<br>100 MB --- timeout</blockquote><div>
+<br>Firefox encrypts a file 4 times faster than Opera. Safari and Chrome crashes on files &gt; 75 MB.<br><br><strong>How we measured the performance?<br></strong><br>
+</div><pre>var performance = window.performance;
+var t0 = performance.now();
+  
+var options, encrypted;
+
+options = {
+    data: new Uint8Array([0x01, 0x01, 0x01]), // input as Uint8Array (or String)
+    passwords: ['secret stuff'],              // multiple passwords possible
+    armor: false                              // don't ASCII armor (for Uint8Array output)
+};
+
+openpgp.encrypt(options).then(function(ciphertext) {
+    encrypted = ciphertext.message.packets.write(); // get raw encrypted packets as Uint8Array
+});
+  
+var t1 = performance.now();
+alert("Call to doWork took " + (t1 - t0) / 1000 + " seconds.");</pre><div>
+<br>As a result we increased the file attachment size to 25 MB on <a href="https://github.com/encrypt-to/encrypt.to">https://github.com/encrypt-to/encrypt.to</a><br>
+</div>
+</div>
+</div>
+</div>
