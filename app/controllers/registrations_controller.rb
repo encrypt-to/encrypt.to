@@ -1,7 +1,7 @@
 class RegistrationsController < Devise::RegistrationsController
 
   def create
-    params[:user][:plan] ||= "pro11"
+    params[:user][:plan] = "pro11"
     super
     MessageMailer.welcome_email(@user).deliver_now unless @user.invalid?
   end
