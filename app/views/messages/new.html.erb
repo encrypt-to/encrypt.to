@@ -44,7 +44,7 @@ a, h2, h3, table, input[type=file] {
 		<%= form_for @message, :html => { :class => "pure-form pure-form-aligned" } do |f| %>
 
 		<h2><%= t ".to" %>:&nbsp;<%= receiver(@to, f) %></h2>
-		<div style="text-align:left;padding:0px 0 10px 0;"><%= link_to t(".public_key") + ": #{@keyids.first}", "http://pool.sks-keyservers.net/pks/lookup?op=vindex&search=#{@keyids.first}&fingerprint=on", :id => "fingerprint" if @keyids %></div>
+		<div style="text-align:left;padding:0px 0 10px 0;"><%= link_to t(".public_key") + ": #{@keyids.first}", "http://ha.pool.sks-keyservers.net/pks/lookup?op=vindex&search=#{@keyids.first}&fingerprint=on", :id => "fingerprint" if @keyids %></div>
 		<fieldset>
 			<div class="pure-control-group">
 				<%= f.text_area :body_input, :rows => 10, :placeholder => t(".message"), :focus => true, :style=>"width: 100%" %>
